@@ -21,7 +21,7 @@ const Index = () => {
           <img
             src={liverHeroImage}
             alt="Fígado saudável com laranja e folhas"
-            className="w-48 h-48 object-contain"
+            className="w-72 h-72 object-contain"
           />
         </div>
 
