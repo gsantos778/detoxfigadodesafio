@@ -7,7 +7,7 @@ const WaterIntakeSelection = () => {
 
   const options = [
     { main: "Apenas café ou chá", sub: null },
-    { main: "Menos de 450 g", sub: "Menos de 2 copos" },
+    { main: "Menos de 450 ml", sub: "Menos de 2 copos" },
     { main: "16 oz - 48 oz", sub: "2 a 6 copos" },
     { main: "56 oz - 80 oz", sub: "7 a 10 copos" },
     { main: "Não conte", sub: null },
