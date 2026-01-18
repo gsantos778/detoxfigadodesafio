@@ -15,7 +15,7 @@ const MealPlanBenefits = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-muted/30 flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button
