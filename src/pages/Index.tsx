@@ -1,5 +1,7 @@
 import liverHeroImage from "@/assets/liver-detox-hero.png";
 import logoImage from "@/assets/logo.png";
+import corpoFeminino from "@/assets/corpo-feminino.png";
+import corpoMasculino from "@/assets/corpo-masculino.png";
 
 const Index = () => {
   return (
@@ -37,12 +39,12 @@ const Index = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="quiz-button">
-            <span className="text-xl">👩</span>
+            <img src={corpoFeminino} alt="Mulher" className="h-6 w-auto" />
             Dieta para mulheres
           </button>
           
           <button className="quiz-button">
-            <span className="text-xl">👨</span>
+            <img src={corpoMasculino} alt="Homem" className="h-6 w-auto" />
             Dieta para Homens
           </button>
         </div>
