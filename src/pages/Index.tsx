@@ -44,7 +44,7 @@ const Index = () => {
           </button>
           
           <button className="quiz-button">
-            <img src={corpoMasculino} alt="Homem" className="h-12 w-auto" />
+            <img src={corpoMasculino} alt="Homem" className="h-14 w-auto" />
             Dieta para Homens
           </button>
         </div>
