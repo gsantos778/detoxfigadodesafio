@@ -60,7 +60,7 @@ const LiverHabits = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/meat-selection")}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
           Próximo
