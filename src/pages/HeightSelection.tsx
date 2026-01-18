@@ -47,9 +47,8 @@ const HeightSelection = () => {
           Qual é a sua altura?
         </h1>
 
-        {/* Unit Toggle */}
-        <div className="flex items-center gap-2 mb-8">
-          <span className="px-4 py-2 text-muted-foreground">PÉS</span>
+        {/* Unit Badge */}
+        <div className="flex items-center mb-8">
           <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-medium">
             CM
           </span>
