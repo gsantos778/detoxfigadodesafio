@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logoImage from "@/assets/logo.png";
 import cebolaImage from "@/assets/cebola.jpg";
 import cogumeloImage from "@/assets/cogumelo.jpg";
 import ovosImage from "@/assets/ovos.jpg";
@@ -13,9 +12,9 @@ import azeitonasImage from "@/assets/azeitonas.jpg";
 import alcaparrasImage from "@/assets/alcaparras.jpg";
 import cocoImage from "@/assets/coco.jpg";
 import queijoDeCabraImage from "@/assets/queijo-de-cabra.jpg";
-import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import QuizHeader from "@/components/QuizHeader";
 
 // Preload images
 const preloadImages = [
@@ -94,27 +93,7 @@ const IngredientsSelection = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center relative px-4">
-        <button
-          onClick={() => navigate("/meat-selection")}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
-        >
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <img
-          src={logoImage}
-          alt="Detox Fígado Desafio"
-          className="h-20 w-auto"
-        />
-      </header>
-
-      {/* Progress Bar */}
-      <div className="w-full px-4 mt-2">
-        <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
-          <div className="h-1 bg-primary rounded-full w-full"></div>
-        </div>
-      </div>
+      <QuizHeader backRoute="/meat-selection" currentStep={16} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-8">

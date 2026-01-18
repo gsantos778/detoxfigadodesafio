@@ -9,11 +9,13 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="w-full pt-2 flex justify-center">
+      <header className="w-full pt-2 flex items-center justify-center px-4">
         <img 
           src={logoImage} 
           alt="Detox Fígado Desafio" 
-          className="h-28 w-auto"
+          className="h-16 w-auto"
+          loading="eager"
+          decoding="sync"
         />
       </header>
 

@@ -37,7 +37,9 @@ const EmailCapture = () => {
         <img
           src={logoImage}
           alt="Detox Fígado Desafio"
-          className="h-20 w-auto"
+          className="h-16 w-auto"
+          loading="eager"
+          decoding="sync"
         />
       </header>
 
