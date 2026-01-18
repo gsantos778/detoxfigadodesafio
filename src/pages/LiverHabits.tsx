@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
-import liverHabitsImage from "@/assets/liver-habits.jpg";
+import liverHabitsImage from "@/assets/liver-habits.png";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
