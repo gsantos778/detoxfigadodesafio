@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import mealBowlImage from "@/assets/meal-bowl.jpg";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, ChevronLeft } from "lucide-react";
 
 const MealPlanBenefits = () => {
   const navigate = useNavigate();
@@ -17,7 +17,13 @@ const MealPlanBenefits = () => {
   return (
     <div className="min-h-screen bg-muted/30 flex flex-col">
       {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center px-4">
+      <header className="w-full pt-2 flex items-center justify-center relative px-4">
+        <button
+          onClick={() => navigate("/ingredients-selection")}
+          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
+        >
+          <ChevronLeft className="w-6 h-6 text-foreground" />
+        </button>
         <img
           src={logoImage}
           alt="Detox Fígado Desafio"
