@@ -65,7 +65,10 @@ const CurrentWeightSelection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/desired-weight-selection")}
+          onClick={() => {
+            localStorage.setItem("currentWeight", weight);
+            navigate("/desired-weight-selection");
+          }}
           disabled={!weight || parseInt(weight) < 30}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >

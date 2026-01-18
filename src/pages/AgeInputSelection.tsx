@@ -62,7 +62,10 @@ const AgeInputSelection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/")}
+          onClick={() => {
+            localStorage.setItem("userAge", age);
+            navigate("/weight-projection");
+          }}
           disabled={!age || parseInt(age) < 18}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >

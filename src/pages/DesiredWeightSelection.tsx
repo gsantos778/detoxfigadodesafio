@@ -65,7 +65,10 @@ const DesiredWeightSelection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/age-input-selection")}
+          onClick={() => {
+            localStorage.setItem("desiredWeight", weight);
+            navigate("/age-input-selection");
+          }}
           disabled={!weight || parseInt(weight) < 30}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
