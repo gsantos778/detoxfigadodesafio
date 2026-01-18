@@ -68,7 +68,7 @@ const AgeSelection = () => {
               {ageGroups.map((age, index) => (
                 <button
                   key={age.label}
-                  onClick={() => navigate("/quiz-step-3")}
+                  onClick={() => navigate("/goal-selection")}
                   className={`quiz-button justify-center py-2 text-sm mx-1 ${
                     index === 0 ? '-translate-x-3' : index === 2 ? 'translate-x-1' : index === 3 ? 'translate-x-3' : ''
                   }`}
