@@ -46,7 +46,7 @@ const EmailCapture = () => {
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 max-w-md">
           Insira seu e-mail para ver como você pode atingir os{" "}
-          <span className="text-primary text-3xl md:text-4xl font-extrabold">{desiredWeight} kg</span>.
+          <span className="text-emerald-500 text-3xl md:text-4xl font-extrabold">{desiredWeight} kg</span>.
         </h1>
 
         {/* Email Input */}
