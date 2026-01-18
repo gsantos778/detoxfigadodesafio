@@ -6,7 +6,7 @@ const SkinSelection = () => {
   const navigate = useNavigate();
 
   const options = [
-    "Saindo",
+    "Descascando",
     "Sem brilho e irregular",
     "Geralmente claro",
     "Radiante e saudável",
