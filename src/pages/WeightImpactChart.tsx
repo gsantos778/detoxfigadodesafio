@@ -33,18 +33,17 @@ const WeightImpactChart = () => {
     
     const weeks = Math.round(days / 7);
     
-    // Calcular peso após 4 semanas (ou metade do programa se for menor que 8 semanas)
-    const weeksForMidPoint = Math.min(4, Math.floor(weeks / 2));
-    const progressAt4Weeks = (weeksForMidPoint * 7) / days;
+    // Calcular peso na metade do programa (sempre 50% do tempo)
+    const progressAtHalfway = 0.5;
     
     // Curva exponencial decrescente para simular perda de peso realista (mesma fórmula do WeightProjection)
-    const weightLostAt4Weeks = weightToLose * (1 - Math.pow(1 - progressAt4Weeks, 1.5));
-    const after4WeeksWeight = Math.round(current - weightLostAt4Weeks);
+    const weightLostAtHalfway = weightToLose * (1 - Math.pow(1 - progressAtHalfway, 1.5));
+    const halfwayWeight = Math.round(current - weightLostAtHalfway);
     
     return {
       currentWeight: current,
       desiredWeight: desired,
-      after4Weeks: after4WeeksWeight,
+      after4Weeks: halfwayWeight,
       daysNeeded: days,
       weeksNeeded: weeks,
     };
@@ -96,10 +95,9 @@ const WeightImpactChart = () => {
     return (animationProgress - segmentStart) / 25;
   };
 
-  // Texto dinâmico baseado no tempo do programa
-  const midPointLabel = weeksNeeded <= 8 
-    ? `Após ${Math.floor(weeksNeeded / 2)} semanas` 
-    : "Após 4 semanas";
+  // Texto dinâmico: sempre metade do período total
+  const halfWeeks = Math.round(weeksNeeded / 2);
+  const midPointLabel = `Após ${halfWeeks} semanas`;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
