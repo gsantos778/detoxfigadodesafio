@@ -64,7 +64,7 @@ const AgeSelection = () => {
             />
             
             {/* Age Buttons positioned over each woman */}
-            <div className="absolute bottom-0 left-0 right-0 grid grid-cols-4 gap-2 px-2">
+            <div className="absolute -bottom-4 left-0 right-0 grid grid-cols-4 gap-2 px-2">
               {ageGroups.map((age) => (
                 <button
                   key={age.label}
