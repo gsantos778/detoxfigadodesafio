@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
-import { ChevronLeft, Check } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 const BenefitsPage = () => {
   const navigate = useNavigate();
@@ -51,9 +51,7 @@ const BenefitsPage = () => {
               key={benefit}
               className="w-full flex items-center gap-4 px-6 py-4 bg-background border border-border rounded-lg"
             >
-              <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                <Check className="w-4 h-4 text-primary-foreground" />
-              </div>
+              <span className="text-xl flex-shrink-0">✅</span>
               <span className="text-foreground font-medium">{benefit}</span>
             </div>
           ))}
