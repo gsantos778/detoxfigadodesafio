@@ -26,6 +26,7 @@ const PersonalSummary = () => {
     energy: "Médio",
   });
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [animatedRotation, setAnimatedRotation] = useState(-90); // Começa na esquerda
 
   // Preload images
   useEffect(() => {
@@ -91,6 +92,38 @@ const PersonalSummary = () => {
     const rotation = ((clampedIMC - minIMC) / (maxIMC - minIMC)) * 180;
     return rotation - 90;
   };
+
+  // Animação do ponteiro
+  useEffect(() => {
+    if (imagesLoaded) {
+      const targetRotation = getPointerRotation();
+      const duration = 1500; // 1.5 segundos
+      const startTime = Date.now();
+      const startRotation = -90;
+
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out cubic)
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        
+        const currentRotation = startRotation + (targetRotation - startRotation) * easeOutCubic;
+        setAnimatedRotation(currentRotation);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      // Pequeno delay antes de iniciar a animação
+      const timeout = setTimeout(() => {
+        requestAnimationFrame(animate);
+      }, 300);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [imagesLoaded, imc]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -195,7 +228,7 @@ const PersonalSummary = () => {
                     />
                     
                     {/* Ponteiro */}
-                    <g transform={`rotate(${getPointerRotation()}, 100, 90)`}>
+                    <g transform={`rotate(${animatedRotation}, 100, 90)`}>
                       <polygon
                         points="100,25 95,85 100,90 105,85"
                         fill="#374151"
