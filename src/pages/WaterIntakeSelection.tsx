@@ -54,7 +54,7 @@ const WaterIntakeSelection = () => {
           {options.map((option, index) => (
             <button
               key={index}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/liver-habits")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <div className="flex flex-col">
