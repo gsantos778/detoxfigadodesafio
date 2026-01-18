@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const DigestionSelection = () => {
+const SkinSelection = () => {
   const navigate = useNavigate();
 
   const options = [
-    "Sim, frequentemente",
-    "Às vezes",
-    "Raramente",
-    "Nunca",
+    "Saindo",
+    "Sem brilho e irregular",
+    "Geralmente claro",
+    "Radiante e saudável",
   ];
 
   return (
@@ -17,7 +17,7 @@ const DigestionSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button 
-          onClick={() => navigate("/weight-gain-selection")}
+          onClick={() => navigate("/digestion-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -32,7 +32,7 @@ const DigestionSelection = () => {
       {/* Progress Bar */}
       <div className="w-full px-4 mt-2">
         <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
-          <div className="h-1 bg-primary rounded-full w-[95%]"></div>
+          <div className="h-1 bg-primary rounded-full w-full"></div>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ const DigestionSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center max-w-md leading-tight mb-8">
-          Você sofre de prisão de ventre ou digestão lenta?
+          Como anda sua pele ultimamente?
         </h1>
 
         {/* Options */}
@@ -48,7 +48,7 @@ const DigestionSelection = () => {
           {options.map((option) => (
             <button
               key={option}
-              onClick={() => navigate("/skin-selection")}
+              onClick={() => navigate("/")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <span className="text-foreground">{option}</span>
@@ -61,4 +61,4 @@ const DigestionSelection = () => {
   );
 };
 
-export default DigestionSelection;
+export default SkinSelection;

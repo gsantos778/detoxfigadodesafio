@@ -11,6 +11,7 @@ import WhyItWorks from "./pages/WhyItWorks";
 import EnergySelection from "./pages/EnergySelection";
 import WeightGainSelection from "./pages/WeightGainSelection";
 import DigestionSelection from "./pages/DigestionSelection";
+import SkinSelection from "./pages/SkinSelection";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/energy-selection" element={<EnergySelection />} />
           <Route path="/weight-gain-selection" element={<WeightGainSelection />} />
           <Route path="/digestion-selection" element={<DigestionSelection />} />
+          <Route path="/skin-selection" element={<SkinSelection />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
