@@ -56,7 +56,7 @@ const HeightSelection = () => {
 
         {/* Height Input */}
         <div className="w-full max-w-md">
-          <div className="flex items-center justify-center border border-border rounded-lg py-6 px-8 bg-muted/50">
+          <div className="flex items-center justify-center border border-border rounded-lg py-6 px-8 bg-muted">
             <input
               type="text"
               inputMode="numeric"
