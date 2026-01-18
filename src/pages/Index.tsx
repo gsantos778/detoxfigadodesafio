@@ -30,7 +30,7 @@ const Index = () => {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-muted-foreground text-center mb-8 text-base">
+        <p className="text-primary text-center mb-8 text-lg font-semibold">
           Selecione o tipo de dieta de desintoxicação do fígado:
         </p>
 
