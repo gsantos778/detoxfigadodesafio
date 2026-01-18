@@ -56,24 +56,25 @@ const AgeSelection = () => {
 
         {/* Age Selection Grid */}
         <div className="w-full max-w-4xl">
-          <img
-            src={ageOptionsImage}
-            alt="Selecione sua faixa etária"
-            className="w-full h-auto"
-            useMap="#age-map"
-          />
-          
-          {/* Age Buttons overlaid on image */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-            {ageGroups.map((age) => (
-              <button
-                key={age.label}
-                onClick={() => navigate("/quiz-step-3")}
-                className="quiz-button justify-center"
-              >
-                {age.label}
-              </button>
-            ))}
+          <div className="relative">
+            <img
+              src={ageOptionsImage}
+              alt="Selecione sua faixa etária"
+              className="w-full h-auto"
+            />
+            
+            {/* Age Buttons positioned over each woman */}
+            <div className="absolute bottom-0 left-0 right-0 grid grid-cols-4 gap-2 px-2">
+              {ageGroups.map((age) => (
+                <button
+                  key={age.label}
+                  onClick={() => navigate("/quiz-step-3")}
+                  className="quiz-button justify-center py-2 px-4 text-sm"
+                >
+                  {age.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </main>
