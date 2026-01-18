@@ -81,7 +81,7 @@ const SymptomsSelection = () => {
 
         {/* Next Button */}
         <button
-          onClick={() => navigate("/quiz-step-5")}
+          onClick={() => navigate("/why-it-works")}
           className="quiz-button justify-center mt-8 w-full max-w-md"
         >
           Próximo
