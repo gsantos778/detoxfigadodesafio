@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import logoImage from "@/assets/logo.png";
-import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 import {
@@ -14,6 +12,7 @@ import {
   Label,
   LabelList,
 } from "recharts";
+import QuizHeader from "@/components/QuizHeader";
 
 interface ChartDataPoint {
   day: number;
@@ -146,27 +145,7 @@ const WeightProjection = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center relative px-4">
-        <button
-          onClick={() => navigate("/age-input-selection")}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
-        >
-          <ChevronLeft className="w-6 h-6 text-foreground" />
-        </button>
-        <img
-          src={logoImage}
-          alt="Detox Fígado Desafio"
-          className="h-20 w-auto"
-        />
-      </header>
-
-      {/* Progress Bar */}
-      <div className="w-full px-4 mt-2">
-        <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
-          <div className="h-1 bg-primary rounded-full w-full"></div>
-        </div>
-      </div>
+      <QuizHeader backRoute="/age-input-selection" currentStep={22} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-8">

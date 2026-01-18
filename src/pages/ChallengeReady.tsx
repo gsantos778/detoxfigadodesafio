@@ -11,7 +11,13 @@ const ChallengeReady = () => {
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8">
       {/* Logo */}
       <div className="mb-8">
-        <img src={logo} alt="Detox Fígado" className="h-12 md:h-16" />
+        <img 
+          src={logo} 
+          alt="Detox Fígado" 
+          className="h-16 w-auto"
+          loading="eager"
+          decoding="sync"
+        />
       </div>
 
       {/* Title */}
