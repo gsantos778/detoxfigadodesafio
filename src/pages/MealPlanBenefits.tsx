@@ -25,6 +25,13 @@ const MealPlanBenefits = () => {
         />
       </header>
 
+      {/* Progress Bar */}
+      <div className="w-full px-4 mt-2">
+        <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
+          <div className="h-1 bg-primary rounded-full w-full"></div>
+        </div>
+      </div>
+
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-8">
         {/* Card */}
