@@ -1,26 +1,56 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import logoImage from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 const WeightImpactChart = () => {
   const navigate = useNavigate();
-  const [currentWeight, setCurrentWeight] = useState(80);
-  const [desiredWeight, setDesiredWeight] = useState(65);
   const [animationProgress, setAnimationProgress] = useState(0);
 
-  useEffect(() => {
-    // Recuperar dados do localStorage
-    const storedCurrentWeight = localStorage.getItem("currentWeight");
-    const storedDesiredWeight = localStorage.getItem("desiredWeight");
+  // Usar a mesma lógica de cálculo do WeightProjection
+  const { currentWeight, desiredWeight, after4Weeks, daysNeeded, weeksNeeded } = useMemo(() => {
+    const current = parseInt(localStorage.getItem("currentWeight") || "80");
+    const desired = parseInt(localStorage.getItem("desiredWeight") || "65");
     
-    if (storedCurrentWeight) {
-      setCurrentWeight(parseInt(storedCurrentWeight));
+    const weightToLose = current - desired;
+    
+    // Calcular dias baseado na faixa de peso a perder (mesma lógica do WeightProjection)
+    let days: number;
+    
+    if (weightToLose <= 10) {
+      days = 30;
+    } else if (weightToLose <= 17) {
+      days = 60;
+    } else if (weightToLose <= 25) {
+      days = 90;
+    } else if (weightToLose <= 33) {
+      days = 120;
+    } else if (weightToLose <= 41) {
+      days = 150;
+    } else {
+      days = 180;
     }
-    if (storedDesiredWeight) {
-      setDesiredWeight(parseInt(storedDesiredWeight));
-    }
+    
+    const weeks = Math.round(days / 7);
+    
+    // Calcular peso após 4 semanas (ou metade do programa se for menor que 8 semanas)
+    const weeksForMidPoint = Math.min(4, Math.floor(weeks / 2));
+    const progressAt4Weeks = (weeksForMidPoint * 7) / days;
+    
+    // Curva exponencial decrescente para simular perda de peso realista (mesma fórmula do WeightProjection)
+    const weightLostAt4Weeks = weightToLose * (1 - Math.pow(1 - progressAt4Weeks, 1.5));
+    const after4WeeksWeight = Math.round(current - weightLostAt4Weeks);
+    
+    return {
+      currentWeight: current,
+      desiredWeight: desired,
+      after4Weeks: after4WeeksWeight,
+      daysNeeded: days,
+      weeksNeeded: weeks,
+    };
+  }, []);
 
+  useEffect(() => {
     // Animar o gráfico
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
@@ -38,9 +68,8 @@ const WeightImpactChart = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Calcular peso intermediário (após 4 semanas - aproximadamente 60% do caminho)
+  // Calcular peso intermediário baseado no progresso real
   const weightDifference = currentWeight - desiredWeight;
-  const after4Weeks = Math.round(currentWeight - (weightDifference * 0.6));
   
   // Pontos do gráfico baseados nos pesos reais
   const maxWeight = currentWeight + 5;
@@ -67,6 +96,11 @@ const WeightImpactChart = () => {
     return (animationProgress - segmentStart) / 25;
   };
 
+  // Texto dinâmico baseado no tempo do programa
+  const midPointLabel = weeksNeeded <= 8 
+    ? `Após ${Math.floor(weeksNeeded / 2)} semanas` 
+    : "Após 4 semanas";
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
@@ -84,7 +118,7 @@ const WeightImpactChart = () => {
       <main className="flex-1 flex flex-col items-center px-4 pt-8">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 max-w-md leading-tight">
-          Um plano de emagrecimento de apenas 4 semanas pode causar um impacto duradouro!
+          Um plano de emagrecimento de {weeksNeeded} semanas pode causar um impacto duradouro!
         </h1>
 
         {/* Animated Chart */}
@@ -207,11 +241,11 @@ const WeightImpactChart = () => {
               </text>
             </g>
 
-            {/* Após 4 semanas label */}
+            {/* Após X semanas label */}
             <g style={{ opacity: animationProgress > 55 ? 1 : 0 }} className="transition-opacity duration-500">
-              <rect x="130" y={y3 + 10} width="95" height="22" rx="4" fill="#fefce8" stroke="#eab308" strokeWidth="1" />
-              <text x="178" y={y3 + 25} textAnchor="middle" className="text-xs font-medium" fill="#ca8a04">
-                Após 4 semanas
+              <rect x="125" y={y3 + 10} width="100" height="22" rx="4" fill="#fefce8" stroke="#eab308" strokeWidth="1" />
+              <text x="175" y={y3 + 25} textAnchor="middle" className="text-xs font-medium" fill="#ca8a04">
+                {midPointLabel}
               </text>
             </g>
 
