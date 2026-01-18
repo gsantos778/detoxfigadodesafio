@@ -177,7 +177,7 @@ const IngredientsSelection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/meal-plan-benefits")}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
           Próximo
