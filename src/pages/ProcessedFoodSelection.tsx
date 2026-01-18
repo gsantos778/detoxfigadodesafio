@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const AlcoholSelection = () => {
+const ProcessedFoodSelection = () => {
   const navigate = useNavigate();
 
   const options = [
-    "Diariamente ou quase diariamente",
-    "Algumas vezes por semana",
+    "Diário",
+    "Semanalmente",
     "Raramente",
     "Nunca",
   ];
@@ -17,7 +17,7 @@ const AlcoholSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button 
-          onClick={() => navigate("/benefits")}
+          onClick={() => navigate("/alcohol-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -40,7 +40,7 @@ const AlcoholSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center max-w-md leading-tight mb-8">
-          Com que frequência você consome álcool?
+          Com que frequência você consome alimentos processados ou fast food?
         </h1>
 
         {/* Options */}
@@ -48,7 +48,7 @@ const AlcoholSelection = () => {
           {options.map((option) => (
             <button
               key={option}
-              onClick={() => navigate("/processed-food-selection")}
+              onClick={() => navigate("/")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <span className="text-foreground">{option}</span>
@@ -61,4 +61,4 @@ const AlcoholSelection = () => {
   );
 };
 
-export default AlcoholSelection;
+export default ProcessedFoodSelection;

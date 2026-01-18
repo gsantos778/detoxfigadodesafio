@@ -15,6 +15,7 @@ import SkinSelection from "./pages/SkinSelection";
 import SleepSelection from "./pages/SleepSelection";
 import BenefitsPage from "./pages/BenefitsPage";
 import AlcoholSelection from "./pages/AlcoholSelection";
+import ProcessedFoodSelection from "./pages/ProcessedFoodSelection";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/sleep-selection" element={<SleepSelection />} />
           <Route path="/benefits" element={<BenefitsPage />} />
           <Route path="/alcohol-selection" element={<AlcoholSelection />} />
+          <Route path="/processed-food-selection" element={<ProcessedFoodSelection />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
