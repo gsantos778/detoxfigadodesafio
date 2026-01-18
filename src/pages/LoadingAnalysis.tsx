@@ -8,16 +8,21 @@ const LoadingAnalysis = () => {
 
   useEffect(() => {
     const duration = 4000; // 4 segundos para completar
-    const startTime = Date.now();
+    let startTime: number | null = null;
+    let animationId: number;
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
+    const animate = (timestamp: number) => {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+      
+      const elapsed = timestamp - startTime;
       const currentProgress = Math.min((elapsed / duration) * 100, 100);
       
       setProgress(currentProgress);
 
       if (currentProgress < 100) {
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
       } else {
         // Navegar para próxima página após completar
         setTimeout(() => {
@@ -26,7 +31,17 @@ const LoadingAnalysis = () => {
       }
     };
 
-    requestAnimationFrame(animate);
+    // Pequeno delay para garantir que o componente renderize primeiro com 0%
+    const timeoutId = setTimeout(() => {
+      animationId = requestAnimationFrame(animate);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, [navigate]);
 
   // Calcular o stroke-dashoffset para o círculo de progresso
