@@ -4,14 +4,14 @@ import logoImage from "@/assets/logo.png";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const DesiredWeightSelection = () => {
+const AgeInputSelection = () => {
   const navigate = useNavigate();
-  const [weight, setWeight] = useState("");
+  const [age, setAge] = useState("");
 
-  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
-    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 500)) {
-      setWeight(value);
+    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 120)) {
+      setAge(value);
     }
   };
 
@@ -20,7 +20,7 @@ const DesiredWeightSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button
-          onClick={() => navigate("/current-weight-selection")}
+          onClick={() => navigate("/desired-weight-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -43,30 +43,27 @@ const DesiredWeightSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-          Qual é o peso
-          <br />
-          desejado?
+          Qual é a sua idade?
         </h1>
 
-        {/* Weight Input */}
+        {/* Age Input */}
         <div className="w-full max-w-md">
           <div className="flex items-center justify-center border border-border rounded-lg py-6 px-8 bg-neutral-200">
             <input
               type="text"
               inputMode="numeric"
-              value={weight}
-              onChange={handleWeightChange}
+              value={age}
+              onChange={handleAgeChange}
               placeholder="0"
               className="text-5xl font-bold text-center bg-transparent border-none outline-none w-28 text-foreground placeholder:text-muted-foreground"
             />
-            <span className="text-muted-foreground text-xl">kg</span>
           </div>
         </div>
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/age-input-selection")}
-          disabled={!weight || parseInt(weight) < 30}
+          onClick={() => navigate("/")}
+          disabled={!age || parseInt(age) < 18}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
           Próximo
@@ -76,4 +73,4 @@ const DesiredWeightSelection = () => {
   );
 };
 
-export default DesiredWeightSelection;
+export default AgeInputSelection;
