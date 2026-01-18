@@ -27,6 +27,7 @@ import DesiredWeightSelection from "./pages/DesiredWeightSelection";
 import AgeInputSelection from "./pages/AgeInputSelection";
 import WeightProjection from "./pages/WeightProjection";
 import PersonalSummary from "./pages/PersonalSummary";
+import LoadingAnalysis from "./pages/LoadingAnalysis";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -62,6 +63,7 @@ const App = () => (
           <Route path="/age-input-selection" element={<AgeInputSelection />} />
           <Route path="/weight-projection" element={<WeightProjection />} />
           <Route path="/personal-summary" element={<PersonalSummary />} />
+          <Route path="/loading-analysis" element={<LoadingAnalysis />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
