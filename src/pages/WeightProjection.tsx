@@ -345,7 +345,7 @@ const WeightProjection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/personal-summary")}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
           Próximo
