@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import avesImage from "@/assets/aves.jpg";
@@ -11,9 +11,20 @@ import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
+// Preload images
+const preloadImages = [avesImage, carnePorcoImage, carneBovinaImage, peixeImage, cordeiroImage, vitelaImage];
+
 const MeatSelection = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);
+
+  // Preload images on mount
+  useEffect(() => {
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const meatOptions = [
     { id: "aves", label: "Aves", image: avesImage },
@@ -62,6 +73,13 @@ const MeatSelection = () => {
           className="h-20 w-auto"
         />
       </header>
+
+      {/* Progress Bar */}
+      <div className="w-full px-4 mt-2">
+        <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
+          <div className="h-1 bg-primary rounded-full w-full"></div>
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-8">
