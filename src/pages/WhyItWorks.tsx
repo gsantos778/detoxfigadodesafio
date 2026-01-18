@@ -47,13 +47,13 @@ const WhyItWorks = () => {
           </div>
 
           {/* Title */}
-          <h2 className="text-xl font-bold text-foreground text-center mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-6">
             Por que a desintoxicação do fígado funciona
           </h2>
 
           {/* Description */}
-          <p className="text-muted-foreground text-center leading-relaxed">
-            Seu fígado processa <span className="text-primary font-medium">toxinas</span>, <span className="text-primary font-medium">hormônios</span> e <span className="text-primary font-medium">gordura</span>. Quando ele está lento, todo o seu corpo sente — especialmente a <span className="text-primary font-medium">pele</span>, o <span className="text-primary font-medium">humor</span> e o <span className="text-primary font-medium">metabolismo</span>.
+          <p className="text-foreground text-center leading-relaxed text-lg">
+            Seu fígado processa <span className="text-primary font-semibold">toxinas</span>, <span className="text-primary font-semibold">hormônios</span> e <span className="text-primary font-semibold">gordura</span>. Quando ele está lento, todo o seu corpo sente — especialmente a <span className="text-primary font-semibold">pele</span>, o <span className="text-primary font-semibold">humor</span> e o <span className="text-primary font-semibold">metabolismo</span>.
           </p>
         </div>
 
