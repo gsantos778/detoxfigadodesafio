@@ -325,7 +325,7 @@ const PersonalSummary = () => {
 
             {/* Next Button */}
             <Button
-              onClick={() => navigate("/next-page")}
+              onClick={() => navigate("/loading-analysis")}
               className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
             >
               Próximo
