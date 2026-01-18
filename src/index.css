@@ -110,7 +110,7 @@
 
 @layer components {
   .quiz-button {
-    @apply bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium 
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-lg font-medium 
            transition-all duration-300 hover:opacity-90 hover:scale-105
            flex items-center gap-3 text-base;
   }
