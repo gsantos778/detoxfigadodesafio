@@ -91,14 +91,9 @@ const WeightProjection = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4 max-w-md">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8 max-w-md">
           Com a dieta de desintoxicação do fígado, você atingirá o peso desejado.
         </h1>
-
-        {/* Motivational Message */}
-        <p className="text-muted-foreground text-center text-sm mb-4 max-w-md">
-          {motivationalMessage}
-        </p>
 
         {/* Dynamic Weight Goal */}
         <p className="text-primary font-semibold text-lg mb-8">
