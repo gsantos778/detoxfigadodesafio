@@ -4,7 +4,7 @@ import logoImage from "@/assets/logo.png";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const CurrentWeightSelection = () => {
+const DesiredWeightSelection = () => {
   const navigate = useNavigate();
   const [weight, setWeight] = useState("");
 
@@ -20,7 +20,7 @@ const CurrentWeightSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button
-          onClick={() => navigate("/height-selection")}
+          onClick={() => navigate("/current-weight-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -43,9 +43,9 @@ const CurrentWeightSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-          Qual é o seu peso
+          Qual é o peso
           <br />
-          atual?
+          desejado?
         </h1>
 
         {/* Weight Input */}
@@ -65,7 +65,7 @@ const CurrentWeightSelection = () => {
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/desired-weight-selection")}
+          onClick={() => navigate("/")}
           disabled={!weight || parseInt(weight) < 30}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
@@ -76,4 +76,4 @@ const CurrentWeightSelection = () => {
   );
 };
 
-export default CurrentWeightSelection;
+export default DesiredWeightSelection;
