@@ -101,18 +101,25 @@ const WeightProjection = () => {
         </p>
 
         {/* Weight Chart */}
-        <div className="w-full max-w-md relative">
+        <div className="w-full max-w-md relative animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           <div className="relative">
             <img
               src={weightChartImage}
               alt="Gráfico de projeção de peso"
-              className="w-full h-auto"
+              className="w-full h-auto animate-scale-in"
+              style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
             />
             {/* Dynamic weight labels overlay */}
-            <div className="absolute top-2 left-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-orange-500">
+            <div 
+              className="absolute top-2 left-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-orange-500 animate-fade-in"
+              style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
+            >
               {currentWeight} kg
             </div>
-            <div className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-green-500">
+            <div 
+              className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-green-500 animate-fade-in"
+              style={{ animationDelay: '0.9s', animationFillMode: 'both' }}
+            >
               {desiredWeight} kg
             </div>
           </div>
