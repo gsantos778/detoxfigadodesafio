@@ -12,6 +12,7 @@ import {
   ReferenceLine,
   Tooltip,
   Label,
+  LabelList,
 } from "recharts";
 
 interface ChartDataPoint {
@@ -296,7 +297,23 @@ const WeightProjection = () => {
                     stroke: 'white',
                     r: 7
                   }}
-                />
+                >
+                  <LabelList 
+                    dataKey="peso"
+                    position="top"
+                    formatter={(value: number, entry: any, index: number) => {
+                      // Mostrar apenas no primeiro e último ponto
+                      if (index === 0) return `${value}kg`;
+                      if (index === chartData.length - 1) return `${value}kg`;
+                      return '';
+                    }}
+                    style={{ 
+                      fill: 'hsl(var(--foreground))', 
+                      fontSize: 12, 
+                      fontWeight: 'bold' 
+                    }}
+                  />
+                </Area>
               </AreaChart>
             </ResponsiveContainer>
           </div>
