@@ -39,12 +39,12 @@ const Index = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="quiz-button">
-            <img src={corpoFeminino} alt="Mulher" className="h-6 w-auto" />
+            <img src={corpoFeminino} alt="Mulher" className="h-10 w-auto" />
             Dieta para mulheres
           </button>
           
           <button className="quiz-button">
-            <img src={corpoMasculino} alt="Homem" className="h-6 w-auto" />
+            <img src={corpoMasculino} alt="Homem" className="h-10 w-auto" />
             Dieta para Homens
           </button>
         </div>
