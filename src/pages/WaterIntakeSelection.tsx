@@ -10,7 +10,7 @@ const WaterIntakeSelection = () => {
     { main: "Menos de 450 ml", sub: "Menos de 2 copos" },
     { main: "450ml - 1350 ml", sub: "2 a 6 copos" },
     { main: "1650 ml - 2350 ml", sub: "7 a 10 copos" },
-    { main: "Não conte", sub: null },
+    { main: "3 litros ou mais", sub: null },
   ];
 
   return (
