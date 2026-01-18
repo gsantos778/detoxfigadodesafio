@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
-const HeightSelection = () => {
+const CurrentWeightSelection = () => {
   const navigate = useNavigate();
-  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
 
-  const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, "");
-    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 300)) {
-      setHeight(value);
+    if (value === "" || (parseInt(value) >= 0 && parseInt(value) <= 500)) {
+      setWeight(value);
     }
   };
 
@@ -21,7 +20,7 @@ const HeightSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button
-          onClick={() => navigate("/meal-plan-benefits")}
+          onClick={() => navigate("/height-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -44,35 +43,30 @@ const HeightSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-          Qual é a sua altura?
+          Qual é o seu peso
+          <br />
+          atual?
         </h1>
 
-        {/* Unit Badge */}
-        <div className="flex items-center mb-8">
-          <span className="px-4 py-2 bg-primary text-primary-foreground rounded-md font-medium">
-            CM
-          </span>
-        </div>
-
-        {/* Height Input */}
+        {/* Weight Input */}
         <div className="w-full max-w-md">
           <div className="flex items-center justify-center border border-border rounded-lg py-6 px-8 bg-neutral-200">
             <input
               type="text"
               inputMode="numeric"
-              value={height}
-              onChange={handleHeightChange}
+              value={weight}
+              onChange={handleWeightChange}
               placeholder="0"
               className="text-5xl font-bold text-center bg-transparent border-none outline-none w-28 text-foreground placeholder:text-muted-foreground"
             />
-            <span className="text-muted-foreground text-xl">cm</span>
+            <span className="text-muted-foreground text-xl">kg</span>
           </div>
         </div>
 
         {/* Next Button */}
         <Button
-          onClick={() => navigate("/current-weight-selection")}
-          disabled={!height || parseInt(height) < 100}
+          onClick={() => navigate("/")}
+          disabled={!weight || parseInt(weight) < 30}
           className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
         >
           Próximo
@@ -82,4 +76,4 @@ const HeightSelection = () => {
   );
 };
 
-export default HeightSelection;
+export default CurrentWeightSelection;
