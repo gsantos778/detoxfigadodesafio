@@ -1,6 +1,5 @@
 import liverHeroImage from "@/assets/liver-detox-hero.png";
 import logoImage from "@/assets/logo.png";
-import { User, UserRound } from "lucide-react";
 
 const Index = () => {
   return (
@@ -38,12 +37,12 @@ const Index = () => {
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button className="quiz-button">
-            <UserRound className="w-5 h-5" />
+            <span className="text-xl">👩</span>
             Dieta para mulheres
           </button>
           
           <button className="quiz-button">
-            <User className="w-5 h-5" />
+            <span className="text-xl">👨</span>
             Dieta para Homens
           </button>
         </div>
