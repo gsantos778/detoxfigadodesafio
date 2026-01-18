@@ -7,7 +7,7 @@ const SkinSelection = () => {
 
   const options = [
     "Descascando",
-    "Sem brilho e irregular",
+    "Ressecada",
     "Geralmente claro",
     "Radiante e saudável",
   ];
