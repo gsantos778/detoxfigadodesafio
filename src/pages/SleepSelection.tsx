@@ -8,7 +8,7 @@ const SleepSelection = () => {
   const options = [
     "Muito ruim",
     "Inconsistente",
-    "Decente",
+    "Bom, mas poderia ser melhor",
     "Excelente",
   ];
 
