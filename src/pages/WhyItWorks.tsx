@@ -59,7 +59,7 @@ const WhyItWorks = () => {
 
         {/* Next Button */}
         <button
-          onClick={() => navigate("/quiz-step-6")}
+          onClick={() => navigate("/energy-selection")}
           className="quiz-button justify-center mt-8 w-full max-w-md"
         >
           Próximo
