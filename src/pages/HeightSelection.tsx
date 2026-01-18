@@ -56,16 +56,16 @@ const HeightSelection = () => {
 
         {/* Height Input */}
         <div className="w-full max-w-md">
-          <div className="flex items-end justify-center gap-2 border-b-2 border-border pb-2">
+          <div className="flex items-center justify-center border border-border rounded-lg py-6 px-8">
             <input
               type="text"
               inputMode="numeric"
               value={height}
               onChange={handleHeightChange}
               placeholder="0"
-              className="text-5xl font-bold text-center bg-transparent border-none outline-none w-24 text-foreground placeholder:text-muted-foreground"
+              className="text-5xl font-bold text-center bg-transparent border-none outline-none w-28 text-foreground placeholder:text-muted-foreground"
             />
-            <span className="text-muted-foreground text-lg mb-2">cm</span>
+            <span className="text-muted-foreground text-xl">cm</span>
           </div>
         </div>
 
