@@ -49,7 +49,7 @@ const GoalSelection = () => {
           {goals.map((goal) => (
             <button
               key={goal}
-              onClick={() => navigate("/quiz-step-4")}
+              onClick={() => navigate("/symptoms-selection")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <span className="text-foreground">{goal}</span>
