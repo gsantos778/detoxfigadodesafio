@@ -9,7 +9,7 @@ const Index = () => {
         <img 
           src={logoImage} 
           alt="Detox Fígado Desafio" 
-          className="h-14 w-auto"
+          className="h-20 w-auto"
         />
       </header>
 
