@@ -49,7 +49,7 @@ const HeightSelection = () => {
 
         {/* Unit Badge */}
         <div className="flex items-center mb-8">
-          <span className="px-4 py-2 bg-primary text-primary-foreground rounded-full font-medium">
+          <span className="px-4 py-2 bg-primary text-primary-foreground rounded-md font-medium">
             CM
           </span>
         </div>
