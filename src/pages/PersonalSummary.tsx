@@ -93,16 +93,18 @@ const PersonalSummary = () => {
     return rotation - 90;
   };
 
-  // Animação do ponteiro
+  // Animação do ponteiro - inicia imediatamente sem delay
   useEffect(() => {
     if (imagesLoaded) {
       const targetRotation = getPointerRotation();
       const duration = 1500; // 1.5 segundos
-      const startTime = Date.now();
+      let startTime: number | null = null;
       const startRotation = -90;
+      let animationId: number;
 
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
         // Easing function (ease-out cubic)
@@ -112,16 +114,14 @@ const PersonalSummary = () => {
         setAnimatedRotation(currentRotation);
 
         if (progress < 1) {
-          requestAnimationFrame(animate);
+          animationId = requestAnimationFrame(animate);
         }
       };
 
-      // Pequeno delay antes de iniciar a animação
-      const timeout = setTimeout(() => {
-        requestAnimationFrame(animate);
-      }, 300);
+      // Inicia imediatamente sem delay
+      animationId = requestAnimationFrame(animate);
 
-      return () => clearTimeout(timeout);
+      return () => cancelAnimationFrame(animationId);
     }
   }, [imagesLoaded, imc]);
 
