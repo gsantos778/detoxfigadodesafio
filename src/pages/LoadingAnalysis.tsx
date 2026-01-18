@@ -84,7 +84,6 @@ const LoadingAnalysis = () => {
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
-              className="transition-all duration-100 ease-out"
             />
           </svg>
           {/* Percentage text */}
