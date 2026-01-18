@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import logo from "@/assets/logo.png";
 import transformationImage from "@/assets/transformation-comparison.png";
 
 const ChallengeReady = () => {
   const navigate = useNavigate();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8">
@@ -19,10 +21,16 @@ const ChallengeReady = () => {
 
       {/* Transformation Image */}
       <div className="w-full max-w-lg">
+        {!imageLoaded && (
+          <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />
+        )}
         <img 
           src={transformationImage} 
           alt="Transformação - Antes e Depois" 
-          className="w-full rounded-xl shadow-lg"
+          className={`w-full rounded-xl shadow-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute'}`}
+          onLoad={() => setImageLoaded(true)}
+          loading="eager"
+          decoding="async"
         />
       </div>
     </div>
