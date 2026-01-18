@@ -1,5 +1,5 @@
 import { Leaf } from "lucide-react";
-import liverHeroImage from "@/assets/liver-detox-hero.jpg";
+import liverHeroImage from "@/assets/liver-detox-hero.png";
 
 const Index = () => {
   return (
