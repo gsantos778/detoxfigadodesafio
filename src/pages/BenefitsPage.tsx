@@ -40,7 +40,7 @@ const BenefitsPage = () => {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
-        <h1 className="text-lg md:text-xl font-medium text-foreground text-center max-w-md leading-tight mb-8">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center max-w-md leading-tight mb-8">
           O que a desintoxicação do fígado pode melhorar
         </h1>
 
