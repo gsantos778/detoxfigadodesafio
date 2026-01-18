@@ -10,6 +10,9 @@ import leiteImage from "@/assets/leite.jpg";
 import abacateImage from "@/assets/abacate.jpg";
 import frutosDoMarImage from "@/assets/frutos-do-mar.jpg";
 import azeitonasImage from "@/assets/azeitonas.jpg";
+import alcaparrasImage from "@/assets/alcaparras.jpg";
+import cocoImage from "@/assets/coco.jpg";
+import queijoDeCabraImage from "@/assets/queijo-de-cabra.jpg";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -17,7 +20,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 // Preload images
 const preloadImages = [
   cebolaImage, cogumeloImage, ovosImage, nozesImage, queijoImage,
-  leiteImage, abacateImage, frutosDoMarImage, azeitonasImage
+  leiteImage, abacateImage, frutosDoMarImage, azeitonasImage,
+  alcaparrasImage, cocoImage, queijoDeCabraImage
 ];
 
 const IngredientsSelection = () => {
@@ -42,9 +46,9 @@ const IngredientsSelection = () => {
     { id: "abacates", label: "Abacates", image: abacateImage },
     { id: "frutos-do-mar", label: "Frutos do mar", image: frutosDoMarImage },
     { id: "azeitonas", label: "Azeitonas", image: azeitonasImage },
-    { id: "alcaparras", label: "Alcaparras", image: null },
-    { id: "cocos", label: "Cocos", image: null },
-    { id: "queijo-de-cabra", label: "Queijo de cabra", image: queijoImage },
+    { id: "alcaparras", label: "Alcaparras", image: alcaparrasImage },
+    { id: "cocos", label: "Cocos", image: cocoImage },
+    { id: "queijo-de-cabra", label: "Queijo de cabra", image: queijoDeCabraImage },
   ];
 
   const toggleOption = (id: string) => {
