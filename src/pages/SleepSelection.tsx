@@ -48,7 +48,7 @@ const SleepSelection = () => {
           {options.map((option) => (
             <button
               key={option}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/benefits")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <span className="text-foreground">{option}</span>
