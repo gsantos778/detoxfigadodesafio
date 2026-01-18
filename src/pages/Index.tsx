@@ -5,7 +5,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="w-full py-1 flex justify-center">
+      <header className="w-full pt-2 flex justify-center">
         <img 
           src={logoImage} 
           alt="Detox Fígado Desafio" 
