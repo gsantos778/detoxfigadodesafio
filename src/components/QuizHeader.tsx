@@ -37,11 +37,11 @@ const QuizHeader = ({
         <img 
           src={logoImage} 
           alt="Detox Fígado Desafio" 
-          className="h-14 w-auto"
+          className="h-16 w-auto"
           loading="eager"
           decoding="sync"
           fetchPriority="high"
-          style={{ minHeight: '56px' }}
+          style={{ minHeight: '64px' }}
         />
       </header>
 
