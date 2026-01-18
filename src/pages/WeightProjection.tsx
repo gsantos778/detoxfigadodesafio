@@ -11,44 +11,37 @@ const WeightProjection = () => {
   const { currentWeight, desiredWeight, targetDate, motivationalMessage } = useMemo(() => {
     const current = parseInt(localStorage.getItem("currentWeight") || "90");
     const desired = parseInt(localStorage.getItem("desiredWeight") || "75");
-    const userAge = parseInt(localStorage.getItem("userAge") || "35");
     
     const weightToLose = current - desired;
     
-    // Calcular fator metabólico baseado na idade
-    // Pessoas mais jovens tendem a perder peso mais rápido
-    let metabolicFactor = 1.0;
-    if (userAge < 30) {
-      metabolicFactor = 1.2; // 20% mais rápido
-    } else if (userAge < 40) {
-      metabolicFactor = 1.0; // taxa normal
-    } else if (userAge < 50) {
-      metabolicFactor = 0.85; // 15% mais lento
-    } else {
-      metabolicFactor = 0.7; // 30% mais lento
-    }
-    
-    // Taxa base de perda: 0.75kg por semana, ajustada pelo fator metabólico
-    const weeklyLossRate = 0.75 * metabolicFactor;
-    
-    // Calcular dias necessários
+    // Calcular dias e mensagem baseado na faixa de peso a perder
     let daysNeeded: number;
     let message: string;
     
-    if (weightToLose <= 5) {
-      // Até 5kg: cerca de 30 dias
-      daysNeeded = Math.ceil(30 / metabolicFactor);
-      message = `Você pode perder até 5kg em cerca de 30 dias seguindo a dieta de desintoxicação do fígado.`;
-    } else if (weightToLose <= 9) {
-      // 6-9kg: 1-2 meses
-      const weeksNeeded = Math.ceil(weightToLose / weeklyLossRate);
-      daysNeeded = weeksNeeded * 7;
-      message = `Você pode perder de 6 a 9kg em cerca de 1 a 2 meses seguindo a dieta de desintoxicação do fígado.`;
+    if (weightToLose <= 10) {
+      // Até 10kg: 30 dias (1 mês)
+      daysNeeded = 30;
+      message = `Você pode perder até 10kg em cerca de 30 dias seguindo a dieta de desintoxicação do fígado.`;
+    } else if (weightToLose <= 17) {
+      // 11-17kg: 2 meses (60 dias)
+      daysNeeded = 60;
+      message = `Você pode perder de 11 a 17kg em cerca de 2 meses seguindo a dieta de desintoxicação do fígado.`;
+    } else if (weightToLose <= 25) {
+      // 18-25kg: 3 meses (90 dias)
+      daysNeeded = 90;
+      message = `Você pode perder de 18 a 25kg em cerca de 3 meses seguindo a dieta de desintoxicação do fígado.`;
+    } else if (weightToLose <= 33) {
+      // 26-33kg: 4 meses (120 dias)
+      daysNeeded = 120;
+      message = `Você pode perder de 26 a 33kg em cerca de 4 meses seguindo a dieta de desintoxicação do fígado.`;
+    } else if (weightToLose <= 41) {
+      // 34-41kg: 5 meses (150 dias)
+      daysNeeded = 150;
+      message = `Você pode perder de 34 a 41kg em cerca de 5 meses seguindo a dieta de desintoxicação do fígado.`;
     } else {
-      // 10kg+: 2-3 meses
-      const weeksNeeded = Math.ceil(weightToLose / weeklyLossRate);
-      daysNeeded = weeksNeeded * 7;
-      message = `Você pode perder de 10 a 18kg em cerca de 2 a 3 meses seguindo a dieta de desintoxicação do fígado.`;
+      // 42kg+: 6 meses (180 dias)
+      daysNeeded = 180;
+      message = `Você pode perder mais de 41kg em cerca de 6 meses seguindo a dieta de desintoxicação do fígado.`;
     }
     
     // Calcular data alvo a partir de hoje
