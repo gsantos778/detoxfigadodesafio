@@ -64,16 +64,15 @@ const AgeSelection = () => {
             />
             
             {/* Age Buttons positioned over each woman */}
-            <div className="absolute -bottom-8 left-0 right-0 grid grid-cols-4 gap-4 px-4">
+            <div className="absolute -bottom-8 left-0 right-0 grid grid-cols-4">
               {ageGroups.map((age) => (
-                <div key={age.label} className="flex justify-center">
-                  <button
-                    onClick={() => navigate("/quiz-step-3")}
-                    className="quiz-button justify-center py-2 px-6 text-sm w-full max-w-[120px]"
-                  >
-                    {age.label}
-                  </button>
-                </div>
+                <button
+                  key={age.label}
+                  onClick={() => navigate("/quiz-step-3")}
+                  className="quiz-button justify-center py-2 text-sm mx-1"
+                >
+                  {age.label}
+                </button>
               ))}
             </div>
           </div>
