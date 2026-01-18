@@ -24,9 +24,9 @@ const LoadingAnalysis = () => {
       if (currentProgress < 100) {
         animationId = requestAnimationFrame(animate);
       } else {
-        // Navegar para próxima página após completar
+        // Navegar para página de captura de email após completar
         setTimeout(() => {
-          navigate("/next-page");
+          navigate("/email-capture");
         }, 500);
       }
     };
