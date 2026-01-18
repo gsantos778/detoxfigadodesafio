@@ -40,6 +40,9 @@ const WhyItWorks = () => {
               src={beforeAfterImage}
               alt="Antes e depois da desintoxicação"
               className="w-full h-auto rounded-lg"
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
             />
           </div>
 
