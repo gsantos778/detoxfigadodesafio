@@ -1,53 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
-import weightChartImage from "@/assets/weight-chart.png";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  ReferenceLine,
+} from "recharts";
 
 const WeightProjection = () => {
   const navigate = useNavigate();
 
-  const { currentWeight, desiredWeight, targetDate, motivationalMessage } = useMemo(() => {
+  const { currentWeight, desiredWeight, targetDate, chartData, daysNeeded } = useMemo(() => {
     const current = parseInt(localStorage.getItem("currentWeight") || "90");
     const desired = parseInt(localStorage.getItem("desiredWeight") || "75");
     
     const weightToLose = current - desired;
     
-    // Calcular dias e mensagem baseado na faixa de peso a perder
-    let daysNeeded: number;
-    let message: string;
+    // Calcular dias baseado na faixa de peso a perder
+    let days: number;
     
     if (weightToLose <= 10) {
-      // Até 10kg: 30 dias (1 mês)
-      daysNeeded = 30;
-      message = `Você pode perder até 10kg em cerca de 30 dias seguindo a dieta de desintoxicação do fígado.`;
+      days = 30;
     } else if (weightToLose <= 17) {
-      // 11-17kg: 2 meses (60 dias)
-      daysNeeded = 60;
-      message = `Você pode perder de 11 a 17kg em cerca de 2 meses seguindo a dieta de desintoxicação do fígado.`;
+      days = 60;
     } else if (weightToLose <= 25) {
-      // 18-25kg: 3 meses (90 dias)
-      daysNeeded = 90;
-      message = `Você pode perder de 18 a 25kg em cerca de 3 meses seguindo a dieta de desintoxicação do fígado.`;
+      days = 90;
     } else if (weightToLose <= 33) {
-      // 26-33kg: 4 meses (120 dias)
-      daysNeeded = 120;
-      message = `Você pode perder de 26 a 33kg em cerca de 4 meses seguindo a dieta de desintoxicação do fígado.`;
+      days = 120;
     } else if (weightToLose <= 41) {
-      // 34-41kg: 5 meses (150 dias)
-      daysNeeded = 150;
-      message = `Você pode perder de 34 a 41kg em cerca de 5 meses seguindo a dieta de desintoxicação do fígado.`;
+      days = 150;
     } else {
-      // 42kg+: 6 meses (180 dias)
-      daysNeeded = 180;
-      message = `Você pode perder mais de 41kg em cerca de 6 meses seguindo a dieta de desintoxicação do fígado.`;
+      days = 180;
     }
     
     // Calcular data alvo a partir de hoje
     const today = new Date();
     const target = new Date(today);
-    target.setDate(target.getDate() + daysNeeded);
+    target.setDate(target.getDate() + days);
     
     const months = [
       "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -56,13 +50,51 @@ const WeightProjection = () => {
     
     const formattedDate = `${target.getDate()} de ${months[target.getMonth()]} de ${target.getFullYear()}`;
     
+    // Gerar dados do gráfico com curva de perda de peso realista
+    // A perda de peso é mais rápida no início e desacelera com o tempo
+    const dataPoints = 7;
+    const data = [];
+    
+    for (let i = 0; i <= dataPoints; i++) {
+      const progress = i / dataPoints;
+      // Curva exponencial decrescente para simular perda de peso realista
+      const weightLost = weightToLose * (1 - Math.pow(1 - progress, 1.5));
+      const currentWeightAtPoint = current - weightLost;
+      
+      // Calcular o label do período
+      let label = "";
+      if (i === 0) {
+        label = "Hoje";
+      } else if (i === dataPoints) {
+        label = `${Math.round(days / 30)}m`;
+      } else {
+        const daysAtPoint = Math.round((days / dataPoints) * i);
+        if (daysAtPoint < 30) {
+          label = `${daysAtPoint}d`;
+        } else {
+          label = `${Math.round(daysAtPoint / 30)}m`;
+        }
+      }
+      
+      data.push({
+        name: label,
+        peso: Math.round(currentWeightAtPoint * 10) / 10,
+        meta: desired,
+      });
+    }
+    
     return {
       currentWeight: current,
       desiredWeight: desired,
       targetDate: formattedDate,
-      motivationalMessage: message
+      chartData: data,
+      daysNeeded: days,
     };
   }, []);
+
+  // Calcular domínio do eixo Y com margem
+  const yMin = Math.floor(desiredWeight - 5);
+  const yMax = Math.ceil(currentWeight + 5);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -89,40 +121,95 @@ const WeightProjection = () => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
+      <main className="flex-1 flex flex-col items-center justify-start px-6 py-8">
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8 max-w-md">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4 max-w-md">
           Com a dieta de desintoxicação do fígado, você atingirá o peso desejado.
         </h1>
 
         {/* Dynamic Weight Goal */}
-        <p className="text-primary font-semibold text-lg mb-8">
+        <p className="text-primary font-semibold text-lg mb-6">
           {desiredWeight} kg até {targetDate}
         </p>
 
-        {/* Weight Chart */}
-        <div className="w-full max-w-md relative animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-          <div className="relative">
-            <img
-              src={weightChartImage}
-              alt="Gráfico de projeção de peso"
-              className="w-full h-auto animate-scale-in"
-              style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
-            />
-            {/* Dynamic weight labels overlay */}
-            <div 
-              className="absolute top-2 left-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-orange-500 animate-fade-in"
-              style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
-            >
-              {currentWeight} kg
+        {/* Weight Chart - Real and Animated */}
+        <div className="w-full max-w-md animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+          {/* Weight Labels */}
+          <div className="flex justify-between mb-2 px-2">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+              <span className="text-sm text-muted-foreground">Peso atual: <strong className="text-orange-500">{currentWeight} kg</strong></span>
             </div>
-            <div 
-              className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded text-sm font-semibold text-green-500 animate-fade-in"
-              style={{ animationDelay: '0.9s', animationFillMode: 'both' }}
-            >
-              {desiredWeight} kg
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-primary"></div>
+              <span className="text-sm text-muted-foreground">Meta: <strong className="text-primary">{desiredWeight} kg</strong></span>
             </div>
           </div>
+
+          {/* Chart Container */}
+          <div className="bg-gradient-to-br from-muted/50 to-muted rounded-2xl p-4 shadow-lg">
+            <ResponsiveContainer width="100%" height={250}>
+              <AreaChart data={chartData} margin={{ top: 20, right: 20, left: -10, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="weightGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.4} />
+                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0.05} />
+                  </linearGradient>
+                </defs>
+                
+                <XAxis 
+                  dataKey="name" 
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                />
+                
+                <YAxis 
+                  domain={[yMin, yMax]}
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                  tickFormatter={(value) => `${value}`}
+                />
+                
+                {/* Reference line for goal weight */}
+                <ReferenceLine 
+                  y={desiredWeight} 
+                  stroke="hsl(var(--primary))" 
+                  strokeDasharray="5 5"
+                  strokeWidth={2}
+                />
+                
+                {/* Weight progression area */}
+                <Area
+                  type="monotone"
+                  dataKey="peso"
+                  stroke="hsl(25, 95%, 53%)"
+                  strokeWidth={3}
+                  fill="url(#weightGradient)"
+                  animationDuration={2000}
+                  animationBegin={300}
+                  dot={{ 
+                    fill: 'hsl(25, 95%, 53%)', 
+                    strokeWidth: 2, 
+                    stroke: 'white',
+                    r: 4
+                  }}
+                  activeDot={{
+                    fill: 'hsl(25, 95%, 53%)',
+                    strokeWidth: 3,
+                    stroke: 'white',
+                    r: 6
+                  }}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Info Text */}
+          <p className="text-center text-sm text-muted-foreground mt-4">
+            Projeção baseada em {daysNeeded} dias de dieta
+          </p>
         </div>
 
         {/* Next Button */}
