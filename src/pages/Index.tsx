@@ -14,9 +14,9 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-6 pb-12">
+      <main className="flex-1 flex flex-col items-center justify-start px-6 pb-12 pt-4">
         {/* Hero Image */}
-        <div className="mb-8">
+        <div className="mb-6">
           <img
             src={liverHeroImage}
             alt="Fígado saudável com laranja e folhas"
