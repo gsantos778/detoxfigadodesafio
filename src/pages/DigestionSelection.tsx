@@ -2,14 +2,14 @@ import { useNavigate } from "react-router-dom";
 import logoImage from "@/assets/logo.png";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const WeightGainSelection = () => {
+const DigestionSelection = () => {
   const navigate = useNavigate();
 
   const options = [
-    "Sim, em grande parte.",
-    "Um pouco",
-    "Não tenho certeza.",
-    "Não",
+    "Sim, frequentemente",
+    "Às vezes",
+    "Raramente",
+    "Nunca",
   ];
 
   return (
@@ -17,7 +17,7 @@ const WeightGainSelection = () => {
       {/* Header */}
       <header className="w-full pt-2 flex items-center justify-center relative px-4">
         <button 
-          onClick={() => navigate("/energy-selection")}
+          onClick={() => navigate("/weight-gain-selection")}
           className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
         >
           <ChevronLeft className="w-6 h-6 text-foreground" />
@@ -32,7 +32,7 @@ const WeightGainSelection = () => {
       {/* Progress Bar */}
       <div className="w-full px-4 mt-2">
         <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
-          <div className="h-1 bg-primary rounded-full w-[90%]"></div>
+          <div className="h-1 bg-primary rounded-full w-[95%]"></div>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ const WeightGainSelection = () => {
       <main className="flex-1 flex flex-col items-center justify-start px-6 py-12">
         {/* Title */}
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center max-w-md leading-tight mb-8">
-          Você tem notado um ganho de peso inexplicável recentemente?
+          Você sofre de prisão de ventre ou digestão lenta?
         </h1>
 
         {/* Options */}
@@ -48,7 +48,7 @@ const WeightGainSelection = () => {
           {options.map((option) => (
             <button
               key={option}
-              onClick={() => navigate("/digestion-selection")}
+              onClick={() => navigate("/")}
               className="w-full flex items-center justify-between px-6 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors text-left"
             >
               <span className="text-foreground">{option}</span>
@@ -61,4 +61,4 @@ const WeightGainSelection = () => {
   );
 };
 
-export default WeightGainSelection;
+export default DigestionSelection;
