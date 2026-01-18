@@ -26,7 +26,7 @@ const EmailCapture = () => {
     if (isFormValid) {
       // Salvar email no sessionStorage
       sessionStorage.setItem("userEmail", email);
-      navigate("/challenge-ready");
+      navigate("/weight-impact");
     }
   };
 

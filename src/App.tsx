@@ -29,6 +29,7 @@ import WeightProjection from "./pages/WeightProjection";
 import PersonalSummary from "./pages/PersonalSummary";
 import LoadingAnalysis from "./pages/LoadingAnalysis";
 import EmailCapture from "./pages/EmailCapture";
+import WeightImpactChart from "./pages/WeightImpactChart";
 import ChallengeReady from "./pages/ChallengeReady";
 import NotFound from "./pages/NotFound";
 
@@ -67,6 +68,7 @@ const App = () => (
           <Route path="/personal-summary" element={<PersonalSummary />} />
           <Route path="/loading-analysis" element={<LoadingAnalysis />} />
           <Route path="/email-capture" element={<EmailCapture />} />
+          <Route path="/weight-impact" element={<WeightImpactChart />} />
           <Route path="/challenge-ready" element={<ChallengeReady />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
