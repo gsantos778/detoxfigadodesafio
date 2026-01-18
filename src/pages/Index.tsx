@@ -1,17 +1,16 @@
-import { Leaf } from "lucide-react";
 import liverHeroImage from "@/assets/liver-detox-hero.png";
+import logoImage from "@/assets/logo.png";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="w-full py-4 flex justify-center">
-        <div className="flex items-center gap-2 text-primary">
-          <Leaf className="w-5 h-5" />
-          <span className="text-sm font-semibold tracking-wide uppercase">
-            Liver Detox Challenge
-          </span>
-        </div>
+        <img 
+          src={logoImage} 
+          alt="Detox Fígado Desafio" 
+          className="h-8 w-auto"
+        />
       </header>
 
       {/* Main Content */}
