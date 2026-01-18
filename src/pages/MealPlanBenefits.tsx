@@ -11,7 +11,7 @@ const MealPlanBenefits = () => {
     "Apoie a perda de peso saudável",
     "Reduzir a inflamação",
     "Melhora a digestão",
-    "e mais",
+    "Elimina a fadiga e o cansaço",
   ];
 
   return (
