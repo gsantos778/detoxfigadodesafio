@@ -100,163 +100,169 @@ const PersonalSummary = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-start px-4 py-6">
-        {/* Card Principal com background colorido */}
-        <div 
-          className={`w-full max-w-md rounded-3xl p-6 ${
-            isOverweight 
-              ? 'bg-[#FECACA]' 
-              : 'bg-[#D1FAE5]'
-          }`}
-        >
-          {/* IMC Header */}
-          <div className="text-center mb-4">
-            <p className="text-sm text-gray-600 mb-1">
-              Índice de Massa Corporal (IMC)
-            </p>
-            <h2 className={`text-3xl font-bold ${
-              isOverweight ? 'text-orange-500' : 'text-emerald-600'
-            }`}>
-              {getIMCClassification()}
-            </h2>
-          </div>
-
-          {/* Velocímetro IMC */}
-          <div className="relative w-40 h-20 mx-auto mb-4">
-            <svg viewBox="0 0 200 100" className="w-full h-full">
-              {/* Arco colorido do velocímetro */}
-              {/* Azul - Abaixo do peso */}
-              <path
-                d="M 20 90 A 80 80 0 0 1 50 40"
-                fill="none"
-                stroke="#3B82F6"
-                strokeWidth="18"
-                strokeLinecap="round"
-              />
-              {/* Verde escuro - Normal baixo */}
-              <path
-                d="M 52 38 A 80 80 0 0 1 85 22"
-                fill="none"
-                stroke="#22C55E"
-                strokeWidth="18"
-              />
-              {/* Verde claro - Normal alto */}
-              <path
-                d="M 87 21 A 80 80 0 0 1 120 22"
-                fill="none"
-                stroke="#86EFAC"
-                strokeWidth="18"
-              />
-              {/* Amarelo - Sobrepeso */}
-              <path
-                d="M 122 23 A 80 80 0 0 1 150 40"
-                fill="none"
-                stroke="#FCD34D"
-                strokeWidth="18"
-              />
-              {/* Laranja - Obesidade I */}
-              <path
-                d="M 152 42 A 80 80 0 0 1 170 62"
-                fill="none"
-                stroke="#FB923C"
-                strokeWidth="18"
-              />
-              {/* Vermelho - Obesidade II/III */}
-              <path
-                d="M 171 64 A 80 80 0 0 1 180 90"
-                fill="none"
-                stroke="#EF4444"
-                strokeWidth="18"
-                strokeLinecap="round"
-              />
-              
-              {/* Ponteiro */}
-              <g transform={`rotate(${getPointerRotation()}, 100, 90)`}>
-                <polygon
-                  points="100,25 95,85 100,90 105,85"
-                  fill="#374151"
-                />
-                <circle cx="100" cy="90" r="10" fill="#374151" />
-                <circle cx="100" cy="90" r="5" fill="#9CA3AF" />
-              </g>
-            </svg>
-          </div>
-
-          {/* IMC Value */}
-          <div className="text-center mb-3">
-            <p className="text-lg font-bold text-gray-800">
-              Seu Índice de Massa Corporal: {imc.toFixed(2).replace('.', ',')}
-            </p>
-          </div>
-
-          {/* Mensagem baseada no IMC */}
-          <div className="text-center mb-6 px-2">
-            {isOverweight ? (
-              <p className="text-sm text-gray-700">
-                <span className="text-red-600 font-bold">Riscos de um IMC não saudável: </span>
-                Hipertensão arterial, aumento do risco de ataque cardíaco, AVC, diabetes tipo 2, dores crônicas nas costas e articulações.
+        {/* Card Principal */}
+        <div className="w-full max-w-md rounded-3xl overflow-hidden">
+          {/* Top Section - Pink for overweight, Green for normal */}
+          <div 
+            className={`p-6 pb-4 ${
+              isOverweight 
+                ? 'bg-[#FECACA]' 
+                : 'bg-[#D1FAE5]'
+            }`}
+          >
+            {/* IMC Header */}
+            <div className="text-center mb-4">
+              <p className="text-sm text-gray-600 mb-1">
+                Índice de Massa Corporal (IMC)
               </p>
-            ) : (
-              <p className="text-sm text-gray-700">
-                <span className="text-emerald-600 font-bold">IMC saudável: </span>
-                Um bom IMC inicial para tonificar o corpo e conquistar o corpo dos seus sonhos.
-              </p>
-            )}
-          </div>
-
-          {/* Info Cards com Imagem */}
-          <div className="flex items-end gap-3">
-            {/* Info Left */}
-            <div className="flex-1 space-y-3">
-              <div className="flex items-start gap-2">
-                <div className={`p-1.5 rounded-full flex-shrink-0 ${
-                  isOverweight ? 'bg-red-200' : 'bg-emerald-200'
-                }`}>
-                  <Target className={`w-4 h-4 ${
-                    isOverweight ? 'text-red-600' : 'text-emerald-600'
-                  }`} />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">Meta</p>
-                  <p className="text-sm font-bold text-gray-800">{userData.goal}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <div className={`p-1.5 rounded-full flex-shrink-0 ${
-                  isOverweight ? 'bg-red-200' : 'bg-emerald-200'
-                }`}>
-                  <TrendingUp className={`w-4 h-4 ${
-                    isOverweight ? 'text-red-600' : 'text-emerald-600'
-                  }`} />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">Ganho de peso inexplicável</p>
-                  <p className="text-sm font-bold text-gray-800">{userData.weightGain}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <div className={`p-1.5 rounded-full flex-shrink-0 ${
-                  isOverweight ? 'bg-red-200' : 'bg-emerald-200'
-                }`}>
-                  <Zap className={`w-4 h-4 ${
-                    isOverweight ? 'text-red-600' : 'text-emerald-600'
-                  }`} />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500">Energia</p>
-                  <p className="text-sm font-bold text-gray-800">{userData.energy}</p>
-                </div>
-              </div>
+              <h2 className={`text-3xl font-bold ${
+                isOverweight ? 'text-orange-500' : 'text-emerald-600'
+              }`}>
+                {getIMCClassification()}
+              </h2>
             </div>
 
-            {/* Imagem da Mulher */}
-            <div className="flex-shrink-0">
-              <img
-                src={isOverweight ? imgImcSobrepeso : imgImcNormal}
-                alt="Ilustração corporal"
-                className="w-36 h-auto object-contain"
-              />
+            {/* Velocímetro IMC */}
+            <div className="relative w-40 h-20 mx-auto mb-4">
+              <svg viewBox="0 0 200 100" className="w-full h-full">
+                {/* Arco colorido do velocímetro */}
+                {/* Azul - Abaixo do peso */}
+                <path
+                  d="M 20 90 A 80 80 0 0 1 50 40"
+                  fill="none"
+                  stroke="#3B82F6"
+                  strokeWidth="18"
+                  strokeLinecap="round"
+                />
+                {/* Verde escuro - Normal baixo */}
+                <path
+                  d="M 52 38 A 80 80 0 0 1 85 22"
+                  fill="none"
+                  stroke="#22C55E"
+                  strokeWidth="18"
+                />
+                {/* Verde claro - Normal alto */}
+                <path
+                  d="M 87 21 A 80 80 0 0 1 120 22"
+                  fill="none"
+                  stroke="#86EFAC"
+                  strokeWidth="18"
+                />
+                {/* Amarelo - Sobrepeso */}
+                <path
+                  d="M 122 23 A 80 80 0 0 1 150 40"
+                  fill="none"
+                  stroke="#FCD34D"
+                  strokeWidth="18"
+                />
+                {/* Laranja - Obesidade I */}
+                <path
+                  d="M 152 42 A 80 80 0 0 1 170 62"
+                  fill="none"
+                  stroke="#FB923C"
+                  strokeWidth="18"
+                />
+                {/* Vermelho - Obesidade II/III */}
+                <path
+                  d="M 171 64 A 80 80 0 0 1 180 90"
+                  fill="none"
+                  stroke="#EF4444"
+                  strokeWidth="18"
+                  strokeLinecap="round"
+                />
+                
+                {/* Ponteiro */}
+                <g transform={`rotate(${getPointerRotation()}, 100, 90)`}>
+                  <polygon
+                    points="100,25 95,85 100,90 105,85"
+                    fill="#374151"
+                  />
+                  <circle cx="100" cy="90" r="10" fill="#374151" />
+                  <circle cx="100" cy="90" r="5" fill="#9CA3AF" />
+                </g>
+              </svg>
+            </div>
+
+            {/* IMC Value */}
+            <div className="text-center mb-3">
+              <p className="text-lg font-bold text-gray-800">
+                Seu Índice de Massa Corporal: {imc.toFixed(2).replace('.', ',')}
+              </p>
+            </div>
+
+            {/* Mensagem baseada no IMC */}
+            <div className="text-center px-2">
+              {isOverweight ? (
+                <p className="text-sm text-gray-700">
+                  <span className="text-red-600 font-bold">Riscos de um IMC não saudável: </span>
+                  Hipertensão arterial, aumento do risco de ataque cardíaco, AVC, diabetes tipo 2, dores crônicas nas costas e articulações.
+                </p>
+              ) : (
+                <p className="text-sm text-gray-700">
+                  <span className="text-emerald-600 font-bold">IMC saudável: </span>
+                  Um bom IMC inicial para tonificar o corpo e conquistar o corpo dos seus sonhos.
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Bottom Section - Always White */}
+          <div className="bg-white p-6 pt-4">
+            {/* Info Cards com Imagem */}
+            <div className="flex items-end gap-3">
+              {/* Info Left */}
+              <div className="flex-1 space-y-3">
+                <div className="flex items-start gap-2">
+                  <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                    isOverweight ? 'bg-red-200' : 'bg-emerald-200'
+                  }`}>
+                    <Target className={`w-4 h-4 ${
+                      isOverweight ? 'text-red-600' : 'text-emerald-600'
+                    }`} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Meta</p>
+                    <p className="text-sm font-bold text-gray-800">{userData.goal}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                    isOverweight ? 'bg-red-200' : 'bg-emerald-200'
+                  }`}>
+                    <TrendingUp className={`w-4 h-4 ${
+                      isOverweight ? 'text-red-600' : 'text-emerald-600'
+                    }`} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Ganho de peso inexplicável</p>
+                    <p className="text-sm font-bold text-gray-800">{userData.weightGain}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-2">
+                  <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                    isOverweight ? 'bg-red-200' : 'bg-emerald-200'
+                  }`}>
+                    <Zap className={`w-4 h-4 ${
+                      isOverweight ? 'text-red-600' : 'text-emerald-600'
+                    }`} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500">Energia</p>
+                    <p className="text-sm font-bold text-gray-800">{userData.energy}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Imagem da Mulher */}
+              <div className="flex-shrink-0">
+                <img
+                  src={isOverweight ? imgImcSobrepeso : imgImcNormal}
+                  alt="Ilustração corporal"
+                  className="w-36 h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
