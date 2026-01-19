@@ -108,7 +108,7 @@ const ChallengeReady = () => {
   const testimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
   
   const [emblaRef] = useEmblaCarousel(
-    { loop: true, align: 'start', dragFree: true },
+    { loop: true, align: 'center', slidesToScroll: 1 },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
@@ -243,16 +243,16 @@ const ChallengeReady = () => {
           </h2>
           
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-4">
+            <div className="flex">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-[280px] md:w-[320px]"
+                  className="flex-shrink-0 w-full flex justify-center px-4"
                 >
                   <img
                     src={testimonial}
                     alt={`Depoimento ${index + 1}`}
-                    className="w-full rounded-xl shadow-lg"
+                    className="max-w-[220px] md:max-w-[280px] rounded-xl shadow-lg"
                   />
                 </div>
               ))}
