@@ -11,7 +11,7 @@ const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [showCredits, setShowCredits] = useState(false);
+  const [showCredits, setShowCredits] = useState(true);
   const [animatingCoins, setAnimatingCoins] = useState(false);
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
@@ -26,7 +26,6 @@ const ChallengeReady = () => {
 
   const handleReceiveCredits = () => {
     setShowPopup(false);
-    setShowCredits(true);
     
     // Start coin animation after a brief delay
     setTimeout(() => {
