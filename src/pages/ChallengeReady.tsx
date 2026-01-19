@@ -156,35 +156,33 @@ const ChallengeReady = () => {
       </div>
 
       {/* O que você recebe Section */}
-      <section className="w-full max-w-5xl px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10">
+      <section className="w-full max-w-lg px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
           O que você recebe
         </h2>
         
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
-          {/* Benefits List */}
-          <div className="flex-1 space-y-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="flex-shrink-0 mt-1">
-                  <CircleCheck className="w-6 h-6 text-green-600" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-800 mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
-                </div>
+        {/* Phone Mockup - Centered */}
+        <div className="flex justify-center mb-10">
+          <img 
+            src={phoneMockup} 
+            alt="App de receitas" 
+            className="w-full max-w-[240px] drop-shadow-2xl"
+          />
+        </div>
+        
+        {/* Benefits List - Centered */}
+        <div className="space-y-6">
+          {benefits.map((benefit, index) => (
+            <div key={index} className="flex gap-3">
+              <div className="flex-shrink-0 mt-1">
+                <CircleCheck className="w-5 h-5 text-green-600" />
               </div>
-            ))}
-          </div>
-          
-          {/* Phone Mockup */}
-          <div className="flex-shrink-0 lg:w-72">
-            <img 
-              src={phoneMockup} 
-              alt="App de receitas" 
-              className="w-full max-w-[280px] mx-auto drop-shadow-2xl"
-            />
-          </div>
+              <div>
+                <h3 className="font-bold text-gray-800 mb-1">{benefit.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
