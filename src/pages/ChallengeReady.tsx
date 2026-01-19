@@ -224,11 +224,11 @@ const ChallengeReady = () => {
             </div>
             
             {/* Phone Mockup - RIGHT */}
-            <div className="flex-shrink-0 w-full md:w-48 flex justify-center md:justify-end">
+            <div className="flex-shrink-0 w-full md:w-72 flex justify-center md:justify-end">
               <img 
                 src={phoneMockup} 
                 alt="App de receitas" 
-                className="w-full max-w-[180px] drop-shadow-2xl"
+                className="w-full max-w-[280px] drop-shadow-2xl"
               />
             </div>
           </div>
