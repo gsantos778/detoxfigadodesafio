@@ -38,17 +38,18 @@ const ChallengeReady = () => {
       setTimeout(() => {
         setAnimatingCoins(false);
         setCoins([]);
-        // Animate the counter
+        // Animate the counter from 0 to 1000
+        setCreditsCount(0);
         let count = 0;
         const interval = setInterval(() => {
-          count += 50;
+          count += 25;
           if (count >= 1000) {
             setCreditsCount(1000);
             clearInterval(interval);
           } else {
             setCreditsCount(count);
           }
-        }, 30);
+        }, 20);
       }, 1500);
     }, 300);
   };
