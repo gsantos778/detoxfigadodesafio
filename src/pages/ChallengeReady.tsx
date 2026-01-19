@@ -57,10 +57,14 @@ const ChallengeReady = () => {
       {/* Credits Display - Top Right */}
       {showCredits && (
         <div 
-          className="fixed top-4 right-4 z-50 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 animate-scale-in"
+          className="fixed top-4 right-4 z-50 bg-black/80 text-yellow-400 px-3 py-1.5 rounded-full flex items-center gap-1.5 animate-scale-in text-sm"
+          style={{
+            boxShadow: '0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #facc15',
+            textShadow: '0 0 5px #facc15, 0 0 10px #facc15'
+          }}
         >
-          <Coins className="w-5 h-5" />
-          <span className="font-bold">{creditsCount} créditos</span>
+          <Coins className="w-4 h-4" />
+          <span className="font-bold">{creditsCount}</span>
         </div>
       )}
 
