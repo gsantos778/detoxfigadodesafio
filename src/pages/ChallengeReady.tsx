@@ -209,8 +209,8 @@ const ChallengeReady = () => {
       backgroundColor: '#EFF8F2'
     }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
-            O que você vai  receber
+          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center uppercase tracking-wide">
+            O QUE VOCÊ VAI RECEBER
           </h2>
           <p className="text-lg font-semibold text-gray-800 mb-4">Um Aplicativo elaborado com:</p>
           
