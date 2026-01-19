@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
 import transformationImage from "@/assets/transformation-comparison.png";
+import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Coins } from "lucide-react";
+import { Coins, CircleCheck } from "lucide-react";
 
 const ChallengeReady = () => {
   const navigate = useNavigate();
@@ -51,6 +52,21 @@ const ChallengeReady = () => {
       }, 1500);
     }, 300);
   };
+
+  const benefits = [
+    {
+      title: "Planos de refeições personalizados",
+      description: "Receba planos alimentares elaborados não apenas para promover a saúde do fígado, mas também para ajudar você a perder peso. Cada plano prioriza alimentos desintoxicantes e ricos em nutrientes que reduzem a inflamação e equilibram os hormônios para resultados eficazes e duradouros."
+    },
+    {
+      title: "Receitas deliciosas e listas de compras",
+      description: "Descubra receitas saborosas que nutrem o fígado e aceleram o metabolismo, ajudando você a perder peso. Nossas listas de compras facilitam a ida ao supermercado, tornando o processo simples e sem estresse, para que você possa se concentrar em seus objetivos de desintoxicação e perda de peso."
+    },
+    {
+      title: "Rastreador diário",
+      description: "Mantenha-se motivado(a) monitorando suas refeições, ingestão de água, energia e progresso em direção às suas metas de perda de peso e saúde do fígado. Esse acompanhamento diário ajuda você a se manter comprometido(a) e a ajustar seu plano para maximizar seus resultados."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
@@ -125,7 +141,7 @@ const ChallengeReady = () => {
       </h1>
 
       {/* Transformation Image */}
-      <div className="w-full max-w-lg">
+      <div className="w-full max-w-lg mb-16">
         {!imageLoaded && (
           <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />
         )}
@@ -138,6 +154,39 @@ const ChallengeReady = () => {
           decoding="async"
         />
       </div>
+
+      {/* O que você recebe Section */}
+      <section className="w-full max-w-5xl px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10">
+          O que você recebe
+        </h2>
+        
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+          {/* Benefits List */}
+          <div className="flex-1 space-y-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="flex-shrink-0 mt-1">
+                  <CircleCheck className="w-6 h-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-800 mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Phone Mockup */}
+          <div className="flex-shrink-0 lg:w-72">
+            <img 
+              src={phoneMockup} 
+              alt="App de receitas" 
+              className="w-full max-w-[280px] mx-auto drop-shadow-2xl"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Custom styles for coin animation */}
       <style>{`
