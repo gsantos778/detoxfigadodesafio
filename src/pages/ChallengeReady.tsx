@@ -1,11 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import logo from "@/assets/logo.png";
 import transformationImage from "@/assets/transformation-comparison.png";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Coins, CircleCheck } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
+// Testimonial images
+import testimonial1 from "@/assets/testimonial-1.png";
+import testimonial2 from "@/assets/testimonial-2.png";
+import testimonial3 from "@/assets/testimonial-3.png";
+import testimonial4 from "@/assets/testimonial-4.png";
+import testimonial5 from "@/assets/testimonial-5.png";
+import testimonial6 from "@/assets/testimonial-6.png";
 
 const ChallengeReady = () => {
   const navigate = useNavigate();
@@ -93,6 +103,14 @@ const ChallengeReady = () => {
   ];
 
   const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
+
+  // Testimonials carousel
+  const testimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
+  
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: 'start', dragFree: true },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
@@ -212,6 +230,32 @@ const ChallengeReady = () => {
                 alt="App de receitas" 
                 className="w-full max-w-[180px] drop-shadow-2xl"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="w-full px-4 py-12 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
+            O que as pessoas têm a dizer
+          </h2>
+          
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-4">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[280px] md:w-[320px]"
+                >
+                  <img
+                    src={testimonial}
+                    alt={`Depoimento ${index + 1}`}
+                    className="w-full rounded-xl shadow-lg"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
