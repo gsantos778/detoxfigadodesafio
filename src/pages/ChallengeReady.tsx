@@ -77,7 +77,21 @@ const ChallengeReady = () => {
   }, {
     title: "Rastreador diário",
     description: "Mantenha-se motivada monitorando suas refeições, ciclo menstrual, energia e progresso. Esse acompanhamento ajuda você a se manter comprometida e a ajustar seu plano para maximizar seus resultados."
+  }, {
+    title: "Protocolo Anti-Inflamatório e Barriga Zero",
+    description: "Aprenda a combinar alimentos que combatem a inflamação sistêmica, reduzindo drasticamente o inchaço abdominal e a sensação de 'estufamento' logo nas primeiras semanas."
+  }, {
+    title: "Suporte ao Ciclo e Equilíbrio Hormonal",
+    description: "Orientações específicas para cada fase do seu ciclo menstrual, ajudando a controlar a compulsão por doces e a irritabilidade através de nutrientes estratégicos para o fígado."
   }];
+
+  // Bônus
+  const bonusBenefit = {
+    title: "🎁 BÔNUS: Guia de Substituições Inteligentes",
+    description: "Não deixe de comer o que gosta. Tenha em mãos uma lista prática para substituir ingredientes calóricos por opções saudáveis e detoxificantes sem perder o sabor das suas refeições.",
+    originalPrice: "R$ 57",
+    price: "GRÁTIS"
+  };
 
   // Benefícios para homens
   const maleBenefits = [{
@@ -89,6 +103,9 @@ const ChallengeReady = () => {
   }, {
     title: "Rastreador diário",
     description: "Mantenha-se motivado monitorando suas refeições, ingestão de água, energia e performance. Esse acompanhamento ajuda você a se manter comprometido e a atingir suas metas de forma eficiente."
+  }, {
+    title: "Protocolo Anti-Inflamatório e Barriga Zero",
+    description: "Aprenda a combinar alimentos que combatem a inflamação sistêmica, reduzindo drasticamente o inchaço abdominal e a sensação de 'estufamento' logo nas primeiras semanas."
   }];
   const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
 
@@ -199,16 +216,33 @@ const ChallengeReady = () => {
           
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             {/* Benefits List - LEFT */}
-            <div className="flex-1 space-y-8">
+            <div className="flex-1 space-y-6">
               {benefits.map((benefit, index) => <div key={index} className="flex gap-3">
                   <div className="flex-shrink-0 mt-1">
                     <CircleCheck className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">{benefit.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                    <h3 className="text-lg font-bold text-gray-800 mb-1">{benefit.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">{benefit.description}</p>
                   </div>
                 </div>)}
+              
+              {/* Bonus Section */}
+              <div className="mt-8 p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl">
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <CircleCheck className="w-5 h-5 text-yellow-600" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <h3 className="text-lg font-bold text-gray-800">{bonusBenefit.title}</h3>
+                      <span className="text-sm line-through text-gray-400">{bonusBenefit.originalPrice}</span>
+                      <span className="text-sm font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">{bonusBenefit.price}</span>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm">{bonusBenefit.description}</p>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Phone Mockup - RIGHT */}
