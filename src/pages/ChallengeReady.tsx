@@ -5,7 +5,7 @@ import transformationImage from "@/assets/transformation-comparison.png";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Coins, CircleCheck } from "lucide-react";
+import { Coins, CircleCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -94,14 +94,42 @@ const ChallengeReady = () => {
 
   // Testimonials carousel
   const testimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: 'start',
-    dragFree: true
+    align: 'center'
   }, [Autoplay({
-    delay: 3000,
-    stopOnInteraction: false
+    delay: 4000,
+    stopOnInteraction: true
   })]);
+  
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+  
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+  
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+  
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+    
+    emblaApi.on('select', onSelect);
+    onSelect();
+    
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
   return <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
       {/* Credits Display - Top Right */}
       {showCredits && <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
@@ -198,11 +226,48 @@ const ChallengeReady = () => {
             O que as pessoas têm a dizer 💭
           </h2>
           
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-4">
-              {testimonials.map((testimonial, index) => <div key={index} className="flex-shrink-0 w-[280px] md:w-[320px]">
-                  <img src={testimonial} alt={`Depoimento ${index + 1}`} className="w-full rounded-xl shadow-lg" />
-                </div>)}
+          <div className="relative">
+            {/* Arrows */}
+            <button 
+              onClick={scrollPrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-700" />
+            </button>
+            <button 
+              onClick={scrollNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-700" />
+            </button>
+            
+            <div className="overflow-hidden mx-10" ref={emblaRef}>
+              <div className="flex">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="flex-shrink-0 w-full flex justify-center px-4">
+                    <img 
+                      src={testimonial} 
+                      alt={`Depoimento ${index + 1}`} 
+                      className="max-w-[220px] md:max-w-[260px] rounded-xl shadow-lg" 
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    index === selectedIndex 
+                      ? 'bg-green-600 w-6' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
