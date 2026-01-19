@@ -252,7 +252,7 @@ const ChallengeReady = () => {
                   <img
                     src={testimonial}
                     alt={`Depoimento ${index + 1}`}
-                    className="max-w-[220px] md:max-w-[280px] rounded-xl shadow-lg"
+                    className="max-w-[160px] md:max-w-[200px] rounded-xl shadow-lg"
                   />
                 </div>
               ))}
