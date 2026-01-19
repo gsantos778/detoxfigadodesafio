@@ -15,8 +15,15 @@ const ChallengeReady = () => {
   const [animatingCoins, setAnimatingCoins] = useState(false);
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
+  const [userGender, setUserGender] = useState<'male' | 'female'>('female');
 
   useEffect(() => {
+    // Get user gender from localStorage
+    const savedGender = localStorage.getItem('userGender');
+    if (savedGender === 'male' || savedGender === 'female') {
+      setUserGender(savedGender);
+    }
+
     // Show popup after a short delay when page loads
     const timer = setTimeout(() => {
       setShowPopup(true);
@@ -53,20 +60,39 @@ const ChallengeReady = () => {
     }, 300);
   };
 
-  const benefits = [
+  // Benefícios para mulheres
+  const femaleBenefits = [
     {
-      title: "Planos de refeições personalizados",
-      description: "Receba planos alimentares elaborados não apenas para promover a saúde do fígado, mas também para ajudar você a perder peso. Cada plano prioriza alimentos desintoxicantes e ricos em nutrientes que reduzem a inflamação e equilibram os hormônios para resultados eficazes e duradouros."
+      title: "Planos de refeições personalizados para mulheres",
+      description: "Receba planos alimentares elaborados especialmente para o corpo feminino, promovendo a saúde do fígado e equilíbrio hormonal. Cada plano prioriza alimentos desintoxicantes que ajudam na TPM, menopausa e retenção de líquidos."
     },
     {
       title: "Receitas deliciosas e listas de compras",
-      description: "Descubra receitas saborosas que nutrem o fígado e aceleram o metabolismo, ajudando você a perder peso. Nossas listas de compras facilitam a ida ao supermercado, tornando o processo simples e sem estresse, para que você possa se concentrar em seus objetivos de desintoxicação e perda de peso."
+      description: "Descubra receitas saborosas que nutrem o fígado e aceleram o metabolismo feminino. Nossas listas de compras facilitam sua rotina, tornando o processo simples para mulheres ocupadas."
     },
     {
       title: "Rastreador diário",
-      description: "Mantenha-se motivado(a) monitorando suas refeições, ingestão de água, energia e progresso em direção às suas metas de perda de peso e saúde do fígado. Esse acompanhamento diário ajuda você a se manter comprometido(a) e a ajustar seu plano para maximizar seus resultados."
+      description: "Mantenha-se motivada monitorando suas refeições, ciclo menstrual, energia e progresso. Esse acompanhamento ajuda você a se manter comprometida e a ajustar seu plano para maximizar seus resultados."
     }
   ];
+
+  // Benefícios para homens
+  const maleBenefits = [
+    {
+      title: "Planos de refeições personalizados para homens",
+      description: "Receba planos alimentares elaborados especialmente para o corpo masculino, promovendo a saúde do fígado e níveis saudáveis de testosterona. Cada plano prioriza alimentos que aumentam energia e força muscular."
+    },
+    {
+      title: "Receitas deliciosas e listas de compras",
+      description: "Descubra receitas saborosas e substanciosas que nutrem o fígado e aceleram o metabolismo masculino. Nossas listas de compras são práticas e diretas ao ponto."
+    },
+    {
+      title: "Rastreador diário",
+      description: "Mantenha-se motivado monitorando suas refeições, ingestão de água, energia e performance. Esse acompanhamento ajuda você a se manter comprometido e a atingir suas metas de forma eficiente."
+    }
+  ];
+
+  const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">

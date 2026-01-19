@@ -42,12 +42,18 @@ const Index = () => {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="quiz-button" onClick={() => navigate("/age-selection")}>
+          <button className="quiz-button" onClick={() => {
+            localStorage.setItem('userGender', 'female');
+            navigate("/age-selection");
+          }}>
             <img src={corpoFeminino} alt="Mulher" className="h-10 w-auto" />
             Dieta para mulheres
           </button>
           
-          <button className="quiz-button" onClick={() => navigate("/age-selection")}>
+          <button className="quiz-button" onClick={() => {
+            localStorage.setItem('userGender', 'male');
+            navigate("/age-selection");
+          }}>
             <img src={corpoMasculino} alt="Homem" className="h-14 w-auto" />
             Dieta para Homens
           </button>
