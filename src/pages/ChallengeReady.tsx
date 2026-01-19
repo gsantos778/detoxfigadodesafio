@@ -158,10 +158,10 @@ const ChallengeReady = () => {
       {/* O que você recebe Section */}
       <section className="w-full px-4 py-12" style={{ backgroundColor: '#EFF8F2' }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 text-center">
             O que você recebe
           </h2>
-          <p className="text-gray-600 mb-10">Um Aplicativo elaborado com:</p>
+          <p className="text-gray-600 mb-10 text-center">Um Aplicativo elaborado com:</p>
           
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             {/* Benefits List - LEFT */}
