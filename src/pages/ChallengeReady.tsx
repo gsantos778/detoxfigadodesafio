@@ -154,7 +154,7 @@ const ChallengeReady = () => {
       </h1>
 
       {/* Transformation Image */}
-      <div className="w-full max-w-lg mb-16">
+      <div className="w-full max-w-lg mb-6">
         {!imageLoaded && <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />}
         <img src={transformationImage} alt="Transformação - Antes e Depois" className={`w-full rounded-xl shadow-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute'}`} onLoad={() => setImageLoaded(true)} loading="eager" decoding="async" />
       </div>
