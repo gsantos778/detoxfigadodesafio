@@ -161,7 +161,7 @@ const ChallengeReady = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
             O que você recebe
           </h2>
-          <p className="text-gray-600 mb-4">Um Aplicativo elaborado com:</p>
+          <p className="text-lg font-semibold text-gray-800 mb-4">Um Aplicativo elaborado com:</p>
           
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             {/* Benefits List - LEFT */}
