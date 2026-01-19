@@ -172,7 +172,7 @@ const ChallengeReady = () => {
                     <CircleCheck className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-2">{benefit.title}</h3>
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">{benefit.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                   </div>
                 </div>
