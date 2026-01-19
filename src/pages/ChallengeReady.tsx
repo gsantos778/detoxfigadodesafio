@@ -56,14 +56,17 @@ const ChallengeReady = () => {
     <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
       {/* Credits Display - Top Right */}
       {showCredits && (
-        <div 
-          className="fixed top-4 right-4 z-50 bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 animate-scale-in text-sm"
-          style={{
-            boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981',
-          }}
-        >
-          <Coins className="w-4 h-4" />
-          <span className="font-bold">{creditsCount}</span>
+        <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
+          <span className="text-xs font-semibold text-gray-600">créditos</span>
+          <div 
+            className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm"
+            style={{
+              boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981',
+            }}
+          >
+            <Coins className="w-4 h-4" />
+            <span className="font-bold">{creditsCount}</span>
+          </div>
         </div>
       )}
 
