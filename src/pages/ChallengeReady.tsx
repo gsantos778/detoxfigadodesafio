@@ -16,7 +16,6 @@ import testimonial3 from "@/assets/testimonial-3.png";
 import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
-
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -26,7 +25,6 @@ const ChallengeReady = () => {
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
   const [userGender, setUserGender] = useState<'male' | 'female'>('female');
-
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -40,16 +38,15 @@ const ChallengeReady = () => {
     }, 500);
     return () => clearTimeout(timer);
   }, []);
-
   const handleReceiveCredits = () => {
     setShowPopup(false);
-    
+
     // Start coin animation after a brief delay
     setTimeout(() => {
       setAnimatingCoins(true);
       // Create multiple coins for animation
       setCoins([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-      
+
       // After coins animation, update the credits counter
       setTimeout(() => {
         setAnimatingCoins(false);
@@ -71,81 +68,62 @@ const ChallengeReady = () => {
   };
 
   // Benefícios para mulheres
-  const femaleBenefits = [
-    {
-      title: "Planos de refeições personalizados para mulheres",
-      description: "Receba planos alimentares elaborados especialmente para o corpo feminino, promovendo a saúde do fígado e equilíbrio hormonal. Cada plano prioriza alimentos desintoxicantes que ajudam na TPM, menopausa e retenção de líquidos."
-    },
-    {
-      title: "Receitas deliciosas e listas de compras",
-      description: "Descubra receitas saborosas que nutrem o fígado e aceleram o metabolismo feminino. Nossas listas de compras facilitam sua rotina, tornando o processo simples para mulheres ocupadas."
-    },
-    {
-      title: "Rastreador diário",
-      description: "Mantenha-se motivada monitorando suas refeições, ciclo menstrual, energia e progresso. Esse acompanhamento ajuda você a se manter comprometida e a ajustar seu plano para maximizar seus resultados."
-    }
-  ];
+  const femaleBenefits = [{
+    title: "Planos de refeições personalizados para mulheres",
+    description: "Receba planos alimentares elaborados especialmente para o corpo feminino, promovendo a saúde do fígado e equilíbrio hormonal. Cada plano prioriza alimentos desintoxicantes que ajudam na TPM, menopausa e retenção de líquidos."
+  }, {
+    title: "Receitas deliciosas e listas de compras",
+    description: "Descubra receitas saborosas que nutrem o fígado e aceleram o metabolismo feminino. Nossas listas de compras facilitam sua rotina, tornando o processo simples para mulheres ocupadas."
+  }, {
+    title: "Rastreador diário",
+    description: "Mantenha-se motivada monitorando suas refeições, ciclo menstrual, energia e progresso. Esse acompanhamento ajuda você a se manter comprometida e a ajustar seu plano para maximizar seus resultados."
+  }];
 
   // Benefícios para homens
-  const maleBenefits = [
-    {
-      title: "Planos de refeições personalizados para homens",
-      description: "Receba planos alimentares elaborados especialmente para o corpo masculino, promovendo a saúde do fígado e níveis saudáveis de testosterona. Cada plano prioriza alimentos que aumentam energia e força muscular."
-    },
-    {
-      title: "Receitas deliciosas e listas de compras",
-      description: "Descubra receitas saborosas e substanciosas que nutrem o fígado e aceleram o metabolismo masculino. Nossas listas de compras são práticas e diretas ao ponto."
-    },
-    {
-      title: "Rastreador diário",
-      description: "Mantenha-se motivado monitorando suas refeições, ingestão de água, energia e performance. Esse acompanhamento ajuda você a se manter comprometido e a atingir suas metas de forma eficiente."
-    }
-  ];
-
+  const maleBenefits = [{
+    title: "Planos de refeições personalizados para homens",
+    description: "Receba planos alimentares elaborados especialmente para o corpo masculino, promovendo a saúde do fígado e níveis saudáveis de testosterona. Cada plano prioriza alimentos que aumentam energia e força muscular."
+  }, {
+    title: "Receitas deliciosas e listas de compras",
+    description: "Descubra receitas saborosas e substanciosas que nutrem o fígado e aceleram o metabolismo masculino. Nossas listas de compras são práticas e diretas ao ponto."
+  }, {
+    title: "Rastreador diário",
+    description: "Mantenha-se motivado monitorando suas refeições, ingestão de água, energia e performance. Esse acompanhamento ajuda você a se manter comprometido e a atingir suas metas de forma eficiente."
+  }];
   const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
 
   // Testimonials carousel
   const testimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
-  
-  const [emblaRef] = useEmblaCarousel(
-    { loop: true, align: 'center', slidesToScroll: 1 },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
-
-  return (
-    <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
+  const [emblaRef] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    dragFree: true
+  }, [Autoplay({
+    delay: 3000,
+    stopOnInteraction: false
+  })]);
+  return <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
       {/* Credits Display - Top Right */}
-      {showCredits && (
-        <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
+      {showCredits && <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
           <span className="text-xs font-semibold text-gray-600">créditos</span>
-          <div 
-            className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm"
-            style={{
-              boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981',
-            }}
-          >
+          <div className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm" style={{
+        boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981'
+      }}>
             <Coins className="w-4 h-4" />
             <span className="font-bold">{creditsCount}</span>
           </div>
-        </div>
-      )}
+        </div>}
 
       {/* Animated Coins */}
-      {animatingCoins && coins.map((coin, index) => (
-        <div
-          key={coin}
-          className="fixed z-40 animate-coin-fly"
-          style={{
-            left: `${30 + Math.random() * 40}%`,
-            bottom: '30%',
-            animationDelay: `${index * 0.1}s`,
-          }}
-        >
+      {animatingCoins && coins.map((coin, index) => <div key={coin} className="fixed z-40 animate-coin-fly" style={{
+      left: `${30 + Math.random() * 40}%`,
+      bottom: '30%',
+      animationDelay: `${index * 0.1}s`
+    }}>
           <div className="w-8 h-8 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-600">
             <span className="text-yellow-800 font-bold text-xs">$</span>
           </div>
-        </div>
-      ))}
+        </div>)}
 
       {/* Congratulations Popup */}
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
@@ -155,10 +133,7 @@ const ChallengeReady = () => {
             <h2 className="text-xl font-bold text-gray-800">
               Parabéns, você respondeu todas as perguntas do questionário e ganhou 1000 créditos!
             </h2>
-            <Button 
-              onClick={handleReceiveCredits}
-              className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold px-6 py-2 rounded-full shadow-lg"
-            >
+            <Button onClick={handleReceiveCredits} className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold px-6 py-2 rounded-full shadow-lg">
               <Coins className="w-4 h-4 mr-2" />
               RECEBER CRÉDITOS
             </Button>
@@ -168,15 +143,9 @@ const ChallengeReady = () => {
 
       {/* Logo */}
       <div className="mb-8">
-        <img 
-          src={logo} 
-          alt="Detox Fígado" 
-          className="h-16 w-auto"
-          loading="eager"
-          decoding="sync"
-          fetchPriority="high"
-          style={{ minHeight: '64px' }}
-        />
+        <img src={logo} alt="Detox Fígado" className="h-16 w-auto" loading="eager" decoding="sync" fetchPriority="high" style={{
+        minHeight: '64px'
+      }} />
       </div>
 
       {/* Title */}
@@ -186,32 +155,24 @@ const ChallengeReady = () => {
 
       {/* Transformation Image */}
       <div className="w-full max-w-lg mb-16">
-        {!imageLoaded && (
-          <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />
-        )}
-        <img 
-          src={transformationImage} 
-          alt="Transformação - Antes e Depois" 
-          className={`w-full rounded-xl shadow-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute'}`}
-          onLoad={() => setImageLoaded(true)}
-          loading="eager"
-          decoding="async"
-        />
+        {!imageLoaded && <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />}
+        <img src={transformationImage} alt="Transformação - Antes e Depois" className={`w-full rounded-xl shadow-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute'}`} onLoad={() => setImageLoaded(true)} loading="eager" decoding="async" />
       </div>
 
       {/* O que você recebe Section */}
-      <section className="w-full px-4 py-12" style={{ backgroundColor: '#EFF8F2' }}>
+      <section className="w-full px-4 py-12" style={{
+      backgroundColor: '#EFF8F2'
+    }}>
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
-            O que você recebe
+            O que você vai  receber
           </h2>
           <p className="text-lg font-semibold text-gray-800 mb-4">Um Aplicativo elaborado com:</p>
           
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             {/* Benefits List - LEFT */}
             <div className="flex-1 space-y-8">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex gap-3">
+              {benefits.map((benefit, index) => <div key={index} className="flex gap-3">
                   <div className="flex-shrink-0 mt-1">
                     <CircleCheck className="w-5 h-5 text-green-600" />
                   </div>
@@ -219,17 +180,12 @@ const ChallengeReady = () => {
                     <h3 className="text-lg font-bold text-gray-800 mb-2">{benefit.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
             
             {/* Phone Mockup - RIGHT */}
-            <div className="flex-shrink-0 w-full md:w-72 flex justify-center md:justify-end">
-              <img 
-                src={phoneMockup} 
-                alt="App de receitas" 
-                className="w-full max-w-[280px] drop-shadow-2xl"
-              />
+            <div className="flex-shrink-0 w-full md:w-48 flex justify-center md:justify-end">
+              <img src={phoneMockup} alt="App de receitas" className="w-full max-w-[180px] drop-shadow-2xl" />
             </div>
           </div>
         </div>
@@ -243,19 +199,10 @@ const ChallengeReady = () => {
           </h2>
           
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-full flex justify-center px-4"
-                >
-                  <img
-                    src={testimonial}
-                    alt={`Depoimento ${index + 1}`}
-                    className="max-w-[160px] md:max-w-[200px] rounded-xl shadow-lg"
-                  />
-                </div>
-              ))}
+            <div className="flex gap-4">
+              {testimonials.map((testimonial, index) => <div key={index} className="flex-shrink-0 w-[280px] md:w-[320px]">
+                  <img src={testimonial} alt={`Depoimento ${index + 1}`} className="w-full rounded-xl shadow-lg" />
+                </div>)}
             </div>
           </div>
         </div>
@@ -281,8 +228,6 @@ const ChallengeReady = () => {
           animation: coin-fly 1.5s ease-out forwards;
         }
       `}</style>
-    </div>
-  );
+    </div>;
 };
-
 export default ChallengeReady;
