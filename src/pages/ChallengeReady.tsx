@@ -57,10 +57,9 @@ const ChallengeReady = () => {
       {/* Credits Display - Top Right */}
       {showCredits && (
         <div 
-          className="fixed top-4 right-4 z-50 bg-black/80 text-yellow-400 px-3 py-1.5 rounded-full flex items-center gap-1.5 animate-scale-in text-sm"
+          className="fixed top-4 right-4 z-50 bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 animate-scale-in text-sm"
           style={{
-            boxShadow: '0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #facc15',
-            textShadow: '0 0 5px #facc15, 0 0 10px #facc15'
+            boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981',
           }}
         >
           <Coins className="w-4 h-4" />
