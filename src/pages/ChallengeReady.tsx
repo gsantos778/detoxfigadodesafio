@@ -30,6 +30,13 @@ const ChallengeReady = () => {
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
   const [userGender, setUserGender] = useState<'male' | 'female'>('female');
+  
+  // Gamification states
+  const [isApplyingDiscount, setIsApplyingDiscount] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [discountApplied, setDiscountApplied] = useState(false);
+  const [confettiPieces, setConfettiPieces] = useState<{id: number, left: number, color: string, delay: number}[]>([]);
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -70,6 +77,45 @@ const ChallengeReady = () => {
         }, 20);
       }, 1500);
     }, 300);
+  };
+
+  // Handle apply discount with gamification
+  const handleApplyDiscount = () => {
+    setIsApplyingDiscount(true);
+    setLoadingProgress(0);
+    
+    // Animate loading bar from 0 to 100
+    const interval = setInterval(() => {
+      setLoadingProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          // Trigger confetti
+          triggerConfetti();
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 50);
+  };
+
+  const triggerConfetti = () => {
+    // Create confetti pieces
+    const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
+    const pieces = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      delay: Math.random() * 0.5
+    }));
+    setConfettiPieces(pieces);
+    setShowConfetti(true);
+    
+    // After confetti, show discount applied
+    setTimeout(() => {
+      setShowConfetti(false);
+      setDiscountApplied(true);
+      setIsApplyingDiscount(false);
+    }, 2000);
   };
 
   // Benefícios para mulheres
@@ -393,13 +439,71 @@ const ChallengeReady = () => {
         </div>
         
         <div className="text-center mt-6">
-          <button 
-            className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
-            onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
-          >
-            <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
-          </button>
+          {!discountApplied && !isApplyingDiscount && (
+            <button 
+              className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
+              onClick={handleApplyDiscount}
+            >
+              <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
+            </button>
+          )}
+
+          {/* Loading Bar */}
+          {isApplyingDiscount && !discountApplied && (
+            <div className="max-w-md mx-auto">
+              <p className="text-[#0a573f] font-bold mb-3 text-lg">Aplicando seus créditos...</p>
+              <div className="w-full bg-gray-200 rounded-full h-6 overflow-hidden shadow-inner">
+                <div 
+                  className="h-full bg-gradient-to-r from-[#0ea06b] to-[#0a573f] rounded-full transition-all duration-100 flex items-center justify-center"
+                  style={{ width: `${loadingProgress}%` }}
+                >
+                  <span className="text-white text-sm font-bold">{loadingProgress}%</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Confetti Effect */}
+          {showConfetti && (
+            <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+              {confettiPieces.map((piece) => (
+                <div
+                  key={piece.id}
+                  className="absolute animate-confetti-fall"
+                  style={{
+                    left: `${piece.left}%`,
+                    backgroundColor: piece.color,
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: Math.random() > 0.5 ? '50%' : '0',
+                    animationDelay: `${piece.delay}s`
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Discount Applied - Show Purchase Button */}
+          {discountApplied && (
+            <div className="animate-scale-in">
+              <div className="bg-white rounded-2xl p-6 shadow-lg max-w-md mx-auto border-2 border-[#0ea06b]">
+                <p className="text-[#0ea06b] font-black text-xl mb-4">🎉 DESCONTO APLICADO COM SUCESSO!</p>
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <span className="text-gray-400 line-through text-2xl">R$ 57,00</span>
+                  <span className="text-[#0ea06b] font-black text-4xl">R$ 37,00</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">Você economizou R$ 20,00 com seus créditos!</p>
+                <button 
+                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-8 py-4 rounded-full text-xl shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
+                  onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
+                >
+                  <span className="relative z-10">GARANTIR MEU DESCONTO</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -447,6 +551,34 @@ const ChallengeReady = () => {
         }
         .animate-button-shine {
           animation: button-shine 2s ease-in-out infinite;
+        }
+        
+        @keyframes confetti-fall {
+          0% {
+            transform: translateY(-10px) rotate(0deg);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+          }
+        }
+        .animate-confetti-fall {
+          animation: confetti-fall 2s ease-out forwards;
+        }
+        
+        @keyframes scale-in {
+          0% {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        .animate-scale-in {
+          animation: scale-in 0.5s ease-out forwards;
         }
       `}</style>
     </div>;
