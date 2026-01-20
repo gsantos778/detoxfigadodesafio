@@ -905,8 +905,9 @@ const ChallengeReady = () => {
           </div>}
 
         {/* Botão de Rejeição */}
-        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full">
+        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full animate-button-pulse">
           <span className="relative z-10">Não, eu prefiro continuar sem o desconto</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-button-shine"></span>
         </button>
       </div>
 
