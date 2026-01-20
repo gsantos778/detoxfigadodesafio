@@ -366,11 +366,8 @@ const ChallengeReady = () => {
             </span>
           </h3>
           <p className="text-lg text-[#0a573f] mb-2">
-            Você acumulou
+            Você acumulou <span className="text-2xl md:text-3xl font-black text-[#0ea06b]">1000 CRÉDITOS</span> no sistema.
           </p>
-          <span className="block text-3xl md:text-4xl font-black text-[#0ea06b] my-2">
-            1000 CRÉDITOS
-          </span>
           <p className="text-[#0a573f] mb-5">
             E esses 1000 créditos podem ser usados <strong>AGORA</strong> para reduzir ainda mais o preço do Protocolo Detox.
           </p>
