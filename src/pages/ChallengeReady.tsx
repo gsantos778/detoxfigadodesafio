@@ -599,6 +599,42 @@ const ChallengeReady = () => {
         </div>
       </section>
 
+      {/* 7 Days Guarantee Section */}
+      <section className="w-full max-w-[900px] mx-auto my-8 md:my-12 px-4">
+        <div className="bg-gradient-to-br from-[#98e6c2] to-[#2fb673] rounded-3xl p-5 md:p-10">
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
+            {/* Badge Circle */}
+            <div className="flex-shrink-0">
+              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-[#0ea06b] to-[#0a6b48] rounded-full flex flex-col items-center justify-center text-white text-center shadow-[0_8px_20px_rgba(14,160,107,0.35)] border-4 border-white outline outline-2 outline-white/10">
+                <span className="text-5xl md:text-6xl font-black leading-none">7</span>
+                <span className="text-xs font-bold -mt-1">DIAS DE</span>
+                <span className="text-sm md:text-base font-extrabold tracking-wider">GARANTIA</span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="text-center md:text-left">
+              <h2 className="text-[#073f2e] text-xl md:text-2xl font-extrabold mb-4">
+                Risco Zero para Você! ✨
+              </h2>
+              <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
+                Eu tenho tanta confiança no <strong>Protocolo Detox Fígado</strong> e nos resultados que ele entrega, que vou tirar todo o peso das suas costas.
+              </p>
+              <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
+                Você tem <strong>7 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
+              </p>
+              <p className="text-[#0a6b48] font-bold bg-[#eaf9f0] px-3 py-2 rounded-lg inline-block mb-4 text-sm md:text-base">
+                Nós devolveremos 100% do seu dinheiro, sem perguntas e sem burocracia. Simples assim.
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4 font-bold text-[#0ea06b] text-sm">
+                <span>🔒 Compra 100% Segura</span>
+                <span>🛡️ Satisfação Garantida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Custom styles for coin animation */}
       <style>{`
         @keyframes coin-fly {
