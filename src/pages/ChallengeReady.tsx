@@ -24,6 +24,11 @@ import badgeCompraSegura from "@/assets/badge-compra-segura.png";
 import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
 import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
 import garantia15DiasImg from "@/assets/15-dias-garantia.png";
+
+// Social proof images
+import provaSocialKoreena from "@/assets/prova-social-koreena.png";
+import provaSocialSandra from "@/assets/prova-social-sandra.png";
+import provaSocialMike from "@/assets/prova-social-mike.png";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -795,6 +800,87 @@ const ChallengeReady = () => {
                 </button>
               </div>
             </div>}
+        </div>
+      </section>
+
+      {/* Social Proof Section */}
+      <section className="py-10 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800 mb-2">
+            Pessoas como você obtiveram ótimos resultados com o nosso{" "}
+            <span className="text-[#0ea06b]">Desafio de Desintoxicação do Fígado.</span>
+          </h2>
+          <p className="text-center text-gray-600 text-sm sm:text-base mb-8">
+            Estamos orgulhosos destes resultados e ansiosos para ver os seus!
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 - Koreena */}
+            <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
+              <img 
+                src={provaSocialKoreena} 
+                alt="Koreena - Antes e Depois" 
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <div className="p-4 bg-white min-h-[180px]">
+                <h3 className="font-bold text-gray-800">
+                  Koreena, 42 anos, <span className="text-[#0ea06b]">perdeu 15 kg</span>
+                </h3>
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                  <CircleCheck className="w-4 h-4" />
+                  <span className="font-semibold">CLIENTE VERIFICADO</span>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Antes da desintoxicação, eu me sentia letárgica, tinha erupções cutâneas e meu peso continuava aumentando apesar de me alimentar de forma saudável. Eu também sofria com oscilações de humor e estresse. Este desafio me ajudou a recomeçar, minha digestão...
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 - Sandra */}
+            <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
+              <img 
+                src={provaSocialSandra} 
+                alt="Sandra - Antes e Depois" 
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <div className="p-4 bg-white min-h-[180px]">
+                <h3 className="font-bold text-gray-800">
+                  Sandra, 27 anos, <span className="text-[#0ea06b]">perdeu 28 kg</span>
+                </h3>
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                  <CircleCheck className="w-4 h-4" />
+                  <span className="font-semibold">CLIENTE VERIFICADO</span>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Problemas digestivos fazem parte da minha vida desde que me lembro – inchaço constante, idas irregulares ao banheiro e sensação de desconforto após cada refeição. Eu estava cética em relação à desintoxicação do fígado...
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 - Mike */}
+            <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
+              <img 
+                src={provaSocialMike} 
+                alt="Mike - Antes e Depois" 
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <div className="p-4 bg-white min-h-[180px]">
+                <h3 className="font-bold text-gray-800">
+                  Mike, 57 anos, <span className="text-[#0ea06b]">perdeu 27 kg</span>
+                </h3>
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                  <CircleCheck className="w-4 h-4" />
+                  <span className="font-semibold">CLIENTE VERIFICADO</span>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  Eu não bebia todos os dias, mas definitivamente mais do que deveria, especialmente em dias estressantes. Sabia que isso estava me afetando porque estava sempre cansada e sem nenhuma motivação. Participar do Desafio de Desintoxicação do Fígado...
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
