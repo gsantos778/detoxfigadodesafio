@@ -37,7 +37,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col gap-0">
           <svg 
             viewBox="0 0 24 60" 
-            className="w-6 h-16 sm:w-8 sm:h-20"
+            className="w-10 h-24 sm:w-14 sm:h-32"
             fill="none" 
             stroke="currentColor"
           >
