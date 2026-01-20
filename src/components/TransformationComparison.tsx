@@ -31,8 +31,43 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
   }, []);
 
   return (
-    <div className="w-full bg-white rounded-xl shadow-lg overflow-hidden animate-float">
+    <div className="w-full bg-white rounded-xl shadow-lg overflow-hidden animate-float relative">
       <div className="grid grid-cols-2 gap-0">
+        {/* Center arrows overlay */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col gap-0">
+          <svg 
+            viewBox="0 0 24 60" 
+            className="w-6 h-16 sm:w-8 sm:h-20"
+            fill="none" 
+            stroke="currentColor"
+          >
+            {/* Three chevron arrows */}
+            <path 
+              d="M4 8 L12 20 L4 32" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="text-emerald-400 animate-pulse"
+              style={{ animationDelay: '0ms' }}
+            />
+            <path 
+              d="M10 8 L18 20 L10 32" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="text-emerald-500 animate-pulse"
+              style={{ animationDelay: '200ms' }}
+            />
+            <path 
+              d="M16 8 L24 20 L16 32" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+              className="text-emerald-600 animate-pulse"
+              style={{ animationDelay: '400ms' }}
+            />
+          </svg>
+        </div>
         {/* AGORA - Left Side */}
         <div className="bg-gradient-to-b from-gray-100 to-gray-200 p-4 sm:p-6 border-r border-gray-300">
           <div className="text-center mb-4">
