@@ -317,6 +317,49 @@ const ChallengeReady = () => {
         </div>
       </section>
 
+      {/* Price Block Section */}
+      <section className="max-w-[1100px] mx-auto my-9 px-6">
+        <div className="bg-gradient-to-br from-[#eaf9f0] to-[#f7fff7] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.08)]">
+          <h2 className="text-center text-[#0a573f] text-xl md:text-2xl font-bold mb-5">
+            Recupere sua saúde e autoestima por menos de um café por dia ✨
+          </h2>
+
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between flex-wrap p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
+            <div className="flex-1 min-w-[280px] p-3 text-center md:text-left">
+              <p className="font-bold text-[#0a6b48] mb-1">Protocolo Detox Fígado + Bônus</p>
+              <p className="text-gray-500 text-sm">
+                Valor total: <span className="line-through opacity-90">R$ 441,00</span>
+              </p>
+            </div>
+
+            <div className="flex-1 min-w-[280px] text-center p-3">
+              <p className="text-[#0a6b48] font-semibold text-sm">Oferta especial</p>
+              <p className="text-4xl md:text-5xl font-black text-[#0a6b48] my-1">
+                R$ <span>57</span><small className="text-sm font-bold">,00</small>
+              </p>
+              <p className="text-[#2b6b4a] font-semibold my-1 mb-3">
+                ou 12x de <strong>R$ 4,75</strong> sem juros
+              </p>
+              <a 
+                href="#checkout" 
+                className="inline-block bg-[#0ea06b] text-white py-3.5 px-9 rounded-full font-extrabold shadow-[0_8px_20px_rgba(14,160,107,0.2)] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(14,160,107,0.28)] transition-all duration-200"
+              >
+                QUERO COMEÇAR MEU DETOX AGORA
+              </a>
+              <p className="mt-2.5 text-gray-500 text-sm">
+                Desconto aplicado no checkout • Garantia incondicional de 7 dias
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-4 justify-center mt-4 text-[#4c6b55] font-semibold">
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg">🔒 Pagamento 100% seguro</div>
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg">✅ Garantia 7 dias</div>
+            <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg">💬 Suporte 30 dias</div>
+          </div>
+        </div>
+      </section>
+
       {/* Custom styles for coin animation */}
       <style>{`
         @keyframes coin-fly {
