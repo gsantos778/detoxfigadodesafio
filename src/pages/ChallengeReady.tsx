@@ -562,49 +562,46 @@ const ChallengeReady = () => {
 
         {/* Second Apply Credits Button */}
         <div className="text-center mt-6">
-          {!discountApplied && !isApplyingDiscount && (
-            <button 
-              className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" 
-              onClick={handleApplyDiscount}
-            >
+          {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" onClick={handleApplyDiscount}>
               <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
-            </button>
-          )}
+            </button>}
 
-          {isApplyingDiscount && !discountApplied && (
-            <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
+          {/* Loading Bar */}
+          {isApplyingDiscount && !discountApplied && <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
               <p className="text-[#0a573f] font-bold mb-3 sm:mb-4 text-base sm:text-lg">⚡ Aplicando seus créditos...</p>
               <div className="w-full bg-gray-200 rounded-full h-6 sm:h-8 overflow-hidden shadow-inner relative">
-                <div 
-                  className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden" 
-                  style={{ width: `${loadingProgress}%` }}
-                >
+                <div className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden" style={{
+              width: `${loadingProgress}%`
+            }}>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
                 </div>
                 <span className="absolute inset-0 flex items-center justify-center text-xs sm:text-sm font-bold text-gray-700">
                   {loadingProgress}%
                 </span>
               </div>
-            </div>
-          )}
+            </div>}
 
-          {discountApplied && (
-            <div className="animate-bounce-in">
+          {/* Flash Effect when confetti starts */}
+          {showConfetti && <div className="fixed inset-0 pointer-events-none z-40">
+              <div className="absolute inset-0 bg-yellow-300/20 animate-flash"></div>
+            </div>}
+
+          {/* Discount Applied - Show Purchase Button */}
+          {discountApplied && <div className="animate-bounce-in">
               <div className="max-w-xs sm:max-w-sm mx-auto px-2">
-                <div className="flex items-center justify-center gap-3 mb-3">
-                  <span className="text-lg sm:text-xl text-red-500 line-through font-medium">R$ 57,00</span>
-                  <span className="text-2xl sm:text-3xl text-[#0ea06b] font-black">R$ 37,00</span>
+                {/* Price display with animations */}
+                <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+                  <span className="text-red-500 line-through text-xl sm:text-2xl font-bold animate-shake">R$ 57,00</span>
+                  <span className="text-[#0ea06b] font-black text-3xl sm:text-4xl animate-price-pop">R$ 37,00</span>
                 </div>
-                <a 
-                  href="#"
-                  className="block w-full bg-gradient-to-r from-[#0ea06b] to-[#0a6b48] text-white font-extrabold py-3 sm:py-4 px-4 sm:px-8 rounded-full text-base sm:text-xl shadow-[0_8px_25px_rgba(14,160,107,0.4)] hover:shadow-[0_12px_35px_rgba(14,160,107,0.5)] transition-all duration-300 hover:scale-105"
-                >
-                  GARANTIR MEU DESCONTO
-                </a>
+                
+                <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full" onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}>
+                  <span className="relative z-10">GARANTIR MEU DESCONTO</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
+                </button>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </section>
 
