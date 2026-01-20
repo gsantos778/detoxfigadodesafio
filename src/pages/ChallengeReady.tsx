@@ -365,7 +365,7 @@ const ChallengeReady = () => {
               Use seus créditos do Quiz e ganhe desconto
             </span>
           </h3>
-          <p className="text-lg text-[#0a573f] mb-2">
+          <p className="text-lg text-[#0a573f] mb-2 mt-6">
             Você acumulou <span className="text-2xl md:text-3xl font-black text-[#0ea06b]">1000 CRÉDITOS</span> no sistema.
           </p>
           <p className="text-[#0a573f] mb-5">
