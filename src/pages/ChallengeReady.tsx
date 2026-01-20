@@ -254,7 +254,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full px-4 pt-4 pb-12 bg-gray-100">
+      <section className="w-full px-4 pt-4 pb-12 bg-gray-200">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center leading-tight">
             Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨
