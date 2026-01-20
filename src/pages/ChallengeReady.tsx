@@ -365,8 +365,11 @@ const ChallengeReady = () => {
               Use seus créditos do Quiz e ganhe desconto
             </span>
           </h3>
-          <p className="text-lg text-[#0a573f] mb-2 mt-6">
+          <p className="text-lg text-[#0a573f] mb-1 mt-6">
             Você acumulou <span className="text-2xl md:text-3xl font-black text-[#0ea06b]">1000 CRÉDITOS</span> no sistema.
+          </p>
+          <p className="text-xs text-red-500 mb-2">
+            Seus créditos são exibidos no canto superior direito da tela.
           </p>
           <p className="text-[#0a573f] mb-10 mt-8">
             E esses 1000 créditos podem ser usados <strong>AGORA</strong> para reduzir ainda mais o preço do <span className="font-bold text-[#0ea06b]">Protocolo Detox</span>.
