@@ -360,7 +360,7 @@ const ChallengeReady = () => {
       {/* Discount Block - Use Credits */}
       <section className="w-full bg-[#f7fff7] py-10 px-6">
         <div className="max-w-[700px] mx-auto text-center">
-          <h3 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-wide">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-black mb-4 whitespace-nowrap" style={{ fontFamily: "'Trebuchet MS', 'Lucida Sans', sans-serif" }}>
             <span className="bg-gradient-to-r from-[#0a573f] to-[#0ea06b] bg-clip-text text-transparent">
               Use seus créditos do Quiz e ganhe desconto
             </span>
