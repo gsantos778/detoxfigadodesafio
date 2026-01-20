@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 import beforeAfterImage from "@/assets/before-after.png";
 import QuizHeader from "@/components/QuizHeader";
 
+// Preload image immediately on module load
+const img = new Image();
+img.src = beforeAfterImage;
+
 const WhyItWorks = () => {
   const navigate = useNavigate();
 

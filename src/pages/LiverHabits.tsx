@@ -3,6 +3,10 @@ import liverHabitsImage from "@/assets/liver-habits.png";
 import { Button } from "@/components/ui/button";
 import QuizHeader from "@/components/QuizHeader";
 
+// Preload image immediately on module load
+const img = new Image();
+img.src = liverHabitsImage;
+
 const LiverHabits = () => {
   const navigate = useNavigate();
 

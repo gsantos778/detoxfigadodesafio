@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import QuizHeader from "@/components/QuizHeader";
 
+// Preload image immediately on module load
+const img = new Image();
+img.src = mealBowlImage;
+
 const MealPlanBenefits = () => {
   const navigate = useNavigate();
 

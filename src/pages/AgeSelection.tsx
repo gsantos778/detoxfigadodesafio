@@ -2,6 +2,10 @@ import { useNavigate } from "react-router-dom";
 import ageOptionsImage from "@/assets/age-options.png";
 import QuizHeader from "@/components/QuizHeader";
 
+// Preload image immediately on module load
+const img = new Image();
+img.src = ageOptionsImage;
+
 const AgeSelection = () => {
   const navigate = useNavigate();
 
