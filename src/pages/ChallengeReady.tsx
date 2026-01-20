@@ -867,14 +867,14 @@ const ChallengeReady = () => {
       </section>
 
       {/* Botão Aplicar Créditos - Fora do bloco de provas sociais */}
-      <div className="flex flex-col items-center py-8 px-4">
-        {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" onClick={handleApplyDiscount}>
+      <div className="flex flex-col items-center py-8 px-4 w-full max-w-md mx-auto">
+        {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full" onClick={handleApplyDiscount}>
             <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
           </button>}
 
         {/* Loading Bar */}
-        {isApplyingDiscount && !discountApplied && <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
+        {isApplyingDiscount && !discountApplied && <div className="w-full bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
             <p className="text-[#0a573f] font-bold mb-3 sm:mb-4 text-base sm:text-lg">⚡ Aplicando seus créditos...</p>
             <div className="w-full bg-gray-200 rounded-full h-6 sm:h-8 overflow-hidden shadow-inner relative">
               <div className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden" style={{
@@ -889,8 +889,8 @@ const ChallengeReady = () => {
           </div>}
 
         {/* Discount Applied - Show Purchase Button */}
-        {discountApplied && <div className="animate-bounce-in">
-            <div className="max-w-xs sm:max-w-sm mx-auto px-2">
+        {discountApplied && <div className="animate-bounce-in w-full">
+            <div className="w-full">
               {/* Price display with animations */}
               <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
                 <span className="text-red-500 line-through text-xl sm:text-2xl font-bold animate-shake">R$ 57,00</span>
@@ -905,7 +905,7 @@ const ChallengeReady = () => {
           </div>}
 
         {/* Botão de Rejeição */}
-        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full max-w-[420px]">
+        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full">
           <span className="relative z-10">Não, eu prefiro continuar sem o desconto</span>
         </button>
       </div>
