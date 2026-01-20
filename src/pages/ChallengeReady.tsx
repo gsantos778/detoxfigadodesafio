@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
+import confetti from "canvas-confetti";
 import logo from "@/assets/logo.png";
 import transformationImage from "@/assets/transformation-comparison.png";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
@@ -99,33 +100,65 @@ const ChallengeReady = () => {
   };
 
   const triggerConfetti = () => {
-    // Create confetti pieces - explosion from center
-    const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FF69B4', '#00CED1', '#FF4500', '#9400D3', '#00FF7F'];
-    const pieces = Array.from({ length: 150 }, (_, i) => {
-      const angle = (Math.random() * 360) * (Math.PI / 180); // Random angle in radians
-      const velocity = 150 + Math.random() * 250; // Random velocity
-      return {
-        id: i,
-        startX: 50, // Start from center
-        startY: 60, // Start from bottom-center area
-        velocityX: Math.cos(angle) * velocity * (Math.random() > 0.5 ? 1 : -1),
-        velocityY: -Math.abs(Math.sin(angle) * velocity) - 100, // Always go UP initially
-        color: colors[Math.floor(Math.random() * colors.length)],
-        delay: Math.random() * 0.2,
-        size: 8 + Math.random() * 12,
-        rotation: Math.random() * 360,
-        shape: Math.random() > 0.6 ? 'circle' : Math.random() > 0.5 ? 'square' : 'strip'
-      };
+    // Fire multiple bursts for a more dramatic effect
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FF69B4', '#00CED1'];
+
+    const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
+
+    // Initial big burst from center
+    confetti({
+      particleCount: 100,
+      spread: 100,
+      origin: { x: 0.5, y: 0.6 },
+      colors: colors,
+      startVelocity: 45,
+      gravity: 0.8,
+      scalar: 1.2,
+      drift: 0
     });
-    setConfettiPieces(pieces);
+
+    // Continuous bursts
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        setShowConfetti(false);
+        setDiscountApplied(true);
+        setIsApplyingDiscount(false);
+        return;
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      // Left side burst
+      confetti({
+        particleCount: Math.floor(particleCount / 2),
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.6 },
+        colors: colors,
+        startVelocity: randomInRange(30, 50),
+        gravity: 1,
+        scalar: randomInRange(0.8, 1.2)
+      });
+
+      // Right side burst
+      confetti({
+        particleCount: Math.floor(particleCount / 2),
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.6 },
+        colors: colors,
+        startVelocity: randomInRange(30, 50),
+        gravity: 1,
+        scalar: randomInRange(0.8, 1.2)
+      });
+    }, 250);
+
     setShowConfetti(true);
-    
-    // After confetti, show discount applied
-    setTimeout(() => {
-      setShowConfetti(false);
-      setDiscountApplied(true);
-      setIsApplyingDiscount(false);
-    }, 2500);
   };
 
   // Benefícios para mulheres
@@ -477,29 +510,10 @@ const ChallengeReady = () => {
             </div>
           )}
 
-          {/* Confetti Effect */}
+          {/* Flash Effect when confetti starts */}
           {showConfetti && (
-            <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-              {/* Flash effect */}
-              <div className="absolute inset-0 bg-yellow-300/30 animate-flash"></div>
-              {confettiPieces.map((piece) => (
-                <div
-                  key={piece.id}
-                  className="absolute animate-confetti-explode"
-                  style={{
-                    left: `${piece.startX}%`,
-                    top: `${piece.startY}%`,
-                    backgroundColor: piece.color,
-                    width: piece.shape === 'strip' ? '5px' : `${piece.size}px`,
-                    height: piece.shape === 'strip' ? `${piece.size * 2}px` : `${piece.size}px`,
-                    borderRadius: piece.shape === 'circle' ? '50%' : '2px',
-                    animationDelay: `${piece.delay}s`,
-                    boxShadow: `0 0 ${piece.size}px ${piece.color}`,
-                    ['--vx' as string]: `${piece.velocityX}px`,
-                    ['--vy' as string]: `${piece.velocityY}px`
-                  }}
-                />
-              ))}
+            <div className="fixed inset-0 pointer-events-none z-40">
+              <div className="absolute inset-0 bg-yellow-300/20 animate-flash"></div>
             </div>
           )}
 
