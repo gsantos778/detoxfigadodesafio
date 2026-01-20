@@ -6,6 +6,7 @@ import transformationImage from "@/assets/transformation-comparison.png";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import guiaSubstituicoes from "@/assets/guia-substituicoes.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Coins, CircleCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -602,6 +603,152 @@ const ChallengeReady = () => {
                 </button>
               </div>
             </div>}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a573f] text-center mb-8">
+            Perguntas Frequentes
+          </h2>
+          
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="item-1" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Quanto tempo leva para ver resultado?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Em geral clientes relatam redução de inchaço e mais disposição já nas 1–2 primeiras semanas; mudanças de composição corporal (gordura) tendem a aparecer em 3–8 semanas dependendo da dedicação. Resultados variam por metabolismo, histórico e adesão ao protocolo.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Isso funciona para todos os tipos de corpo / idade?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                O protocolo foi desenhado para mulheres adultas e tem adaptações para diferentes fases (menopausa, TPM). E sim, funciona para todas as idades, aquela ideia de que é mais difícil de emagrecer depois dos 40 é mito, temos várias alunas que emagreceram até depois dos 55.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Posso perder peso rápido com segurança?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                O foco é emagrecimento saudável e sustentável trabalhando o fígado e o equilíbrio hormonal. Não prometemos "perda milagrosa"; priorizamos saúde, redução de inchaço e ganho de bem-estar com métodos seguros. Mas é certo que com o nosso detox você irá perder peso em ritmo acelerado, principalmente as que aderiram ao projeto treino em casa.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Posso fazer se estiver grávida ou amamentando?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Gestantes e lactantes devem consultar o médico antes de qualquer mudança alimentar ou suplementação. Temos materiais adaptáveis, mas a recomendação médica precede a adesão.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Existem restrições alimentares (vegana, intolerância, alergias)?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Sim — o plano inclui alternativas. Receitas e listas de compras têm substituições para vegetarianas/veganas e sugestões para intolerâncias comuns. Informe suas restrições e utilize as substituições sugeridas.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Quanto tempo por dia preciso dedicar?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                A grande maioria das rotinas pode ser seguida com 10–30 minutos por dia entre planejamento, preparo e uso do app. O conteúdo foi pensado para mulheres ocupadas — há versões rápidas e práticas de cada etapa.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-7" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Preciso de equipamentos ou academia?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Não. Os treinos e atividades propostas têm versões sem equipamentos e com alternativas simples para fazer em casa.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-8" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                O conteúdo é personalizado?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Sim. Há planos de refeição e recomendações adaptadas ao perfil feminino e masculino, além de orientações para ajustar conforme ciclo menstrual e disponibilidade.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-9" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Existe evidência científica por trás do protocolo?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                As recomendações seguem princípios reconhecidos (anti-inflamatório alimentar, suporte hepático, equilíbrio hormonal) baseados em estudos científicos.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-10" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Como acesso o conteúdo? (plataforma / app)
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Você acessa via app e área de membros web — todo conteúdo fica liberado conforme sua compra: planos, receitas, vídeos e o grupo VIP.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-11" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Por quanto tempo eu terei acesso?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                O acesso ao Protocolo é Vitalício.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-12" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                E se eu tiver problemas técnicos?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Temos suporte técnico — envie um print/descrição pelo canal de suporte (e-mail ou formulário) e resolvemos em até 48h úteis.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-13" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                "Eu já tentei de tudo"
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Nosso método age no ponto pouco explorado: saúde do fígado e equilíbrio hormonal, integrando alimentação, hábitos e práticas que muitas dietas tradicionais não cobrem. Comece com 7 dias e veja mudanças no inchaço e energia.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-14" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                "Não tenho tempo"
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                O protocolo tem versões de 10 minutos e receitas práticas com listas de compras; ajudamos a encaixar nas rotinas mais corridas.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-15" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+              <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
+                Posso transferir minha conta ou dar acesso para outra pessoa?
+              </AccordionTrigger>
+              <AccordionContent className="px-5 pb-4 text-[#4c6b55] leading-relaxed">
+                Política padrão: contas são individuais. Para casos especiais (presente), entre em contato com o suporte.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
 
