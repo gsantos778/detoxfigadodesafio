@@ -18,6 +18,9 @@ import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
 import produtoDetox from "@/assets/produto-detox.png";
+import badgeCompraSegura from "@/assets/badge-compra-segura.png";
+import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
+import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -346,6 +349,11 @@ const ChallengeReady = () => {
             </div>
           </div>
 
+          <div className="flex flex-wrap gap-3 justify-center items-center mt-4">
+            <img src={badgeCompraSegura} alt="Compra Segura" className="h-12 w-auto object-contain rounded-lg" />
+            <img src={badgeSatisfacaoGarantida} alt="Satisfação Garantida" className="h-12 w-auto object-contain rounded-lg" />
+            <img src={badgePrivacidadeProtegida} alt="Privacidade Protegida" className="h-12 w-auto object-contain rounded-lg" />
+          </div>
         </div>
       </section>
 
