@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import QuizHeader from "@/components/QuizHeader";
 
+// Preload images immediately on module load
+[imgImcNormal, imgImcSobrepeso, logoImage].forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
 interface UserData {
   height: number;
   currentWeight: number;

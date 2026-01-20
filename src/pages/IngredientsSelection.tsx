@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import cebolaImage from "@/assets/cebola.jpg";
 import cogumeloImage from "@/assets/cogumelo.jpg";
@@ -32,34 +32,6 @@ preloadImages.forEach((src) => {
 const IngredientsSelection = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  // Wait for all images to load
-  useEffect(() => {
-    let loadedCount = 0;
-    const totalImages = preloadImages.length;
-
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount >= totalImages) {
-          setImagesLoaded(true);
-        }
-      };
-      img.onerror = () => {
-        loadedCount++;
-        if (loadedCount >= totalImages) {
-          setImagesLoaded(true);
-        }
-      };
-    });
-
-    // Fallback timeout
-    const timeout = setTimeout(() => setImagesLoaded(true), 500);
-    return () => clearTimeout(timeout);
-  }, []);
 
   const ingredientOptions = [
     { id: "cebolas", label: "Cebolas", image: cebolaImage },
@@ -134,15 +106,13 @@ const IngredientsSelection = () => {
               className="w-full flex items-center justify-between px-4 py-3 bg-background border border-border rounded-lg hover:bg-muted transition-colors disabled:opacity-50"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-muted overflow-hidden">
-                  {option.image && (
-                    <img
-                      src={option.image}
-                      alt={option.label}
-                      className={`w-10 h-10 rounded-full object-cover transition-opacity duration-200 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    />
-                  )}
-                </div>
+                <img
+                  src={option.image}
+                  alt={option.label}
+                  className="w-10 h-10 rounded-full object-cover"
+                  loading="eager"
+                  decoding="sync"
+                />
                 <span className="text-foreground">{option.label}</span>
               </div>
               <Checkbox

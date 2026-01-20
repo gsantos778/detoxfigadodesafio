@@ -4,6 +4,12 @@ import logoImage from "@/assets/logo.png";
 import corpoFeminino from "@/assets/corpo-feminino.png";
 import corpoMasculino from "@/assets/corpo-masculino.png";
 
+// Preload critical images immediately on module load
+[liverHeroImage, logoImage, corpoFeminino, corpoMasculino].forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
 const Index = () => {
   const navigate = useNavigate();
   return (

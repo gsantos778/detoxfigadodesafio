@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import avesImage from "@/assets/aves.jpg";
 import carneBovinaImage from "@/assets/carne-bovina.jpg";
@@ -10,20 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import QuizHeader from "@/components/QuizHeader";
 
-// Preload images
+// Preload images immediately on module load
 const preloadImages = [avesImage, carnePorcoImage, carneBovinaImage, peixeImage, cordeiroImage, vitelaImage];
+preloadImages.forEach((src) => {
+  const img = new Image();
+  img.src = src;
+});
 
 const MeatSelection = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);
-
-  // Preload images on mount
-  useEffect(() => {
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
 
   const meatOptions = [
     { id: "aves", label: "Aves", image: avesImage },
@@ -101,6 +97,8 @@ const MeatSelection = () => {
                   src={option.image}
                   alt={option.label}
                   className="w-10 h-10 rounded-full object-cover"
+                  loading="eager"
+                  decoding="sync"
                 />
                 <span className="text-foreground">{option.label}</span>
               </div>
