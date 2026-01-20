@@ -614,7 +614,7 @@ const ChallengeReady = () => {
 
             {/* Content */}
             <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-black mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h2 className="text-2xl md:text-3xl font-black mb-4" style={{ fontFamily: "'Trebuchet MS', 'Arial Black', sans-serif" }}>
                 <span className="bg-gradient-to-r from-[#0a6b48] to-[#0ea06b] bg-clip-text text-transparent">Risco Zero para Você!</span> ✨
               </h2>
               <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
