@@ -867,7 +867,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* Botão Aplicar Créditos - Fora do bloco de provas sociais */}
-      <div className="text-center py-8 px-4">
+      <div className="flex flex-col items-center py-8 px-4">
         {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" onClick={handleApplyDiscount}>
             <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
