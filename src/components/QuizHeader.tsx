@@ -25,27 +25,29 @@ const QuizHeader = ({
   return (
     <>
       {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center relative px-4">
+      <header className="w-full pt-2 flex items-center justify-center relative px-3 sm:px-4">
         {backRoute && (
           <button 
             onClick={() => navigate(backRoute)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 hover:opacity-70 transition-opacity"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 hover:opacity-70 transition-opacity"
           >
-            <ChevronLeft className="w-6 h-6 text-foreground" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
           </button>
         )}
         <img 
           src={logoImage} 
           alt="Detox Fígado Desafio" 
-          className="h-16 w-auto object-contain"
+          className="h-12 sm:h-16 w-auto object-contain"
           width={150}
           height={64}
+          loading="eager"
+          decoding="sync"
         />
       </header>
 
       {/* Progress Bar */}
       {showProgress && currentStep !== undefined && (
-        <div className="w-full px-4 mt-2">
+        <div className="w-full px-3 sm:px-4 mt-2">
           <div className="h-1 bg-muted rounded-full max-w-md mx-auto">
             <div 
               className="h-1 bg-primary rounded-full transition-all duration-300"

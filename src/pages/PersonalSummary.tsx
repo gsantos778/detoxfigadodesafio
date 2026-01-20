@@ -137,23 +137,23 @@ const PersonalSummary = () => {
           <QuizHeader backRoute="/weight-projection" currentStep={23} />
 
           {/* Main Content */}
-          <main className="flex-1 flex flex-col items-center justify-start px-4 py-6">
+          <main className="flex-1 flex flex-col items-center justify-start px-3 sm:px-4 py-4 sm:py-6">
             {/* Card Principal */}
-            <div className="w-full max-w-md rounded-3xl overflow-hidden">
+            <div className="w-full max-w-md rounded-2xl sm:rounded-3xl overflow-hidden">
               {/* Top Section - Pink for overweight, Green for normal */}
               <div 
-                className={`p-6 pb-4 ${
+                className={`p-4 sm:p-6 pb-3 sm:pb-4 ${
                   isOverweight 
                     ? 'bg-[#FECACA]' 
                     : 'bg-[#D1FAE5]'
                 }`}
               >
                 {/* IMC Header */}
-                <div className="text-center mb-4">
-                  <p className="text-sm text-gray-600 mb-1">
+                <div className="text-center mb-3 sm:mb-4">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">
                     Índice de Massa Corporal (IMC)
                   </p>
-                  <h2 className={`text-3xl font-bold ${
+                  <h2 className={`text-2xl sm:text-3xl font-bold ${
                     isOverweight ? 'text-orange-500' : 'text-emerald-600'
                   }`}>
                     {getIMCClassification()}
@@ -161,7 +161,7 @@ const PersonalSummary = () => {
                 </div>
 
                 {/* Velocímetro IMC */}
-                <div className="relative w-40 h-20 mx-auto mb-4">
+                <div className="relative w-32 h-16 sm:w-40 sm:h-20 mx-auto mb-3 sm:mb-4">
                   <svg viewBox="0 0 200 100" className="w-full h-full">
                     {/* Azul - Abaixo do peso */}
                     <path
@@ -221,73 +221,73 @@ const PersonalSummary = () => {
                 </div>
 
                 {/* IMC Value */}
-                <div className="text-center mb-3">
-                  <p className="text-lg font-bold text-gray-800">
-                    Seu Índice de Massa Corporal: {imc.toFixed(2).replace('.', ',')}
+                <div className="text-center mb-2 sm:mb-3">
+                  <p className="text-base sm:text-lg font-bold text-gray-800">
+                    Seu IMC: {imc.toFixed(2).replace('.', ',')}
                   </p>
                 </div>
 
                 {/* Mensagem baseada no IMC */}
-                <div className="text-center px-2">
+                <div className="text-center px-1 sm:px-2">
                   {isOverweight ? (
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xs sm:text-sm text-gray-700">
                       <span className="text-red-600 font-bold">Riscos de um IMC não saudável: </span>
-                      Hipertensão arterial, aumento do risco de ataque cardíaco, AVC, diabetes tipo 2, dores crônicas nas costas e articulações.
+                      Hipertensão, risco de AVC, diabetes tipo 2, dores crônicas.
                     </p>
                   ) : (
-                    <p className="text-sm text-gray-700">
+                    <p className="text-xs sm:text-sm text-gray-700">
                       <span className="text-emerald-600 font-bold">IMC saudável: </span>
-                      Um bom IMC inicial para tonificar o corpo e conquistar o corpo dos seus sonhos.
+                      Bom IMC para tonificar e conquistar o corpo dos seus sonhos.
                     </p>
                   )}
                 </div>
               </div>
 
               {/* Bottom Section - Always White */}
-              <div className="bg-white p-6 pt-4">
+              <div className="bg-white p-4 sm:p-6 pt-3 sm:pt-4">
                 {/* Info Cards com Imagem */}
-                <div className="flex items-end gap-3">
+                <div className="flex items-end gap-2 sm:gap-3">
                   {/* Info Left */}
-                  <div className="flex-1 space-y-3">
-                    <div className="flex items-start gap-2">
-                      <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                  <div className="flex-1 space-y-2 sm:space-y-3">
+                    <div className="flex items-start gap-1.5 sm:gap-2">
+                      <div className={`p-1 sm:p-1.5 rounded-full flex-shrink-0 ${
                         isOverweight ? 'bg-red-200' : 'bg-emerald-200'
                       }`}>
-                        <Target className={`w-4 h-4 ${
+                        <Target className={`w-3 h-3 sm:w-4 sm:h-4 ${
                           isOverweight ? 'text-red-600' : 'text-emerald-600'
                         }`} />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Meta</p>
-                        <p className="text-sm font-bold text-gray-800">{userData.goal}</p>
+                        <p className="text-[10px] sm:text-xs text-gray-500">Meta</p>
+                        <p className="text-xs sm:text-sm font-bold text-gray-800">{userData.goal}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-2">
-                      <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                    <div className="flex items-start gap-1.5 sm:gap-2">
+                      <div className={`p-1 sm:p-1.5 rounded-full flex-shrink-0 ${
                         isOverweight ? 'bg-red-200' : 'bg-emerald-200'
                       }`}>
-                        <TrendingUp className={`w-4 h-4 ${
+                        <TrendingUp className={`w-3 h-3 sm:w-4 sm:h-4 ${
                           isOverweight ? 'text-red-600' : 'text-emerald-600'
                         }`} />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Ganho de peso inexplicável</p>
-                        <p className="text-sm font-bold text-gray-800">{userData.weightGain}</p>
+                        <p className="text-[10px] sm:text-xs text-gray-500">Ganho inexplicável</p>
+                        <p className="text-xs sm:text-sm font-bold text-gray-800">{userData.weightGain}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-2">
-                      <div className={`p-1.5 rounded-full flex-shrink-0 ${
+                    <div className="flex items-start gap-1.5 sm:gap-2">
+                      <div className={`p-1 sm:p-1.5 rounded-full flex-shrink-0 ${
                         isOverweight ? 'bg-red-200' : 'bg-emerald-200'
                       }`}>
-                        <Zap className={`w-4 h-4 ${
+                        <Zap className={`w-3 h-3 sm:w-4 sm:h-4 ${
                           isOverweight ? 'text-red-600' : 'text-emerald-600'
                         }`} />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Energia</p>
-                        <p className="text-sm font-bold text-gray-800">{userData.energy}</p>
+                        <p className="text-[10px] sm:text-xs text-gray-500">Energia</p>
+                        <p className="text-xs sm:text-sm font-bold text-gray-800">{userData.energy}</p>
                       </div>
                     </div>
                   </div>
@@ -297,7 +297,9 @@ const PersonalSummary = () => {
                     <img
                       src={isOverweight ? imgImcSobrepeso : imgImcNormal}
                       alt="Ilustração corporal"
-                      className="w-36 h-auto object-contain"
+                      className="w-28 sm:w-36 h-auto object-contain"
+                      loading="eager"
+                      decoding="sync"
                     />
                   </div>
                 </div>
@@ -307,7 +309,7 @@ const PersonalSummary = () => {
             {/* Next Button */}
             <Button
               onClick={() => navigate("/loading-analysis")}
-              className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
+              className="w-full max-w-md mt-6 sm:mt-8 py-5 sm:py-6 text-base sm:text-lg font-semibold rounded-full"
             >
               Próximo
             </Button>

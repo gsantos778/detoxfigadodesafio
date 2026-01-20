@@ -34,22 +34,25 @@ const AgeSelection = () => {
         </p>
 
         {/* Age Selection Grid */}
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl px-2 sm:px-0">
           <div className="relative">
             <img
               src={ageOptionsImage}
               alt="Selecione sua faixa etária"
               className="w-full h-auto"
+              loading="eager"
+              decoding="sync"
+              fetchPriority="high"
             />
             
             {/* Age Buttons positioned over each woman */}
-            <div className="absolute -bottom-8 left-0 right-0 grid grid-cols-4">
+            <div className="absolute -bottom-6 sm:-bottom-8 left-0 right-0 grid grid-cols-4 gap-0.5 sm:gap-1 px-1">
               {ageGroups.map((age, index) => (
                 <button
                   key={age.label}
                   onClick={() => navigate("/goal-selection")}
-                  className={`quiz-button justify-center py-2 text-sm mx-1 ${
-                    index === 0 ? '-translate-x-3' : index === 2 ? 'translate-x-1' : index === 3 ? 'translate-x-3' : ''
+                  className={`quiz-button justify-center py-1.5 sm:py-2 text-xs sm:text-sm px-2 sm:px-4 ${
+                    index === 0 ? '-translate-x-1 sm:-translate-x-3' : index === 2 ? 'translate-x-0.5 sm:translate-x-1' : index === 3 ? 'translate-x-1 sm:translate-x-3' : ''
                   }`}
                 >
                   {age.label}
