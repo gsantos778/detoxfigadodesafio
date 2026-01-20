@@ -31,24 +31,28 @@ const ChallengeReady = () => {
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
   const [userGender, setUserGender] = useState<'male' | 'female'>('female');
-  
+
   // Gamification states
   const [isApplyingDiscount, setIsApplyingDiscount] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [discountApplied, setDiscountApplied] = useState(false);
-  const [confettiPieces, setConfettiPieces] = useState<{id: number, startX: number, startY: number, velocityX: number, velocityY: number, color: string, delay: number, size: number, rotation: number, shape: string}[]>([]);
-  
+  const [confettiPieces, setConfettiPieces] = useState<{
+    id: number;
+    startX: number;
+    startY: number;
+    velocityX: number;
+    velocityY: number;
+    color: string;
+    delay: number;
+    size: number;
+    rotation: number;
+    shape: string;
+  }[]>([]);
+
   // Preload all critical images on mount
   useEffect(() => {
-    const imagesToPreload = [
-      transformationImage,
-      phoneMockup,
-      produtoDetox,
-      guiaSubstituicoes,
-      ...testimonials
-    ];
-    
+    const imagesToPreload = [transformationImage, phoneMockup, produtoDetox, guiaSubstituicoes, ...testimonials];
     let loadedCount = 0;
     imagesToPreload.forEach(src => {
       const img = new Image();
@@ -61,7 +65,6 @@ const ChallengeReady = () => {
       img.src = src;
     });
   }, []);
-
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -108,7 +111,7 @@ const ChallengeReady = () => {
   const handleApplyDiscount = () => {
     setIsApplyingDiscount(true);
     setLoadingProgress(0);
-    
+
     // Animate loading bar from 0 to 100
     const interval = setInterval(() => {
       setLoadingProgress(prev => {
@@ -125,24 +128,25 @@ const ChallengeReady = () => {
       });
     }, 50);
   };
-
   const triggerConfetti = () => {
     // Show purchase button immediately when confetti starts
     setDiscountApplied(true);
     setShowConfetti(true);
-    
+
     // Fire multiple bursts for a more dramatic effect
     const duration = 2000;
     const animationEnd = Date.now() + duration;
     const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FF69B4', '#00CED1'];
-
     const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
 
     // Initial big burst from center
     confetti({
       particleCount: 100,
       spread: 100,
-      origin: { x: 0.5, y: 0.6 },
+      origin: {
+        x: 0.5,
+        y: 0.6
+      },
       colors: colors,
       startVelocity: 45,
       gravity: 0.8,
@@ -153,13 +157,11 @@ const ChallengeReady = () => {
     // Continuous bursts
     const interval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
-
       if (timeLeft <= 0) {
         clearInterval(interval);
         setShowConfetti(false);
         return;
       }
-
       const particleCount = 50 * (timeLeft / duration);
 
       // Left side burst
@@ -167,7 +169,10 @@ const ChallengeReady = () => {
         particleCount: Math.floor(particleCount / 2),
         angle: 60,
         spread: 55,
-        origin: { x: 0, y: 0.6 },
+        origin: {
+          x: 0,
+          y: 0.6
+        },
         colors: colors,
         startVelocity: randomInRange(30, 50),
         gravity: 1,
@@ -179,14 +184,16 @@ const ChallengeReady = () => {
         particleCount: Math.floor(particleCount / 2),
         angle: 120,
         spread: 55,
-        origin: { x: 1, y: 0.6 },
+        origin: {
+          x: 1,
+          y: 0.6
+        },
         colors: colors,
         startVelocity: randomInRange(30, 50),
         gravity: 1,
         scalar: randomInRange(0.8, 1.2)
       });
     }, 250);
-
     setShowConfetti(true);
   };
 
@@ -241,31 +248,23 @@ const ChallengeReady = () => {
     delay: 4000,
     stopOnInteraction: true
   })]);
-  
   const [selectedIndex, setSelectedIndex] = useState(0);
-  
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
-  
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-  
   const scrollTo = useCallback((index: number) => {
     if (emblaApi) emblaApi.scrollTo(index);
   }, [emblaApi]);
-  
   useEffect(() => {
     if (!emblaApi) return;
-    
     const onSelect = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
     };
-    
     emblaApi.on('select', onSelect);
     onSelect();
-    
     return () => {
       emblaApi.off('select', onSelect);
     };
@@ -311,16 +310,7 @@ const ChallengeReady = () => {
 
       {/* Logo */}
       <div className="mb-6 sm:mb-8 px-4">
-        <img 
-          src={logo} 
-          alt="Detox Fígado" 
-          className="h-14 sm:h-16 w-auto" 
-          loading="eager" 
-          decoding="sync" 
-          fetchPriority="high"
-          width="150"
-          height="64"
-        />
+        <img src={logo} alt="Detox Fígado" className="h-14 sm:h-16 w-auto" loading="eager" decoding="sync" fetchPriority="high" width="150" height="64" />
       </div>
 
       {/* Title */}
@@ -330,15 +320,7 @@ const ChallengeReady = () => {
 
       {/* Transformation Image */}
       <div className="w-full max-w-lg mb-6 px-4">
-        <img 
-          src={transformationImage} 
-          alt="Transformação - Antes e Depois" 
-          className="w-full rounded-xl shadow-lg"
-          loading="eager"
-          decoding="async"
-          width="512"
-          height="384"
-        />
+        <img src={transformationImage} alt="Transformação - Antes e Depois" className="w-full rounded-xl shadow-lg" loading="eager" decoding="async" width="512" height="384" />
       </div>
 
       {/* O que você recebe Section */}
@@ -368,14 +350,7 @@ const ChallengeReady = () => {
               <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl">
                 <div className="flex flex-col gap-4">
                   <div className="flex-shrink-0 flex justify-center">
-                    <img 
-                      src={guiaSubstituicoes} 
-                      alt="Guia de Substituições Inteligentes" 
-                      className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[200px] rounded-lg shadow-md"
-                      loading="lazy"
-                      width="200"
-                      height="200"
-                    />
+                    <img src={guiaSubstituicoes} alt="Guia de Substituições Inteligentes" className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[200px] rounded-lg shadow-md" loading="lazy" width="200" height="200" />
                   </div>
                   <div className="flex gap-3 flex-1">
                     <div className="flex-shrink-0 mt-0.5">
@@ -396,14 +371,7 @@ const ChallengeReady = () => {
             
             {/* Phone Mockup - RIGHT */}
             <div className="flex-shrink-0 w-full md:w-64 flex justify-center md:justify-end order-first md:order-last">
-              <img 
-                src={phoneMockup} 
-                alt="App de receitas" 
-                className="w-full max-w-[240px] sm:max-w-[320px] drop-shadow-2xl"
-                loading="lazy"
-                width="320"
-                height="640"
-              />
+              <img src={phoneMockup} alt="App de receitas" className="w-full max-w-[240px] sm:max-w-[320px] drop-shadow-2xl" loading="lazy" width="320" height="640" />
             </div>
           </div>
         </div>
@@ -418,49 +386,24 @@ const ChallengeReady = () => {
           
           <div className="relative">
             {/* Arrows */}
-            <button 
-              onClick={scrollPrev}
-              className="absolute -left-1 sm:left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all"
-            >
+            <button onClick={scrollPrev} className="absolute -left-1 sm:left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all">
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
             </button>
-            <button 
-              onClick={scrollNext}
-              className="absolute -right-1 sm:right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all"
-            >
+            <button onClick={scrollNext} className="absolute -right-1 sm:right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all">
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
             </button>
             
             <div className="overflow-hidden mx-6 sm:mx-10" ref={emblaRef}>
               <div className="flex">
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex justify-center px-1 sm:px-2 md:px-4">
-                    <img 
-                      src={testimonial} 
-                      alt={`Depoimento ${index + 1}`} 
-                      className="max-w-[240px] sm:max-w-[280px] md:max-w-[240px] rounded-xl shadow-lg"
-                      loading="lazy"
-                      width="240"
-                      height="320"
-                    />
-                  </div>
-                ))}
+                {testimonials.map((testimonial, index) => <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex justify-center px-1 sm:px-2 md:px-4">
+                    <img src={testimonial} alt={`Depoimento ${index + 1}`} className="max-w-[240px] sm:max-w-[280px] md:max-w-[240px] rounded-xl shadow-lg" loading="lazy" width="240" height="320" />
+                  </div>)}
               </div>
             </div>
             
             {/* Dots */}
             <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollTo(index)}
-                  className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${
-                    index === selectedIndex 
-                      ? 'bg-green-600 w-5 sm:w-6' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
+              {testimonials.map((_, index) => <button key={index} onClick={() => scrollTo(index)} className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${index === selectedIndex ? 'bg-green-600 w-5 sm:w-6' : 'bg-gray-300 hover:bg-gray-400'}`} />)}
             </div>
           </div>
         </div>
@@ -474,14 +417,7 @@ const ChallengeReady = () => {
           </h2>
 
           <div className="flex flex-col gap-3 sm:gap-4 items-center p-3 sm:p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
-            <img 
-              src={produtoDetox} 
-              alt="Protocolo Detox Fígado + Guia de Substituições" 
-              className="max-w-full h-auto max-h-[200px] sm:max-h-[300px] object-contain"
-              loading="lazy"
-              width="300"
-              height="300"
-            />
+            <img src={produtoDetox} alt="Protocolo Detox Fígado + Guia de Substituições" className="max-w-full h-auto max-h-[200px] sm:max-h-[300px] object-contain" loading="lazy" width="300" height="300" />
             <div className="w-full text-center">
               <p className="font-bold text-[#0a6b48] mb-1 text-sm sm:text-base">Protocolo Detox Fígado + Bônus</p>
             </div>
@@ -508,7 +444,9 @@ const ChallengeReady = () => {
       {/* Discount Block - Use Credits */}
       <section className="max-w-[1100px] mx-auto mb-6 sm:mb-9 px-3 sm:px-6">
         <div className="bg-[#d4f5e0] rounded-2xl p-4 sm:p-6 shadow-[0_8px_24px_rgba(10,107,72,0.1)] text-center">
-          <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-[#0a573f] to-[#0ea06b] text-white rounded-xl shadow-lg inline-block" style={{ fontFamily: "'Trebuchet MS', 'Lucida Sans', sans-serif" }}>
+          <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-[#0a573f] to-[#0ea06b] text-white rounded-xl shadow-lg inline-block" style={{
+          fontFamily: "'Trebuchet MS', 'Lucida Sans', sans-serif"
+        }}>
             🎁 Use seus créditos do Quiz e ganhe desconto
           </h3>
           <p className="text-base sm:text-lg text-[#0a573f] mb-1 mt-4 sm:mt-6">
@@ -541,44 +479,33 @@ const ChallengeReady = () => {
         </div>
         
         <div className="text-center mt-4 sm:mt-6">
-          {!discountApplied && !isApplyingDiscount && (
-            <button 
-              className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
-              onClick={handleApplyDiscount}
-            >
+          {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" onClick={handleApplyDiscount}>
               <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
-            </button>
-          )}
+            </button>}
 
           {/* Loading Bar */}
-          {isApplyingDiscount && !discountApplied && (
-            <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
+          {isApplyingDiscount && !discountApplied && <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
               <p className="text-[#0a573f] font-bold mb-3 sm:mb-4 text-base sm:text-lg">⚡ Aplicando seus créditos...</p>
               <div className="w-full bg-gray-200 rounded-full h-6 sm:h-8 overflow-hidden shadow-inner relative">
-                <div 
-                  className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden"
-                  style={{ width: `${loadingProgress}%` }}
-                >
+                <div className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden" style={{
+              width: `${loadingProgress}%`
+            }}>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
                 </div>
                 <span className="absolute inset-0 flex items-center justify-center text-xs sm:text-sm font-bold text-gray-700">
                   {loadingProgress}%
                 </span>
               </div>
-            </div>
-          )}
+            </div>}
 
           {/* Flash Effect when confetti starts */}
-          {showConfetti && (
-            <div className="fixed inset-0 pointer-events-none z-40">
+          {showConfetti && <div className="fixed inset-0 pointer-events-none z-40">
               <div className="absolute inset-0 bg-yellow-300/20 animate-flash"></div>
-            </div>
-          )}
+            </div>}
 
           {/* Discount Applied - Show Purchase Button */}
-          {discountApplied && (
-            <div className="animate-bounce-in">
+          {discountApplied && <div className="animate-bounce-in">
               <div className="max-w-xs sm:max-w-sm mx-auto px-2">
                 {/* Price display with animations */}
                 <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
@@ -586,16 +513,12 @@ const ChallengeReady = () => {
                   <span className="text-[#0ea06b] font-black text-3xl sm:text-4xl animate-price-pop">R$ 37,00</span>
                 </div>
                 
-                <button 
-                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
-                  onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
-                >
+                <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full" onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}>
                   <span className="relative z-10">GARANTIR MEU DESCONTO</span>
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
                 </button>
               </div>
-            </div>
-          )}
+            </div>}
         </div>
       </section>
 
@@ -614,14 +537,16 @@ const ChallengeReady = () => {
 
             {/* Content */}
             <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl font-black mb-4" style={{ fontFamily: "'Trebuchet MS', 'Arial Black', sans-serif" }}>
+              <h2 className="text-2xl md:text-3xl font-black mb-4" style={{
+              fontFamily: "'Trebuchet MS', 'Arial Black', sans-serif"
+            }}>
                 <span className="bg-gradient-to-r from-[#0a6b48] to-[#0ea06b] bg-clip-text text-transparent">Risco Zero para Você!</span> ✨
               </h2>
               <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
                 Eu tenho tanta confiança no <strong>Protocolo Detox Fígado</strong> e nos resultados que ele entrega, que vou tirar todo o peso das suas costas.
               </p>
               <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
-                Você tem <strong>7 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
+                Você tem <strong>15 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
               </p>
               <p className="text-[#0a6b48] font-bold bg-[#eaf9f0] px-3 py-2 rounded-lg inline-block mb-4 text-sm md:text-base">
                 Nós devolveremos 100% do seu dinheiro, sem perguntas e sem burocracia. Simples assim.
