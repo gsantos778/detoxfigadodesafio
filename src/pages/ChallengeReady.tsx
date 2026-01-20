@@ -103,6 +103,10 @@ const ChallengeReady = () => {
   };
 
   const triggerConfetti = () => {
+    // Show purchase button immediately when confetti starts
+    setDiscountApplied(true);
+    setShowConfetti(true);
+    
     // Fire multiple bursts for a more dramatic effect
     const duration = 2000;
     const animationEnd = Date.now() + duration;
@@ -129,8 +133,6 @@ const ChallengeReady = () => {
       if (timeLeft <= 0) {
         clearInterval(interval);
         setShowConfetti(false);
-        setDiscountApplied(true);
-        setIsApplyingDiscount(false);
         return;
       }
 
