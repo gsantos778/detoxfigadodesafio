@@ -868,7 +868,7 @@ const ChallengeReady = () => {
 
       {/* Botão Aplicar Créditos - Fora do bloco de provas sociais */}
       <div className="flex flex-col items-center py-8 px-4 w-full max-w-lg mx-auto">
-        {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full" onClick={handleApplyDiscount}>
+        {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-3 sm:px-7 rounded-full text-[12px] sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full h-14 sm:h-[60px] flex items-center justify-center text-center whitespace-nowrap" onClick={handleApplyDiscount}>
             <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
           </button>}
@@ -905,7 +905,7 @@ const ChallengeReady = () => {
           </div>}
 
         {/* Botão de Rejeição */}
-        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full animate-button-pulse">
+        <button className="relative bg-gray-400 hover:bg-gray-500 text-white font-bold px-3 sm:px-7 rounded-full text-[12px] sm:text-lg shadow-[0_8px_20px_rgba(156,163,175,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden mt-4 w-full animate-button-pulse h-14 sm:h-[60px] flex items-center justify-center text-center whitespace-nowrap">
           <span className="relative z-10">Não, eu prefiro continuar sem o desconto</span>
           <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent animate-button-shine"></span>
         </button>
