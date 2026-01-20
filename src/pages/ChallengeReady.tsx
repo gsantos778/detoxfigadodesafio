@@ -380,7 +380,7 @@ const ChallengeReady = () => {
                 <span className="bg-[#0ea06b] text-white font-bold w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0">1</span>
                 <div>
                   Abaixo, você verá um botão:
-                  <div className="font-bold text-[#0ea06b] mt-3">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
+                  <div className="font-bold text-white bg-[#0ea06b] rounded-md px-3 py-1 mt-3 inline-block">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
