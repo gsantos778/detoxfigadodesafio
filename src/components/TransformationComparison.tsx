@@ -47,7 +47,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
               <img 
                 src={imgAgora} 
                 alt="Antes" 
-                className="w-24 h-32 sm:w-28 sm:h-36 object-cover object-top rounded-lg"
+                className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
               />
             </div>
           </div>
@@ -102,7 +102,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
               <img 
                 src={imgMeta} 
                 alt="Meta" 
-                className="w-24 h-32 sm:w-28 sm:h-36 object-cover object-top rounded-lg"
+                className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
               />
               {/* Glow effect */}
               <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full -z-10"></div>
