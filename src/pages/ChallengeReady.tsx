@@ -864,6 +864,34 @@ const ChallengeReady = () => {
             </div>
           </div>
         </div>
+
+        {/* Botão Aplicar Créditos */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleApplyDiscount}
+            disabled={isApplyingDiscount || discountApplied}
+            className="relative overflow-hidden bg-gradient-to-r from-[#0ea06b] to-[#10b981] hover:from-[#059669] hover:to-[#0ea06b] text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed animate-button-pulse text-lg"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              {discountApplied ? (
+                <>
+                  <CircleCheck className="w-6 h-6" />
+                  CRÉDITOS APLICADOS!
+                </>
+              ) : isApplyingDiscount ? (
+                "APLICANDO..."
+              ) : (
+                <>
+                  <Coins className="w-6 h-6" />
+                  APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO
+                </>
+              )}
+            </span>
+            {!discountApplied && !isApplyingDiscount && (
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine" />
+            )}
+          </button>
+        </div>
       </section>
 
       <style>{`
