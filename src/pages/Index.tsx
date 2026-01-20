@@ -50,7 +50,7 @@ const Index = () => {
         </p>
 
         {/* Buttons */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full max-w-md md:max-w-none px-4 md:px-0">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full max-w-md md:max-w-none px-4 md:px-0 items-center justify-center">
           <button className="quiz-button w-full md:w-auto justify-center" onClick={() => {
             localStorage.setItem('userGender', 'female');
             navigate("/age-selection");
