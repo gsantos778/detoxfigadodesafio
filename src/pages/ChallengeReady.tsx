@@ -357,6 +357,43 @@ const ChallengeReady = () => {
         </div>
       </section>
 
+      {/* Discount Block - Use Credits */}
+      <section className="max-w-[700px] mx-auto my-8 px-6">
+        <div className="bg-[#f7fff7] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.1)] text-center">
+          <h3 className="text-[#0a573f] text-xl md:text-2xl font-bold mb-3">
+            Use seus créditos do Quiz e ganhe desconto
+          </h3>
+          <p className="text-lg text-[#0a573f] mb-2">
+            Você acumulou
+          </p>
+          <span className="block text-3xl md:text-4xl font-black text-[#0ea06b] my-2">
+            1000 CRÉDITOS
+          </span>
+          <p className="text-[#0a573f] mb-5">
+            E esses 1000 créditos podem ser usados <strong>AGORA</strong> para reduzir ainda mais o preço do Protocolo Detox.
+          </p>
+
+          <div className="text-left max-w-[400px] mx-auto mb-6">
+            <p className="font-bold text-[#0a573f] mb-2">Funciona assim:</p>
+            <ol className="list-decimal list-inside text-[#0a573f] space-y-2">
+              <li>Abaixo, você verá um botão:</li>
+              <li>Ao clicar, os 1000 créditos serão aplicados automaticamente.</li>
+            </ol>
+          </div>
+
+          <button 
+            className="bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer"
+            onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
+          >
+            APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO
+          </button>
+
+          <p className="mt-4 text-sm text-[#4c6b55]">
+            Os créditos serão aplicados automaticamente no checkout.
+          </p>
+        </div>
+      </section>
+
       {/* Custom styles for coin animation */}
       <style>{`
         @keyframes coin-fly {
