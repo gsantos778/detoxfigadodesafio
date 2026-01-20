@@ -902,6 +902,11 @@ const ChallengeReady = () => {
                 </button>
               </div>
             </div>}
+
+          {/* Botão de Rejeição */}
+          <p className="text-gray-500 text-sm mt-4 cursor-pointer hover:text-gray-700 transition-colors underline">
+            Não, eu prefiro continuar sem o desconto
+          </p>
         </div>
       </section>
 
