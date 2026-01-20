@@ -148,14 +148,14 @@ const WeightProjection = () => {
       <QuizHeader backRoute="/age-input-selection" currentStep={22} />
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-start px-6 py-8">
+      <main className="flex-1 flex flex-col items-center justify-start px-3 sm:px-6 py-6 sm:py-8">
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-4 max-w-md">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-3 sm:mb-4 max-w-md px-2">
           Com a dieta de desintoxicação do fígado, você atingirá o peso desejado.
         </h1>
 
         {/* Dynamic Weight Goal */}
-        <p className="text-primary font-semibold text-lg mb-6">
+        <p className="text-primary font-semibold text-base sm:text-lg mb-4 sm:mb-6 text-center">
           {desiredWeight} kg até {targetDate}
         </p>
 
@@ -163,37 +163,37 @@ const WeightProjection = () => {
         <div className="w-full max-w-md animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
           
           {/* Summary Cards */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-3 text-center">
-              <p className="text-xs text-muted-foreground mb-1">Peso Inicial</p>
-              <p className="text-xl font-bold text-orange-500">{currentWeight}kg</p>
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 mb-3 sm:mb-4">
+            <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg sm:rounded-xl p-2 sm:p-3 text-center">
+              <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5 sm:mb-1">Peso Inicial</p>
+              <p className="text-base sm:text-xl font-bold text-orange-500">{currentWeight}kg</p>
             </div>
-            <div className="bg-primary/10 border border-primary/30 rounded-xl p-3 text-center">
-              <p className="text-xs text-muted-foreground mb-1">Peso Objetivo</p>
-              <p className="text-xl font-bold text-primary">{desiredWeight}kg</p>
+            <div className="bg-primary/10 border border-primary/30 rounded-lg sm:rounded-xl p-2 sm:p-3 text-center">
+              <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5 sm:mb-1">Peso Objetivo</p>
+              <p className="text-base sm:text-xl font-bold text-primary">{desiredWeight}kg</p>
             </div>
-            <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-3 text-center">
-              <p className="text-xs text-muted-foreground mb-1">Total a Perder</p>
-              <p className="text-xl font-bold text-green-500">-{totalWeightToLose}kg</p>
+            <div className="bg-green-500/10 border border-green-500/30 rounded-lg sm:rounded-xl p-2 sm:p-3 text-center">
+              <p className="text-[10px] sm:text-xs text-muted-foreground mb-0.5 sm:mb-1">Total a Perder</p>
+              <p className="text-base sm:text-xl font-bold text-green-500">-{totalWeightToLose}kg</p>
             </div>
           </div>
 
           {/* Chart Legend */}
-          <div className="flex flex-wrap justify-center gap-4 mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-              <span className="text-xs text-muted-foreground">Sua jornada de perda de peso</span>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-2 sm:mb-3">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-orange-500"></div>
+              <span className="text-[10px] sm:text-xs text-muted-foreground">Sua jornada</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-0.5 border-t-2 border-dashed border-primary"></div>
-              <span className="text-xs text-muted-foreground">Linha da meta ({desiredWeight}kg)</span>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-6 sm:w-8 h-0.5 border-t-2 border-dashed border-primary"></div>
+              <span className="text-[10px] sm:text-xs text-muted-foreground">Meta ({desiredWeight}kg)</span>
             </div>
           </div>
 
           {/* Chart Container */}
-          <div className="bg-gradient-to-br from-muted/50 to-muted rounded-2xl p-4 shadow-lg">
-            <ResponsiveContainer width="100%" height={280}>
-              <AreaChart data={chartData} margin={{ top: 30, right: 30, left: 10, bottom: 10 }}>
+          <div className="bg-gradient-to-br from-muted/50 to-muted rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg">
+            <ResponsiveContainer width="100%" height={220}>
+              <AreaChart data={chartData} margin={{ top: 20, right: 20, left: 0, bottom: 5 }}>
                 <defs>
                   <linearGradient id="weightGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="hsl(25, 95%, 53%)" stopOpacity={0.4} />
@@ -205,20 +205,20 @@ const WeightProjection = () => {
                   dataKey="name" 
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 9 }}
                   interval={0}
                   angle={-45}
                   textAnchor="end"
-                  height={50}
+                  height={40}
                 />
                 
                 <YAxis 
                   domain={[yMin, yMax]}
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }}
-                  tickFormatter={(value) => `${value}kg`}
-                  width={50}
+                  tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 9 }}
+                  tickFormatter={(value) => `${value}`}
+                  width={35}
                 />
 
                 <Tooltip content={<CustomTooltip />} />
@@ -298,26 +298,26 @@ const WeightProjection = () => {
           </div>
 
           {/* Detailed Stats */}
-          <div className="mt-4 bg-muted/30 rounded-xl p-4 space-y-3">
-            <h3 className="font-semibold text-foreground text-center mb-3">📊 Resumo da sua Jornada</h3>
+          <div className="mt-3 sm:mt-4 bg-muted/30 rounded-lg sm:rounded-xl p-3 sm:p-4 space-y-2 sm:space-y-3">
+            <h3 className="font-semibold text-foreground text-center text-sm sm:text-base mb-2 sm:mb-3">📊 Resumo da sua Jornada</h3>
             
-            <div className="flex justify-between items-center py-2 border-b border-border/50">
-              <span className="text-sm text-muted-foreground">⏱️ Duração do programa</span>
-              <span className="font-semibold text-foreground">{daysNeeded} dias</span>
+            <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-border/50">
+              <span className="text-xs sm:text-sm text-muted-foreground">⏱️ Duração</span>
+              <span className="font-semibold text-foreground text-sm sm:text-base">{daysNeeded} dias</span>
             </div>
             
-            <div className="flex justify-between items-center py-2 border-b border-border/50">
-              <span className="text-sm text-muted-foreground">📉 Média de perda semanal</span>
-              <span className="font-semibold text-green-500">~{avgWeightLossPerWeek}kg/semana</span>
+            <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-border/50">
+              <span className="text-xs sm:text-sm text-muted-foreground">📉 Perda semanal</span>
+              <span className="font-semibold text-green-500 text-sm sm:text-base">~{avgWeightLossPerWeek}kg</span>
             </div>
             
-            <div className="flex justify-between items-center py-2 border-b border-border/50">
-              <span className="text-sm text-muted-foreground">🎯 Data prevista para atingir a meta</span>
-              <span className="font-semibold text-primary">{targetDate}</span>
+            <div className="flex justify-between items-center py-1.5 sm:py-2 border-b border-border/50">
+              <span className="text-xs sm:text-sm text-muted-foreground">🎯 Data da meta</span>
+              <span className="font-semibold text-primary text-xs sm:text-sm">{targetDate}</span>
             </div>
 
-            <p className="text-xs text-center text-muted-foreground mt-3 italic">
-              * Toque nos pontos do gráfico para ver detalhes de cada etapa
+            <p className="text-[10px] sm:text-xs text-center text-muted-foreground mt-2 sm:mt-3 italic">
+              * Toque nos pontos para ver detalhes
             </p>
           </div>
         </div>
@@ -325,7 +325,7 @@ const WeightProjection = () => {
         {/* Next Button */}
         <Button
           onClick={() => navigate("/personal-summary")}
-          className="w-full max-w-md mt-8 py-6 text-lg font-semibold rounded-full"
+          className="w-full max-w-md mt-6 sm:mt-8 py-5 sm:py-6 text-base sm:text-lg font-semibold rounded-full"
         >
           Próximo
         </Button>

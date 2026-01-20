@@ -102,25 +102,25 @@ const WeightImpactChart = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center px-4">
+      <header className="w-full pt-2 flex items-center justify-center px-3 sm:px-4">
         <img
           src={logoImage}
           alt="Detox Fígado Desafio"
-          className="h-16 w-auto"
+          className="h-12 sm:h-16 w-auto"
           loading="eager"
           decoding="sync"
         />
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center px-4 pt-8">
+      <main className="flex-1 flex flex-col items-center px-3 sm:px-4 pt-6 sm:pt-8">
         {/* Title */}
-        <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 max-w-md leading-tight">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6 sm:mb-8 max-w-md leading-tight px-2">
           Um plano de emagrecimento de {weeksNeeded} semanas pode causar um impacto duradouro!
         </h1>
 
         {/* Animated Chart */}
-        <div className="w-full max-w-md bg-[#e8f4f0] rounded-2xl p-6 mb-8">
+        <div className="w-full max-w-md bg-[#e8f4f0] rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8">
           <svg viewBox="0 0 350 220" className="w-full h-auto">
             {/* Grid lines */}
             <defs>
@@ -271,7 +271,7 @@ const WeightImpactChart = () => {
         {/* CTA Button */}
         <Button
           onClick={() => navigate("/challenge-ready")}
-          className="w-full max-w-md py-6 text-lg font-semibold rounded-full"
+          className="w-full max-w-md py-5 sm:py-6 text-base sm:text-lg font-semibold rounded-full"
         >
           Próximo
         </Button>
