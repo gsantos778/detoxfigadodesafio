@@ -382,13 +382,15 @@ const ChallengeReady = () => {
             </ol>
           </div>
 
+        </div>
+        
+        <div className="text-center mt-6">
           <button 
             className="bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer"
             onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
           >
             APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO
           </button>
-
         </div>
       </section>
 
