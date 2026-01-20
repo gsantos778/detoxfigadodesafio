@@ -36,7 +36,7 @@ const ChallengeReady = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [discountApplied, setDiscountApplied] = useState(false);
-  const [confettiPieces, setConfettiPieces] = useState<{id: number, left: number, startTop: number, color: string, delay: number, size: number, rotation: number, shape: string, swingDirection: number, swingAmount: number}[]>([]);
+  const [confettiPieces, setConfettiPieces] = useState<{id: number, startX: number, startY: number, velocityX: number, velocityY: number, color: string, delay: number, size: number, rotation: number, shape: string}[]>([]);
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -99,20 +99,24 @@ const ChallengeReady = () => {
   };
 
   const triggerConfetti = () => {
-    // Create confetti pieces - LOTS of pieces for big impact
+    // Create confetti pieces - explosion from center
     const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FF69B4', '#00CED1', '#FF4500', '#9400D3', '#00FF7F'];
-    const pieces = Array.from({ length: 200 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      startTop: -50 - Math.random() * 150,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      delay: Math.random() * 0.5,
-      size: 10 + Math.random() * 15,
-      rotation: Math.random() * 360,
-      shape: Math.random() > 0.6 ? 'circle' : Math.random() > 0.5 ? 'square' : 'strip',
-      swingDirection: Math.random() > 0.5 ? 1 : -1,
-      swingAmount: 20 + Math.random() * 40
-    }));
+    const pieces = Array.from({ length: 150 }, (_, i) => {
+      const angle = (Math.random() * 360) * (Math.PI / 180); // Random angle in radians
+      const velocity = 150 + Math.random() * 250; // Random velocity
+      return {
+        id: i,
+        startX: 50, // Start from center
+        startY: 60, // Start from bottom-center area
+        velocityX: Math.cos(angle) * velocity * (Math.random() > 0.5 ? 1 : -1),
+        velocityY: -Math.abs(Math.sin(angle) * velocity) - 100, // Always go UP initially
+        color: colors[Math.floor(Math.random() * colors.length)],
+        delay: Math.random() * 0.2,
+        size: 8 + Math.random() * 12,
+        rotation: Math.random() * 360,
+        shape: Math.random() > 0.6 ? 'circle' : Math.random() > 0.5 ? 'square' : 'strip'
+      };
+    });
     setConfettiPieces(pieces);
     setShowConfetti(true);
     
@@ -121,7 +125,7 @@ const ChallengeReady = () => {
       setShowConfetti(false);
       setDiscountApplied(true);
       setIsApplyingDiscount(false);
-    }, 3000);
+    }, 2500);
   };
 
   // Benefícios para mulheres
@@ -477,22 +481,22 @@ const ChallengeReady = () => {
           {showConfetti && (
             <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
               {/* Flash effect */}
-              <div className="absolute inset-0 bg-white animate-flash"></div>
+              <div className="absolute inset-0 bg-yellow-300/30 animate-flash"></div>
               {confettiPieces.map((piece) => (
                 <div
                   key={piece.id}
-                  className="absolute animate-confetti-fall"
+                  className="absolute animate-confetti-explode"
                   style={{
-                    left: `${piece.left}%`,
-                    top: `${piece.startTop}px`,
+                    left: `${piece.startX}%`,
+                    top: `${piece.startY}%`,
                     backgroundColor: piece.color,
-                    width: piece.shape === 'strip' ? '6px' : `${piece.size}px`,
-                    height: piece.shape === 'strip' ? `${piece.size * 2.5}px` : `${piece.size}px`,
-                    borderRadius: piece.shape === 'circle' ? '50%' : piece.shape === 'strip' ? '3px' : '3px',
+                    width: piece.shape === 'strip' ? '5px' : `${piece.size}px`,
+                    height: piece.shape === 'strip' ? `${piece.size * 2}px` : `${piece.size}px`,
+                    borderRadius: piece.shape === 'circle' ? '50%' : '2px',
                     animationDelay: `${piece.delay}s`,
-                    boxShadow: `0 0 ${piece.size / 2}px ${piece.color}`,
-                    ['--swing-direction' as string]: piece.swingDirection,
-                    ['--swing-amount' as string]: `${piece.swingAmount}px`
+                    boxShadow: `0 0 ${piece.size}px ${piece.color}`,
+                    ['--vx' as string]: `${piece.velocityX}px`,
+                    ['--vy' as string]: `${piece.velocityY}px`
                   }}
                 />
               ))}
@@ -568,30 +572,26 @@ const ChallengeReady = () => {
           animation: button-shine 2s ease-in-out infinite;
         }
         
-        @keyframes confetti-fall {
+        @keyframes confetti-explode {
           0% {
-            transform: translateY(0) rotate(0deg) scale(1) translateX(0);
+            transform: translate(0, 0) rotate(0deg) scale(1);
             opacity: 1;
           }
-          25% {
-            transform: translateY(25vh) rotate(360deg) scale(1) translateX(calc(var(--swing-amount) * var(--swing-direction)));
+          20% {
+            transform: translate(calc(var(--vx) * 0.4), calc(var(--vy) * 0.5)) rotate(180deg) scale(1.2);
             opacity: 1;
           }
           50% {
-            transform: translateY(50vh) rotate(720deg) scale(0.9) translateX(calc(var(--swing-amount) * var(--swing-direction) * -1));
+            transform: translate(calc(var(--vx) * 0.8), calc(var(--vy) * 0.3 + 50px)) rotate(360deg) scale(1);
             opacity: 0.9;
           }
-          75% {
-            transform: translateY(75vh) rotate(1080deg) scale(0.7) translateX(calc(var(--swing-amount) * var(--swing-direction)));
-            opacity: 0.6;
-          }
           100% {
-            transform: translateY(100vh) rotate(1440deg) scale(0.4) translateX(0);
+            transform: translate(calc(var(--vx)), calc(var(--vy) * -0.5 + 300px)) rotate(720deg) scale(0.5);
             opacity: 0;
           }
         }
-        .animate-confetti-fall {
-          animation: confetti-fall 3.5s ease-out forwards;
+        .animate-confetti-explode {
+          animation: confetti-explode 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
         
         @keyframes flash {
