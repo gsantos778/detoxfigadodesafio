@@ -607,7 +607,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 px-4 bg-white">
+      <section className="pt-4 pb-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a573f] text-center mb-8">
             Perguntas Frequentes
