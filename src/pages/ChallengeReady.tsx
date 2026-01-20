@@ -506,7 +506,7 @@ const ChallengeReady = () => {
           {/* Discount Applied - Show Purchase Button */}
           {discountApplied && (
             <div className="animate-bounce-in">
-              <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-sm mx-auto border-2 border-[#0ea06b]">
+              <div className="max-w-sm mx-auto">
                 {/* Price display with animations */}
                 <div className="flex items-center justify-center gap-4 mb-5">
                   <span className="text-red-500 line-through text-2xl font-bold animate-shake">R$ 57,00</span>
