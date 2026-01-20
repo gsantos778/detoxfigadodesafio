@@ -390,9 +390,6 @@ const ChallengeReady = () => {
             APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO
           </button>
 
-          <p className="mt-4 text-sm text-[#4c6b55]">
-            Os créditos serão aplicados automaticamente no checkout.
-          </p>
         </div>
       </section>
 
