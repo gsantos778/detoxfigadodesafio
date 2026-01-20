@@ -824,7 +824,7 @@ const ChallengeReady = () => {
                 <h3 className="font-bold text-gray-800">
                   Cristina, 42 anos, <span className="text-[#0ea06b]">perdeu 15 kg</span>
                 </h3>
-                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-3 mb-4">
                   <CircleCheck className="w-4 h-4" />
                   <span className="font-semibold">CLIENTE VERIFICADO</span>
                 </div>
@@ -839,7 +839,7 @@ const ChallengeReady = () => {
                 <h3 className="font-bold text-gray-800">
                   Sandra, 27 anos, <span className="text-[#0ea06b]">perdeu 28 kg</span>
                 </h3>
-                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-3 mb-4">
                   <CircleCheck className="w-4 h-4" />
                   <span className="font-semibold">CLIENTE VERIFICADO</span>
                 </div>
@@ -856,7 +856,7 @@ const ChallengeReady = () => {
                 <h3 className="font-bold text-gray-800">
                   Elizeu, 57 anos, <span className="text-[#0ea06b]">perdeu 27 kg</span>
                 </h3>
-                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
+                <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-3 mb-4">
                   <CircleCheck className="w-4 h-4" />
                   <span className="font-semibold">CLIENTE VERIFICADO</span>
                 </div>
