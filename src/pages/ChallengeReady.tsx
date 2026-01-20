@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import logo from "@/assets/logo.png";
 import transformationImage from "@/assets/transformation-comparison.png";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
+import guiaSubstituicoes from "@/assets/guia-substituicoes.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Coins, CircleCheck, ChevronLeft, ChevronRight } from "lucide-react";
@@ -229,17 +230,26 @@ const ChallengeReady = () => {
               
               {/* Bonus Section */}
               <div className="mt-8 p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl">
-                <div className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
-                    <CircleCheck className="w-5 h-5 text-yellow-600" />
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex-shrink-0 flex justify-center">
+                    <img 
+                      src={guiaSubstituicoes} 
+                      alt="Guia de Substituições Inteligentes" 
+                      className="w-full max-w-[280px] md:max-w-[200px] rounded-lg shadow-md"
+                    />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap mb-1">
-                      <h3 className="text-lg font-bold text-gray-800">{bonusBenefit.title}</h3>
-                      <span className="text-sm line-through text-gray-400">{bonusBenefit.originalPrice}</span>
-                      <span className="text-sm font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">{bonusBenefit.price}</span>
+                  <div className="flex gap-3 flex-1">
+                    <div className="flex-shrink-0 mt-1">
+                      <CircleCheck className="w-5 h-5 text-yellow-600" />
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm">{bonusBenefit.description}</p>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <h3 className="text-lg font-bold text-gray-800">{bonusBenefit.title}</h3>
+                        <span className="text-sm line-through text-gray-400">{bonusBenefit.originalPrice}</span>
+                        <span className="text-sm font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">{bonusBenefit.price}</span>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed text-sm">{bonusBenefit.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
