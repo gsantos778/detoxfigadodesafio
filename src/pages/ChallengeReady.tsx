@@ -496,29 +496,11 @@ const ChallengeReady = () => {
           {/* Discount Applied - Show Purchase Button */}
           {discountApplied && (
             <div className="animate-bounce-in">
-              <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-sm mx-auto border-3 border-[#0ea06b] relative overflow-hidden">
-                {/* Success badge */}
-                <div className="absolute -top-1 -right-1 bg-[#0ea06b] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-                  ✓ APLICADO
-                </div>
-                
-                <p className="text-[#0ea06b] font-black text-2xl mb-2">🎉 PARABÉNS!</p>
-                <p className="text-gray-600 text-sm mb-5">Seus créditos foram aplicados com sucesso!</p>
-                
+              <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-sm mx-auto border-2 border-[#0ea06b]">
                 {/* Price display */}
-                <div className="bg-gray-50 rounded-xl p-4 mb-5">
-                  <div className="flex items-center justify-center gap-3">
-                    <div className="text-center">
-                      <p className="text-xs text-gray-500 mb-1">DE:</p>
-                      <span className="text-red-500 line-through text-2xl font-bold">R$ 57,00</span>
-                    </div>
-                    <div className="text-3xl text-gray-400">→</div>
-                    <div className="text-center">
-                      <p className="text-xs text-gray-500 mb-1">POR:</p>
-                      <span className="text-[#0ea06b] font-black text-3xl animate-pulse">R$ 37,00</span>
-                    </div>
-                  </div>
-                  <p className="text-center text-sm text-[#0ea06b] font-semibold mt-2">Economia de R$ 20,00!</p>
+                <div className="flex items-center justify-center gap-4 mb-5">
+                  <span className="text-red-500 line-through text-2xl font-bold">R$ 57,00</span>
+                  <span className="text-[#0ea06b] font-black text-4xl">R$ 37,00</span>
                 </div>
                 
                 <button 
