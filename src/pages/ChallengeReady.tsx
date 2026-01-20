@@ -825,9 +825,7 @@ const ChallengeReady = () => {
                   <CircleCheck className="w-4 h-4" />
                   <span className="font-semibold">CLIENTE VERIFICADO</span>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Antes da desintoxicação, eu me sentia letárgica, tinha erupções cutâneas e meu peso continuava aumentando apesar de me alimentar de forma saudável. Eu também sofria com oscilações de humor e estresse. Este desafio me ajudou a recomeçar, minha digestão...
-                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">Antes da desintoxicação, eu me sentia letárgica, tinha erupções cutâneas e meu peso continuava aumentando apesar de me alimentar de forma saudável. Eu também sofria com oscilações de humor e estresse. Este desafio me ajudou a recomeçar, minha digestão, foi uma virada de chave para mim.</p>
               </div>
             </div>
 
@@ -859,9 +857,7 @@ const ChallengeReady = () => {
                   <CircleCheck className="w-4 h-4" />
                   <span className="font-semibold">CLIENTE VERIFICADO</span>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Eu não bebia todos os dias, mas definitivamente mais do que deveria, especialmente em dias estressantes. Sabia que isso estava me afetando porque estava sempre cansada e sem nenhuma motivação. Participar do Desafio de Desintoxicação do Fígado...
-                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">Eu não bebia todos os dias, mas definitivamente mais do que deveria, especialmente em dias estressantes. Sabia que isso estava me afetando porque estava sempre cansado e sem nenhuma motivação. Participar do Desafio de Desintoxicação do Fígado foi o que realmente me ajudou.</p>
               </div>
             </div>
           </div>
