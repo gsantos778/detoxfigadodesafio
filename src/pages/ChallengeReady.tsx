@@ -600,7 +600,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* 7 Days Guarantee Section - closer to button above */}
-      <section className="w-full max-w-[900px] mx-auto mt-4 md:mt-6 mb-8 md:mb-12 px-4">
+      <section className="w-full max-w-[900px] mx-auto mt-2 md:mt-3 mb-8 md:mb-12 px-4">
         <div className="bg-gradient-to-br from-[#98e6c2] to-[#2fb673] rounded-3xl p-5 md:p-10">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
             {/* Badge Circle */}
