@@ -90,8 +90,11 @@ const ChallengeReady = () => {
       setLoadingProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
-          // Trigger confetti
-          triggerConfetti();
+          // Small delay to let user see 100%, then hide bar and trigger confetti
+          setTimeout(() => {
+            setIsApplyingDiscount(false); // Hide the loading bar first
+            triggerConfetti(); // Then trigger confetti immediately
+          }, 300);
           return 100;
         }
         return prev + 2;
