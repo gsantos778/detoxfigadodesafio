@@ -24,7 +24,7 @@ import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
 import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
 const ChallengeReady = () => {
   const navigate = useNavigate();
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showCredits, setShowCredits] = useState(true);
   const [animatingCoins, setAnimatingCoins] = useState(false);
@@ -38,6 +38,30 @@ const ChallengeReady = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [discountApplied, setDiscountApplied] = useState(false);
   const [confettiPieces, setConfettiPieces] = useState<{id: number, startX: number, startY: number, velocityX: number, velocityY: number, color: string, delay: number, size: number, rotation: number, shape: string}[]>([]);
+  
+  // Preload all critical images on mount
+  useEffect(() => {
+    const imagesToPreload = [
+      transformationImage,
+      phoneMockup,
+      produtoDetox,
+      guiaSubstituicoes,
+      ...testimonials
+    ];
+    
+    let loadedCount = 0;
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imagesToPreload.length) {
+          setImagesLoaded(true);
+        }
+      };
+      img.src = src;
+    });
+  }, []);
+
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -246,7 +270,7 @@ const ChallengeReady = () => {
       emblaApi.off('select', onSelect);
     };
   }, [emblaApi]);
-  return <div className="min-h-screen bg-white flex flex-col items-center px-4 py-8 relative overflow-hidden">
+  return <div className="min-h-screen bg-white flex flex-col items-center px-0 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
       {/* Credits Display - Top Right */}
       {showCredits && <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
           <span className="text-xs font-semibold text-gray-600">créditos</span>
@@ -271,13 +295,13 @@ const ChallengeReady = () => {
 
       {/* Congratulations Popup */}
       <Dialog open={showPopup} onOpenChange={setShowPopup}>
-        <DialogContent className="sm:max-w-md text-center p-8">
-          <div className="space-y-6">
-            <div className="text-5xl">🎉</div>
-            <h2 className="text-xl font-bold text-gray-800">
+        <DialogContent className="max-w-[90vw] sm:max-w-md text-center p-4 sm:p-8">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="text-4xl sm:text-5xl">🎉</div>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-800">
               Parabéns, você respondeu todas as perguntas do questionário e ganhou 1000 créditos!
             </h2>
-            <Button onClick={handleReceiveCredits} className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold px-6 py-2 rounded-full shadow-lg">
+            <Button onClick={handleReceiveCredits} className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold px-4 sm:px-6 py-2 rounded-full shadow-lg text-sm sm:text-base">
               <Coins className="w-4 h-4 mr-2" />
               RECEBER CRÉDITOS
             </Button>
@@ -286,67 +310,84 @@ const ChallengeReady = () => {
       </Dialog>
 
       {/* Logo */}
-      <div className="mb-8">
-        <img src={logo} alt="Detox Fígado" className="h-16 w-auto" loading="eager" decoding="sync" fetchPriority="high" style={{
-        minHeight: '64px'
-      }} />
+      <div className="mb-6 sm:mb-8 px-4">
+        <img 
+          src={logo} 
+          alt="Detox Fígado" 
+          className="h-14 sm:h-16 w-auto" 
+          loading="eager" 
+          decoding="sync" 
+          fetchPriority="high"
+          width="150"
+          height="64"
+        />
       </div>
 
       {/* Title */}
-      <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-8 max-w-md">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6 sm:mb-8 max-w-md px-4">
         Seu desafio pessoal de desintoxicação do fígado está pronto!
       </h1>
 
       {/* Transformation Image */}
-      <div className="w-full max-w-lg mb-6">
-        {!imageLoaded && <div className="w-full aspect-[4/3] bg-gray-100 rounded-xl animate-pulse" />}
-        <img src={transformationImage} alt="Transformação - Antes e Depois" className={`w-full rounded-xl shadow-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0 absolute'}`} onLoad={() => setImageLoaded(true)} loading="eager" decoding="async" />
+      <div className="w-full max-w-lg mb-6 px-4">
+        <img 
+          src={transformationImage} 
+          alt="Transformação - Antes e Depois" 
+          className="w-full rounded-xl shadow-lg"
+          loading="eager"
+          decoding="async"
+          width="512"
+          height="384"
+        />
       </div>
 
       {/* O que você recebe Section */}
-      <section className="w-full px-4 py-12" style={{
+      <section className="w-full px-4 py-8 sm:py-12" style={{
       backgroundColor: '#EFF8F2'
     }}>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center uppercase tracking-wide">
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-extrabold text-gray-800 mb-6 sm:mb-8 text-center uppercase tracking-wide">
             O QUE VOCÊ VAI RECEBER
           </h2>
-          <p className="text-xl font-bold text-gray-800 mb-6 underline decoration-green-500 decoration-2 underline-offset-4">📱 Aplicativo elaborado com:</p>
+          <p className="text-base sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6 underline decoration-green-500 decoration-2 underline-offset-4">📱 Aplicativo elaborado com:</p>
           
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start">
             {/* Benefits List - LEFT */}
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 space-y-4 sm:space-y-6">
               {benefits.map((benefit, index) => <div key={index} className="flex gap-3">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="flex-shrink-0 mt-0.5">
                     <CircleCheck className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-1">{benefit.title}</h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">{benefit.description}</p>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-1">{benefit.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{benefit.description}</p>
                   </div>
                 </div>)}
               
               {/* Bonus Section */}
-              <div className="mt-8 p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl">
-                <div className="flex flex-col md:flex-row gap-4">
+              <div className="mt-6 sm:mt-8 p-3 sm:p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl">
+                <div className="flex flex-col gap-4">
                   <div className="flex-shrink-0 flex justify-center">
                     <img 
                       src={guiaSubstituicoes} 
                       alt="Guia de Substituições Inteligentes" 
-                      className="w-full max-w-[280px] md:max-w-[200px] rounded-lg shadow-md"
+                      className="w-full max-w-[220px] sm:max-w-[280px] md:max-w-[200px] rounded-lg shadow-md"
+                      loading="lazy"
+                      width="200"
+                      height="200"
                     />
                   </div>
                   <div className="flex gap-3 flex-1">
-                    <div className="flex-shrink-0 mt-1">
+                    <div className="flex-shrink-0 mt-0.5">
                       <CircleCheck className="w-5 h-5 text-yellow-600" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 flex-wrap mb-1">
-                        <h3 className="text-lg font-bold text-gray-800">{bonusBenefit.title}</h3>
-                        <span className="text-sm line-through text-gray-400">{bonusBenefit.originalPrice}</span>
-                        <span className="text-sm font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">{bonusBenefit.price}</span>
+                        <h3 className="text-base sm:text-lg font-bold text-gray-800">{bonusBenefit.title}</h3>
+                        <span className="text-xs sm:text-sm line-through text-gray-400">{bonusBenefit.originalPrice}</span>
+                        <span className="text-xs sm:text-sm font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded">{bonusBenefit.price}</span>
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-sm">{bonusBenefit.description}</p>
+                      <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">{bonusBenefit.description}</p>
                     </div>
                   </div>
                 </div>
@@ -354,17 +395,24 @@ const ChallengeReady = () => {
             </div>
             
             {/* Phone Mockup - RIGHT */}
-            <div className="flex-shrink-0 w-full md:w-64 flex justify-center md:justify-end">
-              <img src={phoneMockup} alt="App de receitas" className="w-full max-w-[320px] drop-shadow-2xl" />
+            <div className="flex-shrink-0 w-full md:w-64 flex justify-center md:justify-end order-first md:order-last">
+              <img 
+                src={phoneMockup} 
+                alt="App de receitas" 
+                className="w-full max-w-[240px] sm:max-w-[320px] drop-shadow-2xl"
+                loading="lazy"
+                width="320"
+                height="640"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full px-4 pt-4 pb-12 bg-gray-200">
+      <section className="w-full px-2 sm:px-4 pt-4 pb-8 sm:pb-12 bg-gray-200">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-extrabold text-gray-800 mb-8 text-center leading-tight">
+          <h2 className="text-lg sm:text-2xl md:text-4xl font-extrabold text-gray-800 mb-6 sm:mb-8 text-center leading-tight px-2">
             Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨
           </h2>
           
@@ -372,25 +420,28 @@ const ChallengeReady = () => {
             {/* Arrows */}
             <button 
               onClick={scrollPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+              className="absolute -left-1 sm:left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all"
             >
-              <ChevronLeft className="w-6 h-6 text-gray-700" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
             </button>
             <button 
               onClick={scrollNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-all"
+              className="absolute -right-1 sm:right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-1.5 sm:p-2 shadow-lg transition-all"
             >
-              <ChevronRight className="w-6 h-6 text-gray-700" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
             </button>
             
-            <div className="overflow-hidden mx-10" ref={emblaRef}>
+            <div className="overflow-hidden mx-6 sm:mx-10" ref={emblaRef}>
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex justify-center px-2 md:px-4">
+                  <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex justify-center px-1 sm:px-2 md:px-4">
                     <img 
                       src={testimonial} 
                       alt={`Depoimento ${index + 1}`} 
-                      className="max-w-[280px] md:max-w-[240px] rounded-xl shadow-lg" 
+                      className="max-w-[240px] sm:max-w-[280px] md:max-w-[240px] rounded-xl shadow-lg"
+                      loading="lazy"
+                      width="240"
+                      height="320"
                     />
                   </div>
                 ))}
@@ -398,14 +449,14 @@ const ChallengeReady = () => {
             </div>
             
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${
                     index === selectedIndex 
-                      ? 'bg-green-600 w-6' 
+                      ? 'bg-green-600 w-5 sm:w-6' 
                       : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                 />
@@ -416,69 +467,72 @@ const ChallengeReady = () => {
       </section>
 
       {/* Price Block Section */}
-      <section className="max-w-[1100px] mx-auto my-9 px-6">
-        <div className="bg-[#9be4b5] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.2)]">
-          <h2 className="text-center text-[#0a573f] text-xl md:text-2xl font-bold mb-5">
+      <section className="max-w-[1100px] mx-auto my-6 sm:my-9 px-3 sm:px-6">
+        <div className="bg-[#9be4b5] rounded-2xl p-4 sm:p-6 shadow-[0_8px_24px_rgba(10,107,72,0.2)]">
+          <h2 className="text-center text-[#0a573f] text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5">
             Recupere sua saúde e autoestima por menos de um café por dia ✨
           </h2>
 
-          <div className="flex flex-col gap-4 items-center p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
+          <div className="flex flex-col gap-3 sm:gap-4 items-center p-3 sm:p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
             <img 
               src={produtoDetox} 
               alt="Protocolo Detox Fígado + Guia de Substituições" 
-              className="max-w-full h-auto max-h-[300px] object-contain"
+              className="max-w-full h-auto max-h-[200px] sm:max-h-[300px] object-contain"
+              loading="lazy"
+              width="300"
+              height="300"
             />
             <div className="w-full text-center">
-              <p className="font-bold text-[#0a6b48] mb-1">Protocolo Detox Fígado + Bônus</p>
+              <p className="font-bold text-[#0a6b48] mb-1 text-sm sm:text-base">Protocolo Detox Fígado + Bônus</p>
             </div>
 
-            <div className="flex-1 min-w-[280px] text-center p-3">
-              <p className="text-[#0a6b48] font-semibold text-sm">Oferta especial</p>
-              <p className="text-4xl md:text-5xl font-black text-[#0a6b48] my-1">
-                R$ <span>57</span><small className="text-sm font-bold">,00</small>
+            <div className="flex-1 min-w-[240px] sm:min-w-[280px] text-center p-2 sm:p-3">
+              <p className="text-[#0a6b48] font-semibold text-xs sm:text-sm">Oferta especial</p>
+              <p className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0a6b48] my-1">
+                R$ <span>57</span><small className="text-xs sm:text-sm font-bold">,00</small>
               </p>
-              <p className="text-[#2b6b4a] font-semibold my-1 mb-3">
+              <p className="text-[#2b6b4a] font-semibold my-1 mb-2 sm:mb-3 text-sm sm:text-base">
                 ou 12x de <strong>R$ 4,75</strong> sem juros
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 justify-center items-center mt-4">
-            <img src={badgeCompraSegura} alt="Compra Segura" className="h-12 w-auto object-contain rounded-lg" />
-            <img src={badgeSatisfacaoGarantida} alt="Satisfação Garantida" className="h-12 w-auto object-contain rounded-lg" />
-            <img src={badgePrivacidadeProtegida} alt="Privacidade Protegida" className="h-12 w-auto object-contain rounded-lg" />
+          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center items-center mt-3 sm:mt-4">
+            <img src={badgeCompraSegura} alt="Compra Segura" className="h-10 sm:h-12 w-auto object-contain rounded-lg" loading="lazy" />
+            <img src={badgeSatisfacaoGarantida} alt="Satisfação Garantida" className="h-10 sm:h-12 w-auto object-contain rounded-lg" loading="lazy" />
+            <img src={badgePrivacidadeProtegida} alt="Privacidade Protegida" className="h-10 sm:h-12 w-auto object-contain rounded-lg" loading="lazy" />
           </div>
         </div>
       </section>
 
       {/* Discount Block - Use Credits */}
-      <section className="max-w-[1100px] mx-auto mb-9 px-6">
-        <div className="bg-[#d4f5e0] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.1)] text-center">
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 py-3 px-6 bg-gradient-to-r from-[#0a573f] to-[#0ea06b] text-white rounded-xl shadow-lg inline-block" style={{ fontFamily: "'Trebuchet MS', 'Lucida Sans', sans-serif" }}>
+      <section className="max-w-[1100px] mx-auto mb-6 sm:mb-9 px-3 sm:px-6">
+        <div className="bg-[#d4f5e0] rounded-2xl p-4 sm:p-6 shadow-[0_8px_24px_rgba(10,107,72,0.1)] text-center">
+          <h3 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black mb-3 sm:mb-4 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-[#0a573f] to-[#0ea06b] text-white rounded-xl shadow-lg inline-block" style={{ fontFamily: "'Trebuchet MS', 'Lucida Sans', sans-serif" }}>
             🎁 Use seus créditos do Quiz e ganhe desconto
           </h3>
-          <p className="text-lg text-[#0a573f] mb-1 mt-6">
-            Você acumulou <span className="text-2xl md:text-3xl font-black text-[#0ea06b]">1000 CRÉDITOS</span> no sistema.
+          <p className="text-base sm:text-lg text-[#0a573f] mb-1 mt-4 sm:mt-6">
+            Você acumulou <span className="text-xl sm:text-2xl md:text-3xl font-black text-[#0ea06b]">1000 CRÉDITOS</span> no sistema.
           </p>
           <p className="text-xs text-red-500 mb-2">
             Seus créditos são exibidos no canto superior direito da tela.
           </p>
-          <p className="text-[#0a573f] mb-10 mt-8">
+          <p className="text-[#0a573f] mb-6 sm:mb-10 mt-4 sm:mt-8 text-sm sm:text-base">
             E esses 1000 créditos podem ser usados <strong>AGORA</strong> para reduzir ainda mais o preço do <span className="font-bold text-[#0ea06b]">Protocolo Detox</span>.
           </p>
 
-          <div className="text-left mb-6">
-            <p className="font-bold text-[#0a573f] mb-2">Funciona assim:</p>
-            <div className="text-[#0a573f] space-y-3">
-              <div className="flex items-start gap-3">
-                <span className="bg-[#0ea06b] text-white font-bold w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0">1</span>
+          <div className="text-left mb-4 sm:mb-6">
+            <p className="font-bold text-[#0a573f] mb-2 text-sm sm:text-base">Funciona assim:</p>
+            <div className="text-[#0a573f] space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="bg-[#0ea06b] text-white font-bold w-6 h-6 sm:w-7 sm:h-7 rounded-md flex items-center justify-center text-xs sm:text-sm flex-shrink-0">1</span>
                 <div>
                   Abaixo, você verá um botão:
-                  <div className="font-bold text-[#0ea06b] mt-3">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
+                  <div className="font-bold text-[#0ea06b] mt-2 sm:mt-3 text-sm sm:text-base">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <span className="bg-[#0ea06b] text-white font-bold w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0">2</span>
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="bg-[#0ea06b] text-white font-bold w-6 h-6 sm:w-7 sm:h-7 rounded-md flex items-center justify-center text-xs sm:text-sm flex-shrink-0">2</span>
                 <span>Ao clicar, os 1000 créditos serão aplicados automaticamente.</span>
               </div>
             </div>
@@ -486,10 +540,10 @@ const ChallengeReady = () => {
 
         </div>
         
-        <div className="text-center mt-6">
+        <div className="text-center mt-4 sm:mt-6">
           {!discountApplied && !isApplyingDiscount && (
             <button 
-              className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
+              className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
               onClick={handleApplyDiscount}
             >
               <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
@@ -499,16 +553,16 @@ const ChallengeReady = () => {
 
           {/* Loading Bar */}
           {isApplyingDiscount && !discountApplied && (
-            <div className="max-w-sm mx-auto bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-              <p className="text-[#0a573f] font-bold mb-4 text-lg">⚡ Aplicando seus créditos...</p>
-              <div className="w-full bg-gray-200 rounded-full h-8 overflow-hidden shadow-inner relative">
+            <div className="max-w-xs sm:max-w-sm mx-auto bg-white rounded-2xl p-4 sm:p-6 shadow-xl border border-gray-100">
+              <p className="text-[#0a573f] font-bold mb-3 sm:mb-4 text-base sm:text-lg">⚡ Aplicando seus créditos...</p>
+              <div className="w-full bg-gray-200 rounded-full h-6 sm:h-8 overflow-hidden shadow-inner relative">
                 <div 
                   className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden"
                   style={{ width: `${loadingProgress}%` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
                 </div>
-                <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-gray-700">
+                <span className="absolute inset-0 flex items-center justify-center text-xs sm:text-sm font-bold text-gray-700">
                   {loadingProgress}%
                 </span>
               </div>
@@ -525,15 +579,15 @@ const ChallengeReady = () => {
           {/* Discount Applied - Show Purchase Button */}
           {discountApplied && (
             <div className="animate-bounce-in">
-              <div className="max-w-sm mx-auto">
+              <div className="max-w-xs sm:max-w-sm mx-auto px-2">
                 {/* Price display with animations */}
-                <div className="flex items-center justify-center gap-4 mb-5">
-                  <span className="text-red-500 line-through text-2xl font-bold animate-shake">R$ 57,00</span>
-                  <span className="text-[#0ea06b] font-black text-4xl animate-price-pop">R$ 37,00</span>
+                <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+                  <span className="text-red-500 line-through text-xl sm:text-2xl font-bold animate-shake">R$ 57,00</span>
+                  <span className="text-[#0ea06b] font-black text-3xl sm:text-4xl animate-price-pop">R$ 37,00</span>
                 </div>
                 
                 <button 
-                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-8 py-4 rounded-full text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
+                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
                   onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
                 >
                   <span className="relative z-10">GARANTIR MEU DESCONTO</span>
