@@ -327,7 +327,15 @@ const ChallengeReady = () => {
 
       {/* Transformation Image */}
       <div className="w-full max-w-lg mb-6 px-4">
-        <img src={transformationImage} alt="Transformação - Antes e Depois" className="w-full rounded-xl shadow-lg" loading="eager" decoding="async" width="512" height="384" />
+        <img 
+          src={transformationImage} 
+          alt="Transformação - Antes e Depois" 
+          className="w-full rounded-xl shadow-lg animate-float animate-pulse-glow" 
+          loading="eager" 
+          decoding="async" 
+          width="512" 
+          height="384" 
+        />
       </div>
 
       {/* O que você recebe Section */}
