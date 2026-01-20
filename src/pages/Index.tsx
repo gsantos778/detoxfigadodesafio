@@ -63,7 +63,7 @@ const Index = () => {
             localStorage.setItem('userGender', 'male');
             navigate("/age-selection");
           }}>
-            <img src={corpoMasculino} alt="Homem" className="h-12 md:h-14 w-auto" loading="eager" />
+            <img src={corpoMasculino} alt="Homem" className="h-10 md:h-12 w-auto" loading="eager" />
             Dieta para Homens
           </button>
         </div>
