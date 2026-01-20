@@ -613,8 +613,8 @@ const ChallengeReady = () => {
             Perguntas Frequentes
           </h2>
           
-          <Accordion type="single" collapsible className="space-y-3 text-left">
-            <AccordionItem value="item-1" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+          <Accordion type="single" collapsible className="space-y-3 text-left w-full">
+            <AccordionItem value="item-1" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Quanto tempo leva para ver resultado?
               </AccordionTrigger>
@@ -623,7 +623,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-2" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Isso funciona para todos os tipos de corpo / idade?
               </AccordionTrigger>
@@ -632,7 +632,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-3" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-3" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Posso perder peso rápido com segurança?
               </AccordionTrigger>
@@ -641,7 +641,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-4" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-4" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Posso fazer se estiver grávida ou amamentando?
               </AccordionTrigger>
@@ -650,7 +650,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-5" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-5" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Existem restrições alimentares (vegana, intolerância, alergias)?
               </AccordionTrigger>
@@ -659,7 +659,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-6" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-6" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Quanto tempo por dia preciso dedicar?
               </AccordionTrigger>
@@ -668,7 +668,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-7" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-7" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Preciso de equipamentos ou academia?
               </AccordionTrigger>
@@ -677,7 +677,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-8" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-8" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 O conteúdo é personalizado?
               </AccordionTrigger>
@@ -686,7 +686,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-9" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-9" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Existe evidência científica por trás do protocolo?
               </AccordionTrigger>
@@ -695,7 +695,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-10" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-10" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Como acesso o conteúdo? (plataforma / app)
               </AccordionTrigger>
@@ -704,7 +704,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-11" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-11" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Por quanto tempo eu terei acesso?
               </AccordionTrigger>
@@ -713,7 +713,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-12" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-12" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 E se eu tiver problemas técnicos?
               </AccordionTrigger>
@@ -722,7 +722,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-13" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-13" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 "Eu já tentei de tudo"
               </AccordionTrigger>
@@ -731,7 +731,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-14" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-14" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 "Não tenho tempo"
               </AccordionTrigger>
@@ -740,7 +740,7 @@ const ChallengeReady = () => {
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-15" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
+            <AccordionItem value="item-15" className="border border-[#eaf9f0] rounded-lg overflow-hidden bg-white w-full">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Posso transferir minha conta ou dar acesso para outra pessoa?
               </AccordionTrigger>
