@@ -613,7 +613,7 @@ const ChallengeReady = () => {
             Perguntas Frequentes
           </h2>
           
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-3 text-left">
             <AccordionItem value="item-1" className="border border-[#eaf9f0] rounded-lg overflow-hidden">
               <AccordionTrigger className="px-5 py-4 text-left font-bold text-[#0a6b48] hover:no-underline hover:bg-[#f8fdf9]">
                 Quanto tempo leva para ver resultado?
