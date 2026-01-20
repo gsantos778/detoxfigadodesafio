@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import imgAgora from "@/assets/img-agora.png";
+import imgMeta from "@/assets/img-meta.png";
 
 interface TransformationComparisonProps {
   userGender: 'male' | 'female';
@@ -39,20 +41,14 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
             </span>
           </div>
           
-          {/* Body silhouette placeholder */}
+          {/* Body image */}
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <svg 
-                viewBox="0 0 60 100" 
-                className="w-16 h-28 sm:w-20 sm:h-32 text-gray-400"
-                fill="currentColor"
-              >
-                {/* Simplified body silhouette - slightly larger */}
-                <ellipse cx="30" cy="12" rx="10" ry="10" />
-                <path d="M20 22 Q15 40, 18 60 Q17 80, 20 95 L25 95 L27 65 L33 65 L35 95 L40 95 Q43 80, 42 60 Q45 40, 40 22 Z" />
-              </svg>
-              {/* "Overweight" indicator */}
-              <div className="absolute -right-1 top-1/3 w-3 h-8 bg-gray-400 rounded-full opacity-50"></div>
+              <img 
+                src={imgAgora} 
+                alt="Antes" 
+                className="w-24 h-32 sm:w-28 sm:h-36 object-cover object-top rounded-lg"
+              />
             </div>
           </div>
 
@@ -100,20 +96,16 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
             </span>
           </div>
           
-          {/* Body silhouette placeholder - healthier */}
+          {/* Body image - healthier */}
           <div className="flex justify-center mb-4">
             <div className="relative">
-              <svg 
-                viewBox="0 0 60 100" 
-                className="w-16 h-28 sm:w-20 sm:h-32 text-emerald-500"
-                fill="currentColor"
-              >
-                {/* Simplified body silhouette - slimmer */}
-                <ellipse cx="30" cy="12" rx="9" ry="9" />
-                <path d="M22 21 Q19 38, 21 55 Q20 75, 22 95 L26 95 L28 60 L32 60 L34 95 L38 95 Q40 75, 39 55 Q41 38, 38 21 Z" />
-              </svg>
+              <img 
+                src={imgMeta} 
+                alt="Meta" 
+                className="w-24 h-32 sm:w-28 sm:h-36 object-cover object-top rounded-lg"
+              />
               {/* Glow effect */}
-              <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full"></div>
+              <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full -z-10"></div>
             </div>
           </div>
 
