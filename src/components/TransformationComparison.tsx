@@ -72,7 +72,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
           </div>
 
           {/* Status indicators */}
-          <div className="mt-4 space-y-1 text-[9px] sm:text-[10px] text-gray-500">
+          <div className="mt-4 space-y-1 text-xs sm:text-sm text-gray-500">
             <div className="flex items-center gap-1">
               <span className="text-red-400">✗</span>
               <span>Energia baixa</span>
@@ -143,7 +143,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
           </div>
 
           {/* Status indicators */}
-          <div className="mt-4 space-y-1 text-[9px] sm:text-[10px] text-emerald-700">
+          <div className="mt-4 space-y-1 text-xs sm:text-sm text-emerald-700">
             <div className="flex items-center gap-1">
               <span className="text-emerald-500">✓</span>
               <span>Energia elevada</span>
