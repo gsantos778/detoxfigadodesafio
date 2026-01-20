@@ -394,10 +394,11 @@ const ChallengeReady = () => {
         
         <div className="text-center mt-6">
           <button 
-            className="bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer"
+            className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-7 py-3.5 rounded-full text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse"
             onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
           >
-            APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO
+            <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-button-shine"></span>
           </button>
         </div>
       </section>
@@ -420,6 +421,32 @@ const ChallengeReady = () => {
         }
         .animate-coin-fly {
           animation: coin-fly 1.5s ease-out forwards;
+        }
+        
+        @keyframes button-pulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 8px 20px rgba(14, 160, 107, 0.3);
+          }
+          50% {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(14, 160, 107, 0.5);
+          }
+        }
+        .animate-button-pulse {
+          animation: button-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes button-shine {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-button-shine {
+          animation: button-shine 2s ease-in-out infinite;
         }
       `}</style>
     </div>;
