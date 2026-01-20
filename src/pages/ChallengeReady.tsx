@@ -753,7 +753,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* Third Apply Credits Button - After FAQ */}
-      <section className="py-8 px-4 bg-white">
+      <section className="pt-2 pb-8 px-4 bg-white -mt-8">
         <div className="text-center">
           {!discountApplied && !isApplyingDiscount && <button className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse" onClick={handleApplyDiscount}>
               <span className="relative z-10">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</span>
