@@ -607,7 +607,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="pt-2 pb-12 px-4">
+      <section className="-mt-6 pb-12 px-4">
         <div className="w-full max-w-[95%] sm:max-w-[900px] mx-auto bg-gray-100 rounded-2xl p-6 md:p-8">
           <h2 className="text-2xl md:text-4xl font-black text-[#0a573f] text-center mb-8" style={{ fontFamily: "'Trebuchet MS', sans-serif", textTransform: 'uppercase', letterSpacing: '1px' }}>
             Perguntas Frequentes
