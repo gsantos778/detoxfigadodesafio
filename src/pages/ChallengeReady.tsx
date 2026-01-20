@@ -18,9 +18,7 @@ import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
 import produtoDetox from "@/assets/produto-detox.png";
-import compraSegura from "@/assets/compra-segura.png";
-import privacidadeProtegida from "@/assets/privacidade-protegida.png";
-import satisfacaoGarantida from "@/assets/satisfacao-garantida.png";
+import compraSeguraBadge from "@/assets/compra-segura-badge.jpg";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -349,10 +347,8 @@ const ChallengeReady = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center items-center mt-4">
-            <img src={compraSegura} alt="Compra Segura" className="h-10 w-auto object-contain" />
-            <img src={privacidadeProtegida} alt="Privacidade Protegida" className="h-10 w-auto object-contain" />
-            <img src={satisfacaoGarantida} alt="Satisfação Garantida" className="h-10 w-auto object-contain" />
+          <div className="flex justify-center items-center mt-4">
+            <img src={compraSeguraBadge} alt="Compra Segura" className="h-12 w-auto object-contain" />
           </div>
         </div>
       </section>
