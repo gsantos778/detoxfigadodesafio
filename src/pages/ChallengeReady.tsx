@@ -18,9 +18,9 @@ import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
 import produtoDetox from "@/assets/produto-detox.png";
-import badgeCompraSegura from "@/assets/badge-compra-segura.png";
-import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
-import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
+import badgeCompraSegura from "@/assets/badge-compra-segura-new.png";
+import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida-new.png";
+import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida-new.png";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
