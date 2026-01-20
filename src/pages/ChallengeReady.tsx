@@ -614,8 +614,8 @@ const ChallengeReady = () => {
 
             {/* Content */}
             <div className="text-center md:text-left">
-              <h2 className="text-[#073f2e] text-xl md:text-2xl font-extrabold mb-4">
-                Risco Zero para Você! ✨
+              <h2 className="text-2xl md:text-3xl font-black mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <span className="bg-gradient-to-r from-[#0a6b48] to-[#0ea06b] bg-clip-text text-transparent">Risco Zero para Você!</span> ✨
               </h2>
               <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
                 Eu tenho tanta confiança no <strong>Protocolo Detox Fígado</strong> e nos resultados que ele entrega, que vou tirar todo o peso das suas costas.
