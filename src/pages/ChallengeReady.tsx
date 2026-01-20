@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import confetti from "canvas-confetti";
 import logo from "@/assets/logo.png";
-import transformationImage from "@/assets/transformation-comparison.png";
+import TransformationComparison from "@/components/TransformationComparison";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import guiaSubstituicoes from "@/assets/guia-substituicoes.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -59,7 +59,7 @@ const ChallengeReady = () => {
 
   // Preload all critical images on mount
   useEffect(() => {
-    const imagesToPreload = [transformationImage, phoneMockup, produtoDetox, guiaSubstituicoes, ...testimonials];
+    const imagesToPreload = [phoneMockup, produtoDetox, guiaSubstituicoes, ...testimonials];
     let loadedCount = 0;
     imagesToPreload.forEach(src => {
       const img = new Image();
@@ -325,17 +325,9 @@ const ChallengeReady = () => {
         Seu desafio pessoal de desintoxicação do fígado está pronto!
       </h1>
 
-      {/* Transformation Image */}
+      {/* Transformation Comparison */}
       <div className="w-full max-w-lg mb-6 px-4">
-        <img 
-          src={transformationImage} 
-          alt="Transformação - Antes e Depois" 
-          className="w-full rounded-xl shadow-lg animate-float animate-pulse-glow" 
-          loading="eager" 
-          decoding="async" 
-          width="512" 
-          height="384" 
-        />
+        <TransformationComparison userGender={userGender} />
       </div>
 
       {/* O que você recebe Section */}
