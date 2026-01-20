@@ -372,7 +372,7 @@ const ChallengeReady = () => {
             E esses 1000 créditos podem ser usados <strong>AGORA</strong> para reduzir ainda mais o preço do <span className="font-bold text-[#0ea06b]">Protocolo Detox</span>.
           </p>
 
-          <div className="text-left max-w-[400px] mx-auto mb-6">
+          <div className="text-left mb-6">
             <p className="font-bold text-[#0a573f] mb-2">Funciona assim:</p>
             <ol className="list-decimal list-inside text-[#0a573f] space-y-2">
               <li>Abaixo, você verá um botão:</li>
