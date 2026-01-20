@@ -806,7 +806,9 @@ const ChallengeReady = () => {
       {/* Social Proof Section */}
       <section className="py-10 px-4 bg-[#EFF8F2]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-2" style={{ fontFamily: "'Trebuchet MS', sans-serif" }}>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-2" style={{
+          fontFamily: "'Trebuchet MS', sans-serif"
+        }}>
             Pessoas como você obtiveram ótimos resultados com o nosso{" "}
             <span className="text-[#0ea06b] font-black">Desafio de Desintoxicação do Fígado.</span>
           </h2>
