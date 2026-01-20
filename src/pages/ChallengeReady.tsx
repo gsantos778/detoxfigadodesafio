@@ -346,15 +346,6 @@ const ChallengeReady = () => {
               <p className="text-[#2b6b4a] font-semibold my-1 mb-3">
                 ou 12x de <strong>R$ 4,75</strong> sem juros
               </p>
-              <a 
-                href="#checkout" 
-                className="inline-block bg-[#0ea06b] text-white py-3.5 px-9 rounded-full font-extrabold shadow-[0_8px_20px_rgba(14,160,107,0.2)] hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(14,160,107,0.28)] transition-all duration-200"
-              >
-                QUERO COMEÇAR MEU DETOX AGORA
-              </a>
-              <p className="mt-2.5 text-gray-500 text-sm">
-                Desconto aplicado no checkout • Garantia incondicional de 7 dias
-              </p>
             </div>
           </div>
 
