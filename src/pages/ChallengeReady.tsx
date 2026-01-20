@@ -833,7 +833,7 @@ const ChallengeReady = () => {
             </div>
 
             {/* Card 2 - Sandra */}
-            <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-md">
               <img src={provaSocialSandra} alt="Sandra - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
                 <h3 className="font-bold text-gray-800">
@@ -850,7 +850,7 @@ const ChallengeReady = () => {
             </div>
 
             {/* Card 3 - Mike */}
-            <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-md">
               <img src={provaSocialMike} alt="Mike - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
                 <h3 className="font-bold text-gray-800">
