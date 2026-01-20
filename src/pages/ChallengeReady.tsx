@@ -821,7 +821,8 @@ const ChallengeReady = () => {
             <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
               <img src={provaSocialKoreena} alt="Koreena - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
-                <h3 className="font-bold text-gray-800">Cristina, 42 anos, perdeu 15 kg<span className="text-[#0ea06b]">perdeu 15 kg</span>
+                <h3 className="font-bold text-gray-800">
+                  Cristina, 42 anos, <span className="text-[#0ea06b]">perdeu 15 kg</span>
                 </h3>
                 <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
                   <CircleCheck className="w-4 h-4" />
