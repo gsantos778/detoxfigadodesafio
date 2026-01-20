@@ -546,7 +546,7 @@ const ChallengeReady = () => {
               <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
                 Eu tenho tanta confiança no <strong>Protocolo Detox Fígado</strong> e nos resultados que ele entrega, que vou tirar todo o peso das suas costas.
               </p>
-              <p className="text-[#184c39] leading-relaxed mb-3 text-sm md:text-base">
+              <p className="text-[#184c39] leading-relaxed mb-5 md:mb-6 text-sm md:text-base">
                 Você tem <strong>15 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
               </p>
               <p className="text-[#0a6b48] font-bold bg-[#eaf9f0] px-3 py-2 rounded-lg inline-block mb-4 text-sm md:text-base">
