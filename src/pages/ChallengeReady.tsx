@@ -278,11 +278,11 @@ const ChallengeReady = () => {
             <div className="overflow-hidden mx-10" ref={emblaRef}>
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="flex-shrink-0 w-full flex justify-center px-4">
+                  <div key={index} className="flex-shrink-0 w-full md:w-1/3 flex justify-center px-2 md:px-4">
                     <img 
                       src={testimonial} 
                       alt={`Depoimento ${index + 1}`} 
-                      className="max-w-[220px] md:max-w-[260px] rounded-xl shadow-lg" 
+                      className="max-w-[280px] md:max-w-[240px] rounded-xl shadow-lg" 
                     />
                   </div>
                 ))}
