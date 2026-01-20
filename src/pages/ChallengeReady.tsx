@@ -360,8 +360,10 @@ const ChallengeReady = () => {
       {/* Discount Block - Use Credits */}
       <section className="max-w-[700px] mx-auto my-8 px-6">
         <div className="bg-[#f7fff7] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.1)] text-center">
-          <h3 className="text-[#0a573f] text-xl md:text-2xl font-bold mb-3">
-            Use seus créditos do Quiz e ganhe desconto
+          <h3 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-wide">
+            <span className="bg-gradient-to-r from-[#0a573f] to-[#0ea06b] bg-clip-text text-transparent">
+              Use seus créditos do Quiz e ganhe desconto
+            </span>
           </h3>
           <p className="text-lg text-[#0a573f] mb-2">
             Você acumulou
