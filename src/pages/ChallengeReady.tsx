@@ -17,6 +17,7 @@ import testimonial3 from "@/assets/testimonial-3.png";
 import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
+import produtoDetox from "@/assets/produto-detox.png";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -324,8 +325,13 @@ const ChallengeReady = () => {
             Recupere sua saúde e autoestima por menos de um café por dia ✨
           </h2>
 
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between flex-wrap p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
-            <div className="flex-1 min-w-[280px] p-3 text-center md:text-left">
+          <div className="flex flex-col gap-4 items-center p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
+            <img 
+              src={produtoDetox} 
+              alt="Protocolo Detox Fígado + Guia de Substituições" 
+              className="max-w-full h-auto max-h-[300px] object-contain"
+            />
+            <div className="w-full text-center">
               <p className="font-bold text-[#0a6b48] mb-1">Protocolo Detox Fígado + Bônus</p>
               <p className="text-gray-500 text-sm">
                 Valor total: <span className="line-through opacity-90">R$ 441,00</span>
