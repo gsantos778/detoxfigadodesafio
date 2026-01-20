@@ -535,11 +535,7 @@ const ChallengeReady = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
             {/* Badge Image */}
             <div className="flex-shrink-0">
-              <img 
-                src={garantia15DiasImg} 
-                alt="Garantia 15 Dias Incondicional" 
-                className="w-32 h-32 md:w-40 md:h-40 object-contain"
-              />
+              <img src={garantia15DiasImg} alt="Garantia 15 Dias Incondicional" className="w-32 h-32 md:w-40 md:h-40 object-contain" />
             </div>
 
             {/* Content */}
@@ -614,7 +610,11 @@ const ChallengeReady = () => {
       {/* FAQ Section */}
       <section className="-mt-6 pb-12 px-4">
         <div className="w-full max-w-[95%] sm:max-w-[900px] mx-auto bg-gray-100 rounded-2xl p-6 md:p-8">
-          <h2 className="text-2xl md:text-4xl font-black text-[#0a573f] text-center mb-8" style={{ fontFamily: "'Trebuchet MS', sans-serif", textTransform: 'uppercase', letterSpacing: '1px' }}>
+          <h2 className="text-2xl md:text-4xl font-black text-[#0a573f] text-center mb-8" style={{
+          fontFamily: "'Trebuchet MS', sans-serif",
+          textTransform: 'uppercase',
+          letterSpacing: '1px'
+        }}>
             Perguntas Frequentes
           </h2>
           
@@ -817,15 +817,9 @@ const ChallengeReady = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1 - Koreena */}
             <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
-              <img 
-                src={provaSocialKoreena} 
-                alt="Koreena - Antes e Depois" 
-                className="w-full h-auto"
-                loading="lazy"
-              />
+              <img src={provaSocialKoreena} alt="Koreena - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
-                <h3 className="font-bold text-gray-800">
-                  Koreena, 42 anos, <span className="text-[#0ea06b]">perdeu 15 kg</span>
+                <h3 className="font-bold text-gray-800">Cristina, 42 anos, perdeu 15 kg<span className="text-[#0ea06b]">perdeu 15 kg</span>
                 </h3>
                 <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
                   <CircleCheck className="w-4 h-4" />
@@ -839,12 +833,7 @@ const ChallengeReady = () => {
 
             {/* Card 2 - Sandra */}
             <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
-              <img 
-                src={provaSocialSandra} 
-                alt="Sandra - Antes e Depois" 
-                className="w-full h-auto"
-                loading="lazy"
-              />
+              <img src={provaSocialSandra} alt="Sandra - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
                 <h3 className="font-bold text-gray-800">
                   Sandra, 27 anos, <span className="text-[#0ea06b]">perdeu 28 kg</span>
@@ -861,15 +850,10 @@ const ChallengeReady = () => {
 
             {/* Card 3 - Mike */}
             <div className="bg-[#f0fdf4] rounded-2xl overflow-hidden shadow-md">
-              <img 
-                src={provaSocialMike} 
-                alt="Mike - Antes e Depois" 
-                className="w-full h-auto"
-                loading="lazy"
-              />
+              <img src={provaSocialMike} alt="Mike - Antes e Depois" className="w-full h-auto" loading="lazy" />
               <div className="p-4 bg-white min-h-[180px]">
                 <h3 className="font-bold text-gray-800">
-                  Mike, 57 anos, <span className="text-[#0ea06b]">perdeu 27 kg</span>
+                  Elizeu, 57 anos, <span className="text-[#0ea06b]">perdeu 27 kg</span>
                 </h3>
                 <div className="flex items-center gap-1 text-[#0ea06b] text-xs mt-1 mb-2">
                   <CircleCheck className="w-4 h-4" />
