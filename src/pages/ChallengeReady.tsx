@@ -375,12 +375,19 @@ const ChallengeReady = () => {
 
           <div className="text-left mb-6">
             <p className="font-bold text-[#0a573f] mb-2">Funciona assim:</p>
-            <ol className="list-decimal list-inside text-[#0a573f] space-y-2">
-              <li>Abaixo, você verá um botão:
-                <div className="font-bold text-[#0ea06b] ml-5 mt-3">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
-              </li>
-              <li>Ao clicar, os 1000 créditos serão aplicados automaticamente.</li>
-            </ol>
+            <div className="text-[#0a573f] space-y-3">
+              <div className="flex items-start gap-3">
+                <span className="bg-[#0ea06b] text-white font-bold w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0">1</span>
+                <div>
+                  Abaixo, você verá um botão:
+                  <div className="font-bold text-[#0ea06b] mt-3">APLIQUE SEUS CRÉDITOS PARA OBTER DESCONTO</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="bg-[#0ea06b] text-white font-bold w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0">2</span>
+                <span>Ao clicar, os 1000 créditos serão aplicados automaticamente.</span>
+              </div>
+            </div>
           </div>
 
         </div>
