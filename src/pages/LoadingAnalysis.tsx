@@ -51,20 +51,20 @@ const LoadingAnalysis = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="w-full pt-2 flex items-center justify-center px-3 sm:px-4">
+      <header className="w-full pt-2 flex items-center justify-center px-3 md:px-4">
         <img
           src={logoImage}
           alt="Detox Fígado Desafio"
-          className="h-12 sm:h-16 w-auto"
+          className="h-14 md:h-16 w-auto"
           loading="eager"
           decoding="sync"
         />
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-3 sm:px-4">
+      <main className="flex-1 flex flex-col items-center justify-center px-3 md:px-4">
         {/* Circular Progress */}
-        <div className="relative w-32 h-32 sm:w-40 sm:h-40 mb-6 sm:mb-8">
+        <div className="relative w-36 h-36 md:w-44 md:h-44 mb-6 md:mb-8">
           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
             {/* Background circle */}
             <circle
@@ -90,27 +90,27 @@ const LoadingAnalysis = () => {
           </svg>
           {/* Percentage text */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-3xl sm:text-4xl font-bold text-gray-800">
+            <span className="text-3xl md:text-4xl font-bold text-gray-800">
               {Math.round(progress)}%
             </span>
           </div>
         </div>
 
         {/* Loading Text */}
-        <div className="text-center space-y-1.5 sm:space-y-2">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-800">
+        <div className="text-center space-y-2">
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">
             Analisando seus dados...
           </h2>
-          <p className="text-gray-600 text-xs sm:text-sm max-w-xs px-4">
+          <p className="text-gray-600 text-sm max-w-xs px-4">
             Estamos preparando seu plano personalizado
           </p>
         </div>
 
         {/* Loading dots animation */}
-        <div className="flex gap-1.5 sm:gap-2 mt-6 sm:mt-8">
-          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+        <div className="flex gap-2 mt-6 md:mt-8">
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+          <div className="w-3 h-3 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
         </div>
       </main>
     </div>
