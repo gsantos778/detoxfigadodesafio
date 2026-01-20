@@ -333,9 +333,6 @@ const ChallengeReady = () => {
             />
             <div className="w-full text-center">
               <p className="font-bold text-[#0a6b48] mb-1">Protocolo Detox Fígado + Bônus</p>
-              <p className="text-gray-500 text-sm">
-                Valor total: <span className="line-through opacity-90">R$ 441,00</span>
-              </p>
             </div>
 
             <div className="flex-1 min-w-[280px] text-center p-3">
