@@ -804,7 +804,7 @@ const ChallengeReady = () => {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-10 px-4 bg-white">
+      <section className="py-10 px-4 bg-[#EFF8F2]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-bold text-center text-gray-800 mb-2">
             Pessoas como você obtiveram ótimos resultados com o nosso{" "}
