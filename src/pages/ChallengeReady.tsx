@@ -320,7 +320,7 @@ const ChallengeReady = () => {
 
       {/* Price Block Section */}
       <section className="max-w-[1100px] mx-auto my-9 px-6">
-        <div className="bg-gradient-to-br from-[#c8f0d8] to-[#e0ffe5] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.15)]">
+        <div className="bg-gradient-to-br from-[#8fd4a8] to-[#b5f0c8] rounded-2xl p-6 shadow-[0_8px_24px_rgba(10,107,72,0.2)]">
           <h2 className="text-center text-[#0a573f] text-xl md:text-2xl font-bold mb-5">
             Recupere sua saúde e autoestima por menos de um café por dia ✨
           </h2>
