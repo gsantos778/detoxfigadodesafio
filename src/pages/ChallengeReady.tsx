@@ -36,7 +36,7 @@ const ChallengeReady = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [discountApplied, setDiscountApplied] = useState(false);
-  const [confettiPieces, setConfettiPieces] = useState<{id: number, left: number, color: string, delay: number}[]>([]);
+  const [confettiPieces, setConfettiPieces] = useState<{id: number, left: number, startTop: number, color: string, delay: number, size: number, rotation: number, shape: string}[]>([]);
   useEffect(() => {
     // Get user gender from localStorage
     const savedGender = localStorage.getItem('userGender');
@@ -99,13 +99,17 @@ const ChallengeReady = () => {
   };
 
   const triggerConfetti = () => {
-    // Create confetti pieces
-    const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4'];
-    const pieces = Array.from({ length: 50 }, (_, i) => ({
+    // Create confetti pieces - more pieces for bigger impact
+    const colors = ['#0ea06b', '#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FF69B4', '#00CED1'];
+    const pieces = Array.from({ length: 100 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
+      startTop: -20 - Math.random() * 100,
       color: colors[Math.floor(Math.random() * colors.length)],
-      delay: Math.random() * 0.5
+      delay: Math.random() * 0.8,
+      size: 8 + Math.random() * 8,
+      rotation: Math.random() * 360,
+      shape: Math.random() > 0.5 ? 'circle' : Math.random() > 0.5 ? 'square' : 'strip'
     }));
     setConfettiPieces(pieces);
     setShowConfetti(true);
@@ -115,7 +119,7 @@ const ChallengeReady = () => {
       setShowConfetti(false);
       setDiscountApplied(true);
       setIsApplyingDiscount(false);
-    }, 2000);
+    }, 2500);
   };
 
   // Benefícios para mulheres
@@ -451,15 +455,18 @@ const ChallengeReady = () => {
 
           {/* Loading Bar */}
           {isApplyingDiscount && !discountApplied && (
-            <div className="max-w-md mx-auto">
-              <p className="text-[#0a573f] font-bold mb-3 text-lg">Aplicando seus créditos...</p>
-              <div className="w-full bg-gray-200 rounded-full h-6 overflow-hidden shadow-inner">
+            <div className="max-w-sm mx-auto bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+              <p className="text-[#0a573f] font-bold mb-4 text-lg">⚡ Aplicando seus créditos...</p>
+              <div className="w-full bg-gray-200 rounded-full h-8 overflow-hidden shadow-inner relative">
                 <div 
-                  className="h-full bg-gradient-to-r from-[#0ea06b] to-[#0a573f] rounded-full transition-all duration-100 flex items-center justify-center"
+                  className="h-full bg-gradient-to-r from-[#0ea06b] via-[#12c77e] to-[#0ea06b] rounded-full transition-all duration-100 relative overflow-hidden"
                   style={{ width: `${loadingProgress}%` }}
                 >
-                  <span className="text-white text-sm font-bold">{loadingProgress}%</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
                 </div>
+                <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-gray-700">
+                  {loadingProgress}%
+                </span>
               </div>
             </div>
           )}
@@ -473,11 +480,13 @@ const ChallengeReady = () => {
                   className="absolute animate-confetti-fall"
                   style={{
                     left: `${piece.left}%`,
+                    top: `${piece.startTop}px`,
                     backgroundColor: piece.color,
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: Math.random() > 0.5 ? '50%' : '0',
-                    animationDelay: `${piece.delay}s`
+                    width: piece.shape === 'strip' ? '4px' : `${piece.size}px`,
+                    height: piece.shape === 'strip' ? `${piece.size * 2}px` : `${piece.size}px`,
+                    borderRadius: piece.shape === 'circle' ? '50%' : piece.shape === 'strip' ? '2px' : '2px',
+                    animationDelay: `${piece.delay}s`,
+                    transform: `rotate(${piece.rotation}deg)`
                   }}
                 />
               ))}
@@ -486,16 +495,34 @@ const ChallengeReady = () => {
 
           {/* Discount Applied - Show Purchase Button */}
           {discountApplied && (
-            <div className="animate-scale-in">
-              <div className="bg-white rounded-2xl p-6 shadow-lg max-w-md mx-auto border-2 border-[#0ea06b]">
-                <p className="text-[#0ea06b] font-black text-xl mb-4">🎉 DESCONTO APLICADO COM SUCESSO!</p>
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <span className="text-gray-400 line-through text-2xl">R$ 57,00</span>
-                  <span className="text-[#0ea06b] font-black text-4xl">R$ 37,00</span>
+            <div className="animate-bounce-in">
+              <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-sm mx-auto border-3 border-[#0ea06b] relative overflow-hidden">
+                {/* Success badge */}
+                <div className="absolute -top-1 -right-1 bg-[#0ea06b] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                  ✓ APLICADO
                 </div>
-                <p className="text-sm text-gray-600 mb-4">Você economizou R$ 20,00 com seus créditos!</p>
+                
+                <p className="text-[#0ea06b] font-black text-2xl mb-2">🎉 PARABÉNS!</p>
+                <p className="text-gray-600 text-sm mb-5">Seus créditos foram aplicados com sucesso!</p>
+                
+                {/* Price display */}
+                <div className="bg-gray-50 rounded-xl p-4 mb-5">
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500 mb-1">DE:</p>
+                      <span className="text-red-500 line-through text-2xl font-bold">R$ 57,00</span>
+                    </div>
+                    <div className="text-3xl text-gray-400">→</div>
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500 mb-1">POR:</p>
+                      <span className="text-[#0ea06b] font-black text-3xl animate-pulse">R$ 37,00</span>
+                    </div>
+                  </div>
+                  <p className="text-center text-sm text-[#0ea06b] font-semibold mt-2">Economia de R$ 20,00!</p>
+                </div>
+                
                 <button 
-                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-8 py-4 rounded-full text-xl shadow-[0_8px_20px_rgba(14,160,107,0.3)] transition-colors duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
+                  className="relative bg-[#0ea06b] hover:bg-[#0a6b48] text-white font-bold px-8 py-4 rounded-full text-xl shadow-[0_8px_20px_rgba(14,160,107,0.4)] transition-all duration-300 cursor-pointer overflow-hidden animate-button-pulse w-full"
                   onClick={() => window.open('https://pay.hotmart.com/SEU_LINK', '_blank')}
                 >
                   <span className="relative z-10">GARANTIR MEU DESCONTO</span>
@@ -555,30 +582,51 @@ const ChallengeReady = () => {
         
         @keyframes confetti-fall {
           0% {
-            transform: translateY(-10px) rotate(0deg);
+            transform: translateY(0) rotate(0deg) scale(1);
+            opacity: 1;
+          }
+          25% {
             opacity: 1;
           }
           100% {
-            transform: translateY(100vh) rotate(720deg);
+            transform: translateY(100vh) rotate(1080deg) scale(0.5);
             opacity: 0;
           }
         }
         .animate-confetti-fall {
-          animation: confetti-fall 2s ease-out forwards;
+          animation: confetti-fall 3s ease-out forwards;
         }
         
-        @keyframes scale-in {
+        @keyframes bounce-in {
           0% {
-            transform: scale(0.8);
+            transform: scale(0.3);
             opacity: 0;
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          70% {
+            transform: scale(0.95);
           }
           100% {
             transform: scale(1);
             opacity: 1;
           }
         }
-        .animate-scale-in {
-          animation: scale-in 0.5s ease-out forwards;
+        .animate-bounce-in {
+          animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        .animate-shimmer {
+          animation: shimmer 1s ease-in-out infinite;
         }
       `}</style>
     </div>;
