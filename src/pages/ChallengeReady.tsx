@@ -257,7 +257,7 @@ const ChallengeReady = () => {
       <section className="w-full px-4 pt-4 pb-12 bg-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">
-            O que as pessoas têm a dizer 💭
+            Mais de 287 mulheres que recuperaram a autoestima e a saúde do fígado ✨
           </h2>
           
           <div className="relative">
