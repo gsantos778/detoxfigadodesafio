@@ -18,11 +18,6 @@ import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
 import produtoDetox from "@/assets/produto-detox.png";
-import eloLogo from "@/assets/elo-logo.png";
-import pixLogo from "@/assets/pix-logo.png";
-import amexLogo from "@/assets/amex-logo.png";
-import mastercardLogo from "@/assets/mastercard-logo.png";
-import visaLogo from "@/assets/visa-logo.png";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -351,13 +346,6 @@ const ChallengeReady = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 justify-center items-center mt-4">
-            <img src={visaLogo} alt="Visa" className="h-8 w-auto object-contain" />
-            <img src={mastercardLogo} alt="Mastercard" className="h-8 w-auto object-contain" />
-            <img src={amexLogo} alt="American Express" className="h-8 w-auto object-contain" />
-            <img src={eloLogo} alt="Elo" className="h-8 w-auto object-contain" />
-            <img src={pixLogo} alt="Pix" className="h-8 w-auto object-contain" />
-          </div>
         </div>
       </section>
 
