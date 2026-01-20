@@ -22,6 +22,7 @@ import produtoDetox from "@/assets/produto-detox.png";
 import badgeCompraSegura from "@/assets/badge-compra-segura.png";
 import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
 import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
+import garantia15DiasImg from "@/assets/15-dias-garantia.png";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -526,13 +527,13 @@ const ChallengeReady = () => {
       <section className="w-full max-w-[900px] mx-auto mt-0 md:mt-1 mb-8 md:mb-12 px-4">
         <div className="bg-gradient-to-br from-[#98e6c2] to-[#2fb673] rounded-3xl p-5 md:p-10">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
-            {/* Badge Circle */}
+            {/* Badge Image */}
             <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-[#0ea06b] to-[#0a6b48] rounded-full flex flex-col items-center justify-center text-white text-center shadow-[0_8px_20px_rgba(14,160,107,0.35)] border-4 border-white outline outline-2 outline-white/10">
-                <span className="text-5xl md:text-6xl font-black leading-none">7</span>
-                <span className="text-xs font-bold -mt-1">DIAS DE</span>
-                <span className="text-sm md:text-base font-extrabold tracking-wider">GARANTIA</span>
-              </div>
+              <img 
+                src={garantia15DiasImg} 
+                alt="Garantia 15 Dias Incondicional" 
+                className="w-32 h-32 md:w-40 md:h-40 object-contain"
+              />
             </div>
 
             {/* Content */}
