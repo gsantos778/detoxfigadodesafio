@@ -18,7 +18,6 @@ import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
 import produtoDetox from "@/assets/produto-detox.png";
-import compraSeguraBadge from "@/assets/compra-segura-badge.jpg";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -347,9 +346,6 @@ const ChallengeReady = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center mt-4">
-            <img src={compraSeguraBadge} alt="Compra Segura" className="h-12 w-auto object-contain" />
-          </div>
         </div>
       </section>
 
