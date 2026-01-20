@@ -2,10 +2,13 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Detox Fígado Desafio</title>
     <meta name="description" content="Descubra o poder do detox do fígado para transformar sua saúde e bem-estar. Planos personalizados, receitas deliciosas e acompanhamento diário." />
     <meta name="author" content="Lovable" />
+    <meta name="theme-color" content="#0ea06b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
     <meta property="og:title" content="Detox Fígado Desafio" />
     <meta property="og:description" content="Descubra o poder do detox do fígado para transformar sua saúde e bem-estar." />
@@ -16,7 +19,11 @@
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     
-    <link rel="modulepreload" href="/src/assets/logo.png" as="image" />
+    <!-- Preload critical images -->
+    <link rel="preload" href="/src/assets/logo.png" as="image" type="image/png" />
+    <link rel="preload" href="/src/assets/transformation-comparison.png" as="image" type="image/png" />
+    <link rel="preload" href="/src/assets/produto-detox.png" as="image" type="image/png" />
+    <link rel="preload" href="/src/assets/phone-mockup-recipe.png" as="image" type="image/png" />
   </head>
 
   <body>
