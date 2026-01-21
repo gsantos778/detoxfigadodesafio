@@ -113,7 +113,7 @@ const AgeSelection = () => {
                   key={age.label}
                   onClick={() => navigate("/goal-selection")}
                   className={`quiz-button justify-center py-2 md:py-3 text-sm md:text-base ${
-                    index === 3 ? 'translate-x-1 md:translate-x-2' : ''
+                    index === 0 ? '-translate-x-1 md:-translate-x-2' : index === 3 ? 'translate-x-1 md:translate-x-2' : ''
                   }`}
                 >
                   {age.label}
