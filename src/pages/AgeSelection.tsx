@@ -105,7 +105,7 @@ const AgeSelection = () => {
               <button
                 key={age.label}
                 onClick={() => navigate("/goal-selection")}
-                className="flex flex-col items-center gap-2 group"
+                className="flex flex-col items-center group"
               >
                 <div className="relative overflow-hidden rounded-lg">
                   <img
@@ -116,7 +116,7 @@ const AgeSelection = () => {
                     decoding="sync"
                   />
                 </div>
-                <span className="quiz-button justify-center py-2 md:py-3 text-sm md:text-base px-3 md:px-6 w-full">
+                <span className="quiz-button justify-center py-2 md:py-3 text-sm md:text-base px-3 md:px-6 w-full -mt-4">
                   {age.label}
                 </span>
               </button>
