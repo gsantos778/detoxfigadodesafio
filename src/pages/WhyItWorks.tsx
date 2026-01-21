@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import beforeAfterImage from "@/assets/before-after.png";
 import beforeAfterMaleImage from "@/assets/before-after-male.png";
@@ -10,14 +9,18 @@ import QuizHeader from "@/components/QuizHeader";
   img.src = src;
 });
 
+// Read gender synchronously to avoid flash
+const getInitialGender = (): 'male' | 'female' => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('userGender');
+    if (stored === 'male' || stored === 'female') return stored;
+  }
+  return 'female';
+};
+
 const WhyItWorks = () => {
   const navigate = useNavigate();
-  const [userGender, setUserGender] = useState<'male' | 'female'>('female');
-
-  useEffect(() => {
-    const storedGender = localStorage.getItem('userGender') as 'male' | 'female' | null;
-    if (storedGender) setUserGender(storedGender);
-  }, []);
+  const userGender = getInitialGender();
 
   const heroImage = userGender === 'male' ? beforeAfterMaleImage : beforeAfterImage;
 
