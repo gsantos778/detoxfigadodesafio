@@ -123,6 +123,10 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
               <span className="text-red-400">✗</span>
               <span>Fígado sobrecarregado</span>
             </div>
+            <div className="flex items-center gap-1">
+              <span className="text-red-400">✗</span>
+              <span>Baixa queima de gordura</span>
+            </div>
           </div>
         </div>
 
@@ -193,6 +197,10 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
             <div className="flex items-center gap-1">
               <span className="text-emerald-500">✓</span>
               <span>Fígado saudável</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="text-emerald-500">✓</span>
+              <span>Alta queima de gordura</span>
             </div>
           </div>
         </div>
