@@ -107,14 +107,15 @@ const AgeSelection = () => {
               fetchPriority="high"
             />
             
-            <div className="absolute inset-0 grid grid-cols-4">
+            <div className="absolute top-0 left-0 right-0 grid grid-cols-4 gap-1 px-1">
               {ageGroups.map((age) => (
                 <button
                   key={age.label}
                   onClick={() => navigate("/goal-selection")}
-                  className="w-full h-full cursor-pointer hover:bg-white/10 transition-colors"
-                  aria-label={age.label}
-                />
+                  className="quiz-button justify-center py-2 md:py-3 text-sm md:text-base"
+                >
+                  {age.label}
+                </button>
               ))}
             </div>
           </div>
