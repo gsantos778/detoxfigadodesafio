@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ageOptionsImage from "@/assets/age-options.png";
-import homem1829 from "@/assets/homem-18-29.jpg";
-import homem3039 from "@/assets/homem-30-39.jpg";
-import homem4049 from "@/assets/homem-40-49.jpg";
-import homem50 from "@/assets/homem-50.jpg";
+import homem1829 from "@/assets/homem-18-29.png";
+import homem3039 from "@/assets/homem-30-39.png";
+import homem4049 from "@/assets/homem-40-49.png";
+import homem50 from "@/assets/homem-50.png";
 import QuizHeader from "@/components/QuizHeader";
 
 // Preload images immediately on module load
