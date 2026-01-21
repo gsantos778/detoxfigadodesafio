@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import liverHabitsImage from "@/assets/liver-habits.png";
+import liverHabitsMaleImage from "@/assets/liver-habits-male.png";
 import { Button } from "@/components/ui/button";
 import QuizHeader from "@/components/QuizHeader";
 
-// Preload image immediately on module load
-const img = new Image();
-img.src = liverHabitsImage;
+// Preload images immediately on module load
+[liverHabitsImage, liverHabitsMaleImage].forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 
 // Read gender synchronously to avoid flash
 const getInitialGender = (): 'male' | 'female' => {
@@ -19,6 +22,7 @@ const getInitialGender = (): 'male' | 'female' => {
 const LiverHabits = () => {
   const navigate = useNavigate();
   const userGender = getInitialGender();
+  const heroImage = userGender === 'male' ? liverHabitsMaleImage : liverHabitsImage;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -31,7 +35,7 @@ const LiverHabits = () => {
           {/* Image */}
           <div className="w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden mb-4 sm:mb-6">
             <img 
-              src={liverHabitsImage} 
+              src={heroImage} 
               alt="Fígado sobrecarregado" 
               className="w-full h-full object-cover"
               loading="eager"
