@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import imgAgora from "@/assets/img-agora.png";
 import imgMeta from "@/assets/img-meta.png";
+import imgAgoraMale from "@/assets/img-agora-male.png";
+import imgMetaMale from "@/assets/img-meta-male.png";
 
 interface TransformationComparisonProps {
   userGender: 'male' | 'female';
@@ -83,7 +85,7 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
           <div className="flex justify-center mb-4">
             <div className="relative">
               <img 
-                src={imgAgora} 
+                src={userGender === 'male' ? imgAgoraMale : imgAgora} 
                 alt="Antes" 
                 className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
               />
@@ -142,7 +144,7 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
           <div className="flex justify-center mb-4">
             <div className="relative">
               <img 
-                src={imgMeta} 
+                src={userGender === 'male' ? imgMetaMale : imgMeta} 
                 alt="Meta" 
                 className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
               />
