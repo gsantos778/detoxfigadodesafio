@@ -4,9 +4,10 @@ import imgMeta from "@/assets/img-meta.png";
 
 interface TransformationComparisonProps {
   userGender: 'male' | 'female';
+  startAnimation?: boolean;
 }
 
-const TransformationComparison = ({ userGender }: TransformationComparisonProps) => {
+const TransformationComparison = ({ userGender, startAnimation = false }: TransformationComparisonProps) => {
   const [animationStarted, setAnimationStarted] = useState(false);
   const [bar1Visible, setBar1Visible] = useState(false);
   const [bar2Visible, setBar2Visible] = useState(false);
@@ -14,7 +15,9 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
   const [bar4Visible, setBar4Visible] = useState(false);
 
   useEffect(() => {
-    // Start animation sequence after component mounts
+    // Only start animation when startAnimation prop becomes true
+    if (!startAnimation) return;
+    
     const timer = setTimeout(() => {
       setAnimationStarted(true);
       
@@ -28,7 +31,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
     }, 500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [startAnimation]);
 
   return (
     <div className="w-full bg-white rounded-xl shadow-lg overflow-hidden animate-float relative">
@@ -41,13 +44,13 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
             fill="none" 
             stroke="currentColor"
           >
-            {/* Three chevron arrows */}
+          {/* Three chevron arrows */}
             <path 
               d="M4 8 L12 20 L4 32" 
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
-              className="text-emerald-400 animate-pulse"
+              className={`text-emerald-400 ${startAnimation ? 'animate-pulse' : 'opacity-30'}`}
               style={{ animationDelay: '0ms' }}
             />
             <path 
@@ -55,7 +58,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
-              className="text-emerald-500 animate-pulse"
+              className={`text-emerald-500 ${startAnimation ? 'animate-pulse' : 'opacity-30'}`}
               style={{ animationDelay: '200ms' }}
             />
             <path 
@@ -63,7 +66,7 @@ const TransformationComparison = ({ userGender }: TransformationComparisonProps)
               strokeWidth="2" 
               strokeLinecap="round" 
               strokeLinejoin="round"
-              className="text-emerald-600 animate-pulse"
+              className={`text-emerald-600 ${startAnimation ? 'animate-pulse' : 'opacity-30'}`}
               style={{ animationDelay: '400ms' }}
             />
           </svg>

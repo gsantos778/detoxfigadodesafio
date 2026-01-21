@@ -38,6 +38,7 @@ const ChallengeReady = () => {
   const [coins, setCoins] = useState<number[]>([]);
   const [creditsCount, setCreditsCount] = useState(0);
   const [userGender, setUserGender] = useState<'male' | 'female'>('female');
+  const [creditsReceived, setCreditsReceived] = useState(false);
 
   // Gamification states
   const [isApplyingDiscount, setIsApplyingDiscount] = useState(false);
@@ -87,6 +88,7 @@ const ChallengeReady = () => {
   }, []);
   const handleReceiveCredits = () => {
     setShowPopup(false);
+    setCreditsReceived(true);
 
     // Start coin animation after a brief delay
     setTimeout(() => {
@@ -327,7 +329,7 @@ const ChallengeReady = () => {
 
       {/* Transformation Comparison */}
       <div className="w-full max-w-lg mb-6 px-4">
-        <TransformationComparison userGender={userGender} />
+        <TransformationComparison userGender={userGender} startAnimation={creditsReceived} />
       </div>
 
       {/* O que você recebe Section */}
