@@ -107,7 +107,7 @@ const AgeSelection = () => {
               fetchPriority="high"
             />
             
-            <div className="absolute -bottom-8 md:-bottom-10 left-0 right-0 grid grid-cols-4 gap-2 md:gap-4 px-2 md:px-4">
+            <div className="absolute -bottom-10 md:-bottom-12 left-0 right-0 grid grid-cols-4 gap-2 md:gap-4 px-2 md:px-4">
               {ageGroups.map((age) => (
                 <button
                   key={age.label}
