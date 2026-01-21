@@ -108,11 +108,13 @@ const AgeSelection = () => {
             />
             
             <div className="absolute -bottom-10 md:-bottom-12 left-0 right-0 grid grid-cols-4 gap-2 md:gap-4 px-2 md:px-4">
-              {ageGroups.map((age) => (
+              {ageGroups.map((age, index) => (
                 <button
                   key={age.label}
                   onClick={() => navigate("/goal-selection")}
-                  className="quiz-button justify-center py-2 md:py-3 text-sm md:text-base"
+                  className={`quiz-button justify-center py-2 md:py-3 text-sm md:text-base ${
+                    index === 3 ? 'translate-x-1 md:translate-x-2' : ''
+                  }`}
                 >
                   {age.label}
                 </button>
