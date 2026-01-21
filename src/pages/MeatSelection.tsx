@@ -17,9 +17,19 @@ preloadImages.forEach((src) => {
   img.src = src;
 });
 
+// Read gender synchronously to avoid flash
+const getInitialGender = (): 'male' | 'female' => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('userGender');
+    if (stored === 'male' || stored === 'female') return stored;
+  }
+  return 'female';
+};
+
 const MeatSelection = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string[]>([]);
+  const userGender = getInitialGender();
 
   const meatOptions = [
     { id: "aves", label: "Aves", image: avesImage },
@@ -115,7 +125,9 @@ const MeatSelection = () => {
             onClick={handleVegetarian}
             className="w-full flex items-center justify-between px-4 py-4 bg-background border border-border rounded-lg hover:bg-muted transition-colors"
           >
-            <span className="text-foreground">Sou vegetariana.</span>
+            <span className="text-foreground">
+              {userGender === 'male' ? 'Sou vegetariano.' : 'Sou vegetariana.'}
+            </span>
             <Checkbox
               checked={selected.includes("vegetarian")}
               onCheckedChange={handleVegetarian}
