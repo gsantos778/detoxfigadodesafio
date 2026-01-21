@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import imgImcNormal from "@/assets/img-imc-normal.png";
 import imgImcSobrepeso from "@/assets/img-imc-sobrepeso.png";
 import imgImcNormalMale from "@/assets/img-imc-normal-male.png";
+import imgImcSobrepesoMale from "@/assets/img-imc-sobrepeso-male.png";
 import logoImage from "@/assets/logo.png";
 import { Target, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,7 @@ const getInitialGender = (): 'male' | 'female' => {
 };
 
 // Preload images immediately on module load
-[imgImcNormal, imgImcSobrepeso, imgImcNormalMale, logoImage].forEach(src => {
+[imgImcNormal, imgImcSobrepeso, imgImcNormalMale, imgImcSobrepesoMale, logoImage].forEach(src => {
   const img = new Image();
   img.src = src;
 });
@@ -314,7 +315,7 @@ const PersonalSummary = () => {
                     <img
                       src={
                         userGender === 'male'
-                          ? (isOverweight ? imgImcSobrepeso : imgImcNormalMale)
+                          ? (isOverweight ? imgImcSobrepesoMale : imgImcNormalMale)
                           : (isOverweight ? imgImcSobrepeso : imgImcNormal)
                       }
                       alt="Ilustração corporal"
