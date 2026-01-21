@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import imgAgora from "@/assets/img-agora.png";
 import imgMeta from "@/assets/img-meta.png";
-import transformationMale from "@/assets/transformation-male.png";
 
 interface TransformationComparisonProps {
   userGender: 'male' | 'female';
@@ -82,19 +81,12 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
           
           {/* Body image */}
           <div className="flex justify-center mb-4">
-            <div className="relative overflow-hidden rounded-lg">
-              {userGender === 'male' ? (
-                <div 
-                  className="w-32 h-44 sm:w-40 sm:h-52 bg-cover bg-left bg-no-repeat"
-                  style={{ backgroundImage: `url(${transformationMale})` }}
-                />
-              ) : (
-                <img 
-                  src={imgAgora} 
-                  alt="Antes" 
-                  className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
-                />
-              )}
+            <div className="relative">
+              <img 
+                src={imgAgora} 
+                alt="Antes" 
+                className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
+              />
             </div>
           </div>
 
@@ -148,19 +140,12 @@ const TransformationComparison = ({ userGender, startAnimation = false }: Transf
           
           {/* Body image - healthier */}
           <div className="flex justify-center mb-4">
-            <div className="relative overflow-hidden rounded-lg">
-              {userGender === 'male' ? (
-                <div 
-                  className="w-32 h-44 sm:w-40 sm:h-52 bg-cover bg-right bg-no-repeat rounded-lg"
-                  style={{ backgroundImage: `url(${transformationMale})` }}
-                />
-              ) : (
-                <img 
-                  src={imgMeta} 
-                  alt="Meta" 
-                  className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
-                />
-              )}
+            <div className="relative">
+              <img 
+                src={imgMeta} 
+                alt="Meta" 
+                className="w-32 h-44 sm:w-40 sm:h-52 object-cover object-top rounded-lg"
+              />
               {/* Glow effect */}
               <div className="absolute inset-0 bg-emerald-400/20 blur-xl rounded-full -z-10"></div>
             </div>

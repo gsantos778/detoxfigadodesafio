@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import beforeAfterImage from "@/assets/before-after.png";
+import beforeAfterMaleImage from "@/assets/before-after-male.png";
 import QuizHeader from "@/components/QuizHeader";
 
-// Preload image immediately on module load
-const img = new Image();
-img.src = beforeAfterImage;
+// Preload images immediately on module load
+[beforeAfterImage, beforeAfterMaleImage].forEach((src) => {
+  const img = new Image();
+  img.src = src;
+});
 
 const WhyItWorks = () => {
   const navigate = useNavigate();
+  const [userGender, setUserGender] = useState<'male' | 'female'>('female');
+
+  useEffect(() => {
+    const storedGender = localStorage.getItem('userGender') as 'male' | 'female' | null;
+    if (storedGender) setUserGender(storedGender);
+  }, []);
+
+  const heroImage = userGender === 'male' ? beforeAfterMaleImage : beforeAfterImage;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -20,7 +32,7 @@ const WhyItWorks = () => {
           {/* Before/After Image */}
           <div className="w-full mb-6">
             <img
-              src={beforeAfterImage}
+              src={heroImage}
               alt="Antes e depois da desintoxicação"
               className="w-full h-auto rounded-lg"
               loading="eager"
