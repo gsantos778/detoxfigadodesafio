@@ -1,14 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import imgImcNormal from "@/assets/img-imc-normal.png";
 import imgImcSobrepeso from "@/assets/img-imc-sobrepeso.png";
+import imgImcNormalMale from "@/assets/img-imc-normal-male.png";
 import logoImage from "@/assets/logo.png";
 import { Target, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import QuizHeader from "@/components/QuizHeader";
 
+// Read gender synchronously to avoid flash
+const getInitialGender = (): 'male' | 'female' => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('userGender');
+    if (stored === 'male' || stored === 'female') return stored;
+  }
+  return 'female';
+};
+
 // Preload images immediately on module load
-[imgImcNormal, imgImcSobrepeso, logoImage].forEach(src => {
+[imgImcNormal, imgImcSobrepeso, imgImcNormalMale, logoImage].forEach(src => {
   const img = new Image();
   img.src = src;
 });
@@ -24,6 +34,7 @@ interface UserData {
 
 const PersonalSummary = () => {
   const navigate = useNavigate();
+  const userGender = getInitialGender();
   const [userData, setUserData] = useState<UserData>({
     height: 170,
     currentWeight: 80,
@@ -298,10 +309,14 @@ const PersonalSummary = () => {
                     </div>
                   </div>
 
-                  {/* Imagem da Mulher */}
+                  {/* Imagem do corpo */}
                   <div className="flex-shrink-0">
                     <img
-                      src={isOverweight ? imgImcSobrepeso : imgImcNormal}
+                      src={
+                        userGender === 'male'
+                          ? (isOverweight ? imgImcSobrepeso : imgImcNormalMale)
+                          : (isOverweight ? imgImcSobrepeso : imgImcNormal)
+                      }
                       alt="Ilustração corporal"
                       className="w-32 md:w-40 h-auto object-contain"
                       loading="eager"
