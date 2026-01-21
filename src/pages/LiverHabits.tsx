@@ -7,8 +7,18 @@ import QuizHeader from "@/components/QuizHeader";
 const img = new Image();
 img.src = liverHabitsImage;
 
+// Read gender synchronously to avoid flash
+const getInitialGender = (): 'male' | 'female' => {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('userGender');
+    if (stored === 'male' || stored === 'female') return stored;
+  }
+  return 'female';
+};
+
 const LiverHabits = () => {
   const navigate = useNavigate();
+  const userGender = getInitialGender();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -36,10 +46,21 @@ const LiverHabits = () => {
 
           {/* Description */}
           <p className="text-sm sm:text-base text-muted-foreground text-center leading-relaxed">
-            O consumo diário de álcool, alimentos processados, maus hábitos alimentares e pouca água fazem com que o fígado tenha dificuldades com a{" "}
-            <span className="text-primary font-medium">desintoxicação</span>, a{" "}
-            <span className="text-primary font-medium">digestão</span> e a{" "}
-            <span className="text-primary font-medium">regulação hormonal</span>.
+            {userGender === 'male' ? (
+              <>
+                O consumo diário de álcool, alimentos processados, maus hábitos alimentares e pouca água fazem com que o fígado tenha dificuldades com a{" "}
+                <span className="text-primary font-medium">desintoxicação</span>, a{" "}
+                <span className="text-primary font-medium">digestão</span> e a{" "}
+                <span className="text-primary font-medium">produção de testosterona</span>.
+              </>
+            ) : (
+              <>
+                O consumo diário de álcool, alimentos processados, maus hábitos alimentares e pouca água fazem com que o fígado tenha dificuldades com a{" "}
+                <span className="text-primary font-medium">desintoxicação</span>, a{" "}
+                <span className="text-primary font-medium">digestão</span> e a{" "}
+                <span className="text-primary font-medium">regulação hormonal</span>.
+              </>
+            )}
           </p>
         </div>
 
