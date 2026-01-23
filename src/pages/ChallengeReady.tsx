@@ -90,17 +90,27 @@ const ChallengeReady = () => {
       setUserGender(savedGender);
     }
 
-    // Show popup after a short delay when page loads
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 500);
-    return () => clearTimeout(timer);
+    // Check if credits were already received
+    const creditsAlreadyReceived = localStorage.getItem('creditsReceived') === 'true';
+    
+    if (creditsAlreadyReceived) {
+      // If already received, show credits counter with 1000 immediately
+      setCreditsReceived(true);
+      setCreditsCount(1000);
+    } else {
+      // Show popup after a short delay when page loads (only first time)
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
   }, []);
   const handleReceiveCredits = () => {
     setShowPopup(false);
     setCreditsReceived(true);
-
-    // Start coin animation after a brief delay
+    
+    // Save to localStorage so popup doesn't appear again
+    localStorage.setItem('creditsReceived', 'true');
     setTimeout(() => {
       setAnimatingCoins(true);
       // Create multiple coins for animation
