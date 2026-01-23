@@ -12,13 +12,23 @@ import { Coins, CircleCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-// Testimonial images
+// Testimonial images - Female
 import testimonial1 from "@/assets/testimonial-1.png";
 import testimonial2 from "@/assets/testimonial-2.png";
 import testimonial3 from "@/assets/testimonial-3.png";
 import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
+
+// Testimonial images - Male
+import testimonialMale1 from "@/assets/testimonial-male-1.png";
+import testimonialMale2 from "@/assets/testimonial-male-2.png";
+import testimonialMale3 from "@/assets/testimonial-male-3.png";
+import testimonialMale4 from "@/assets/testimonial-male-4.png";
+import testimonialMale5 from "@/assets/testimonial-male-5.png";
+import testimonialMale6 from "@/assets/testimonial-male-6.png";
+import testimonialMale7 from "@/assets/testimonial-male-7.png";
+import testimonialMale8 from "@/assets/testimonial-male-8.png";
 import produtoDetox from "@/assets/produto-detox.png";
 import badgeCompraSegura from "@/assets/badge-compra-segura.png";
 import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
@@ -249,7 +259,9 @@ const ChallengeReady = () => {
   const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
 
   // Testimonials carousel
-  const testimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
+  const femaleTestimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
+  const maleTestimonials = [testimonialMale1, testimonialMale2, testimonialMale3, testimonialMale4, testimonialMale5, testimonialMale6, testimonialMale7, testimonialMale8];
+  const testimonials = userGender === 'male' ? maleTestimonials : femaleTestimonials;
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'center'
@@ -390,7 +402,10 @@ const ChallengeReady = () => {
       <section className="w-full px-2 sm:px-4 pt-4 pb-8 sm:pb-12 bg-gray-200">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-lg sm:text-2xl md:text-4xl font-extrabold text-gray-800 mb-6 sm:mb-8 text-center leading-tight px-2">
-            Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨
+            {userGender === 'male' 
+              ? <>Mais de <span className="text-green-600">287 homens</span> que recuperaram a energia e a saúde do fígado 💪</>
+              : <>Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨</>
+            }
           </h2>
           
           <div className="relative">
