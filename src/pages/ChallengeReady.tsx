@@ -19,6 +19,11 @@ import testimonial3 from "@/assets/testimonial-3.png";
 import testimonial4 from "@/assets/testimonial-4.png";
 import testimonial5 from "@/assets/testimonial-5.png";
 import testimonial6 from "@/assets/testimonial-6.png";
+import testimonialFemale1 from "@/assets/testimonial-female-1.png";
+import testimonialFemale2 from "@/assets/testimonial-female-2.png";
+import testimonialFemale3 from "@/assets/testimonial-female-3.png";
+import testimonialFemale4 from "@/assets/testimonial-female-4.png";
+import testimonialFemale5 from "@/assets/testimonial-female-5.png";
 
 // Testimonial images - Male
 import testimonialMale1 from "@/assets/testimonial-male-1.png";
@@ -269,7 +274,7 @@ const ChallengeReady = () => {
   const benefits = userGender === 'female' ? femaleBenefits : maleBenefits;
 
   // Testimonials carousel
-  const femaleTestimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6];
+  const femaleTestimonials = [testimonial1, testimonial2, testimonial3, testimonial4, testimonial5, testimonial6, testimonialFemale1, testimonialFemale2, testimonialFemale3, testimonialFemale4, testimonialFemale5];
   const maleTestimonials = [testimonialMale1, testimonialMale2, testimonialMale3, testimonialMale4, testimonialMale5, testimonialMale6, testimonialMale7, testimonialMale8];
   const testimonials = userGender === 'male' ? maleTestimonials : femaleTestimonials;
   const [emblaRef, emblaApi] = useEmblaCarousel({
