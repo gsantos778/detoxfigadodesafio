@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 import {
   AreaChart,
   Area,

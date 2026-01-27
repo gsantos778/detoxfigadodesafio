@@ -4,6 +4,12 @@ import imgMeta from "@/assets/img-meta.png";
 import imgAgoraMale from "@/assets/img-agora-male.png";
 import imgMetaMale from "@/assets/img-meta-male.png";
 
+// Preload all transformation images on module load
+[imgAgora, imgMeta, imgAgoraMale, imgMetaMale].forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
 interface TransformationComparisonProps {
   userGender: 'male' | 'female';
   startAnimation?: boolean;
