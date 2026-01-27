@@ -3,6 +3,10 @@ import { useState, useEffect, useMemo } from "react";
 import logoImage from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
+// Preload logo immediately
+const preloadImg = new Image();
+preloadImg.src = logoImage;
+
 const WeightImpactChart = () => {
   const navigate = useNavigate();
   const [animationProgress, setAnimationProgress] = useState(0);
