@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import confetti from "canvas-confetti";
 import logo from "@/assets/logo.png";
 import TransformationComparison from "@/components/TransformationComparison";
+import CountdownTimer from "@/components/CountdownTimer";
 import phoneMockup from "@/assets/phone-mockup-recipe.png";
 import guiaSubstituicoes from "@/assets/guia-substituicoes.png";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -60,6 +61,7 @@ const ChallengeReady = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [discountApplied, setDiscountApplied] = useState(false);
+  const [showCountdown, setShowCountdown] = useState(false);
   const [confettiPieces, setConfettiPieces] = useState<{
     id: number;
     startX: number;
@@ -145,6 +147,7 @@ const ChallengeReady = () => {
   const handleApplyDiscount = () => {
     setIsApplyingDiscount(true);
     setLoadingProgress(0);
+    setShowCountdown(true); // Show countdown timer when applying discount
 
     // Animate loading bar from 0 to 100
     const interval = setInterval(() => {
@@ -306,8 +309,11 @@ const ChallengeReady = () => {
     };
   }, [emblaApi]);
   return <div className="min-h-screen bg-white flex flex-col items-center px-0 sm:px-4 py-6 sm:py-8 relative overflow-hidden">
+      {/* Countdown Timer Bar */}
+      <CountdownTimer show={showCountdown} initialMinutes={10} />
+      
       {/* Credits Display - Top Right */}
-      {showCredits && <div className="fixed top-4 right-4 z-50 flex flex-col items-center gap-1 animate-scale-in">
+      {showCredits && <div className={`fixed ${showCountdown ? 'top-16 sm:top-14' : 'top-4'} right-4 z-50 flex flex-col items-center gap-1 animate-scale-in transition-all duration-300`}>
           <span className="text-xs font-semibold text-gray-600">créditos</span>
           <div className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm" style={{
         boxShadow: '0 0 10px #34d399, 0 0 20px #34d399, 0 0 30px #10b981'
