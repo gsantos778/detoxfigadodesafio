@@ -99,7 +99,6 @@ const ChallengeReady = () => {
 
     // Check if credits were already received
     const creditsAlreadyReceived = localStorage.getItem('creditsReceived') === 'true';
-    
     if (creditsAlreadyReceived) {
       // If already received, show credits counter with 1000 immediately
       setCreditsReceived(true);
@@ -115,7 +114,7 @@ const ChallengeReady = () => {
   const handleReceiveCredits = () => {
     setShowPopup(false);
     setCreditsReceived(true);
-    
+
     // Save to localStorage so popup doesn't appear again
     localStorage.setItem('creditsReceived', 'true');
     setTimeout(() => {
@@ -423,10 +422,7 @@ const ChallengeReady = () => {
       <section className="w-full px-2 sm:px-4 pt-4 pb-8 sm:pb-12 bg-gray-200">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-lg sm:text-2xl md:text-4xl font-extrabold text-gray-800 mb-6 sm:mb-8 text-center leading-tight px-2">
-            {userGender === 'male' 
-              ? <>Mais de <span className="text-green-600">287 homens</span> que recuperaram a energia e a saúde do fígado 💪</>
-              : <>Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨</>
-            }
+            {userGender === 'male' ? <>Mais de <span className="text-green-600">287 homens</span> que recuperaram a energia e a saúde do fígado 💪</> : <>Mais de <span className="text-green-600">287 mulheres</span> que recuperaram a autoestima e a saúde do fígado ✨</>}
           </h2>
           
           <div className="relative">
@@ -587,7 +583,7 @@ const ChallengeReady = () => {
                 Eu tenho tanta confiança no <strong>Protocolo Detox Fígado</strong> e nos resultados que ele entrega, que vou tirar todo o peso das suas costas.
               </p>
               <p className="text-[#184c39] leading-relaxed mb-5 md:mb-6 text-sm md:text-base">
-                Você tem <strong>15 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
+                Você tem <strong>7 dias inteiros</strong> para testar o aplicativo, as receitas e o guia de bônus. Se por qualquer motivo você sentir que o desafio não é para você, basta nos enviar um e-mail.
               </p>
               <p className="text-[#0a6b48] font-bold bg-[#eaf9f0] px-3 py-2 rounded-lg inline-block mb-4 text-sm md:text-base">
                 Nós devolveremos 100% do seu dinheiro, sem perguntas e sem burocracia. Simples assim.
