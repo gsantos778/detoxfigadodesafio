@@ -458,7 +458,7 @@ const ChallengeReady = () => {
       <section className="max-w-[1100px] mx-auto my-6 sm:my-9 px-3 sm:px-6">
         <div className="bg-[#9be4b5] rounded-2xl p-4 sm:p-6 shadow-[0_8px_24px_rgba(10,107,72,0.2)]">
           <h2 className="text-center text-[#0a573f] text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5">
-            Recupere sua saúde e autoestima por menos de um café por dia ✨
+            Recupere sua saúde e autoestima por apenas:
           </h2>
 
           <div className="flex flex-col gap-3 sm:gap-4 items-center p-3 sm:p-4 bg-white rounded-xl shadow-[0_6px_16px_rgba(4,85,48,0.04)]">
@@ -473,7 +473,7 @@ const ChallengeReady = () => {
                 R$ <span>57</span><small className="text-xs sm:text-sm font-bold">,00</small>
               </p>
               <p className="text-[#2b6b4a] font-semibold my-1 mb-2 sm:mb-3 text-sm sm:text-base">
-                ou 12x de <strong>R$ 4,75</strong> sem juros
+                ou 6x de <strong>R$10,89</strong>
               </p>
             </div>
           </div>
