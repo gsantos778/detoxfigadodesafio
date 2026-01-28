@@ -39,7 +39,7 @@ import produtoDetox from "@/assets/produto-detox.png";
 import badgeCompraSegura from "@/assets/badge-compra-segura.png";
 import badgeSatisfacaoGarantida from "@/assets/badge-satisfacao-garantida.jpg";
 import badgePrivacidadeProtegida from "@/assets/badge-privacidade-protegida.jpg";
-import garantia15DiasImg from "@/assets/15-dias-garantia.png";
+import garantia7DiasImg from "@/assets/7-dias-garantia.jpg";
 
 // Social proof images
 import provaSocialKoreena from "@/assets/prova-social-koreena.png";
@@ -569,7 +569,7 @@ const ChallengeReady = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
             {/* Badge Image */}
             <div className="flex-shrink-0">
-              <img src={garantia15DiasImg} alt="Garantia 15 Dias Incondicional" className="w-32 h-32 md:w-40 md:h-40 object-contain" />
+              <img src={garantia7DiasImg} alt="Garantia 7 Dias Incondicional" className="w-32 h-32 md:w-40 md:h-40 object-contain" />
             </div>
 
             {/* Content */}
