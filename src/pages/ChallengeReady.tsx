@@ -147,7 +147,6 @@ const ChallengeReady = () => {
   const handleApplyDiscount = () => {
     setIsApplyingDiscount(true);
     setLoadingProgress(0);
-    setShowCountdown(true); // Show countdown timer when applying discount
 
     // Animate loading bar from 0 to 100
     const interval = setInterval(() => {
@@ -158,6 +157,7 @@ const ChallengeReady = () => {
           setTimeout(() => {
             setIsApplyingDiscount(false); // Hide the loading bar first
             triggerConfetti(); // Then trigger confetti immediately
+            setShowCountdown(true); // Show countdown timer AFTER gamification completes
           }, 300);
           return 100;
         }
@@ -470,10 +470,10 @@ const ChallengeReady = () => {
             <div className="flex-1 min-w-[240px] sm:min-w-[280px] text-center p-2 sm:p-3">
               <p className="text-[#0a6b48] font-semibold text-xs sm:text-sm">Oferta especial</p>
               <p className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0a6b48] my-1">
-                R$ <span>57</span><small className="text-xs sm:text-sm font-bold">,00</small>
+                R$ <span>{discountApplied ? '37' : '57'}</span><small className="text-xs sm:text-sm font-bold">,00</small>
               </p>
               <p className="text-[#2b6b4a] font-semibold my-1 mb-2 sm:mb-3 text-sm sm:text-base">
-                ou 6x de <strong>R$10,89</strong>
+                ou 6x de <strong>R${discountApplied ? '7,07' : '10,89'}</strong>
               </p>
             </div>
           </div>
