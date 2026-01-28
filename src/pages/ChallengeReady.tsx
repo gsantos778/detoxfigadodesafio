@@ -569,7 +569,7 @@ const ChallengeReady = () => {
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-white rounded-3xl p-6 md:p-10 shadow-lg border border-[rgba(234,249,240,0.6)]">
             {/* Badge Image */}
             <div className="flex-shrink-0">
-              <img src={garantia7DiasImg} alt="Garantia 7 Dias Incondicional" className="w-32 h-32 md:w-40 md:h-40 object-contain" />
+              <img src={garantia7DiasImg} alt="Garantia 7 Dias Incondicional" className="w-40 h-40 md:w-52 md:h-52 object-contain" />
             </div>
 
             {/* Content */}
