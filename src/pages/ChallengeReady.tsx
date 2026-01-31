@@ -45,6 +45,9 @@ import garantia7DiasImg from "@/assets/7-dias-garantia.jpg";
 import provaSocialKoreena from "@/assets/prova-social-koreena.png";
 import provaSocialSandra from "@/assets/prova-social-sandra.png";
 import provaSocialMike from "@/assets/prova-social-mike.png";
+
+// Audio for coins animation
+import audioMoedas from "@/assets/audio_moedas.mp3";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -121,6 +124,13 @@ const ChallengeReady = () => {
       setAnimatingCoins(true);
       // Create multiple coins for animation
       setCoins([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+      // Play coins sound effect synchronized with animation
+      const audio = new Audio(audioMoedas);
+      audio.volume = 0.7;
+      audio.play().catch(() => {
+        // Silently handle if autoplay is blocked
+      });
 
       // After coins animation, update the credits counter
       setTimeout(() => {
