@@ -166,6 +166,14 @@ const ChallengeReady = () => {
       setLoadingProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval);
+          
+          // Play cash register sound immediately when bar completes
+          const audio = new Audio(audioRegistradora);
+          audio.volume = 0.7;
+          audio.play().catch(() => {
+            // Silently handle if autoplay is blocked
+          });
+          
           // Small delay to let user see 100%, then hide bar and trigger confetti
           setTimeout(() => {
             setIsApplyingDiscount(false); // Hide the loading bar first
@@ -182,13 +190,6 @@ const ChallengeReady = () => {
     // Show purchase button immediately when confetti starts
     setDiscountApplied(true);
     setShowConfetti(true);
-
-    // Play cash register sound when discount is applied
-    const audio = new Audio(audioRegistradora);
-    audio.volume = 0.7;
-    audio.play().catch(() => {
-      // Silently handle if autoplay is blocked
-    });
 
     // Fire multiple bursts for a more dramatic effect
     const duration = 2000;
