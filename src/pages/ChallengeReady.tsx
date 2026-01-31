@@ -120,17 +120,18 @@ const ChallengeReady = () => {
 
     // Save to localStorage so popup doesn't appear again
     localStorage.setItem('creditsReceived', 'true');
+
+    // Play coins sound effect immediately on click (before animation starts)
+    const audio = new Audio(audioMoedas);
+    audio.volume = 0.7;
+    audio.play().catch(() => {
+      // Silently handle if autoplay is blocked
+    });
+
     setTimeout(() => {
       setAnimatingCoins(true);
       // Create multiple coins for animation
       setCoins([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-
-      // Play coins sound effect synchronized with animation
-      const audio = new Audio(audioMoedas);
-      audio.volume = 0.7;
-      audio.play().catch(() => {
-        // Silently handle if autoplay is blocked
-      });
 
       // After coins animation, update the credits counter
       setTimeout(() => {
