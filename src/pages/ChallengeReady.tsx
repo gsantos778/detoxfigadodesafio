@@ -48,6 +48,9 @@ import provaSocialMike from "@/assets/prova-social-mike.png";
 
 // Audio for coins animation
 import audioMoedas from "@/assets/audio_moedas.mp3";
+
+// Audio for discount applied (cash register sound)
+import audioRegistradora from "@/assets/audio_registradora.mp3";
 const ChallengeReady = () => {
   const navigate = useNavigate();
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -179,6 +182,13 @@ const ChallengeReady = () => {
     // Show purchase button immediately when confetti starts
     setDiscountApplied(true);
     setShowConfetti(true);
+
+    // Play cash register sound when discount is applied
+    const audio = new Audio(audioRegistradora);
+    audio.volume = 0.7;
+    audio.play().catch(() => {
+      // Silently handle if autoplay is blocked
+    });
 
     // Fire multiple bursts for a more dramatic effect
     const duration = 2000;
